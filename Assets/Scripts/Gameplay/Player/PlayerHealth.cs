@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     bool quest_active;
     int nb_quests;
 
+    private bool forcefield = false;
 
     void Awake ()
     {
@@ -102,12 +103,17 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene (0);
     }
 
-    private void SetHealthUI() //new
+    public void SetHealthUI() //new
     {
         
         healthSlider.value = currentHealth;
 
         
         FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / startingHealth);
+    }
+
+    public void ForceField(bool isActive)
+    {
+        forcefield = isActive;
     }
 }
