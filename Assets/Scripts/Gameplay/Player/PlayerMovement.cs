@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
+    private Vector3 direction;
+    private Vector3 localDirection;
+    private float localDirectionZ;
+    private float localDirectionX;
+    private Vector3 lastPosition;
+
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
@@ -24,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         Move(h, v);
         Turning();
+        FindVelocity();
         Animating(h, v);
     }
 
@@ -50,10 +57,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FindVelocity()
+    {
+        direction = transform.position - lastPosition;
+        localDirection = transform.InverseTransformDirection(direction);
+        localDirectionZ = Mathf.Clamp(transform.InverseTransformDirection(direction).z, -1, 1);
+        localDirectionX = Mathf.Clamp(transform.InverseTransformDirection(direction).x, -1, 1);
+        lastPosition = transform.position;
+    }
+
     void Animating(float h, float v)
     {
         bool walking = h != 0f || v != 0f;
         anim.SetBool("IsWalking", walking);
+        anim.SetFloat("Direction_Z", localDirectionZ);
+        anim.SetFloat("Direction_X", localDirectionX);
     }
 
     void OnTriggerEnter(Collider other)
