@@ -13,4 +13,5 @@ public class InputManager : ScriptableObject
     public KeyCode CharacterSystemKeyCode;
     public KeyCode CraftSystemKeyCode;
     public KeyCode QuestPanelKeyCode;
+    public KeyCode SkillsPanelKeyCode;
 }

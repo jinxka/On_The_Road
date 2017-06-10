@@ -115,7 +115,12 @@ public class Tooltip : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);          //Tooltip getting activated
         transform.GetChild(1).GetComponent<Image>().sprite = item.itemIcon;         //and the itemIcon...
         transform.GetChild(2).GetComponent<Text>().text = item.itemName;            //,itemName...
-        transform.GetChild(3).GetComponent<Text>().text = item.itemDesc;            //and itemDesc is getting set        
+        transform.GetChild(3).GetComponent<Text>().text = item.itemDesc + "\n";            //and itemDesc is getting set 
+        for (int i = 0; i < item.itemAttributes.Count; i++)
+        {
+            transform.GetChild(3).GetComponent<Text>().text += "\n" + item.itemAttributes[i].attributeName
+                + " : +" + item.itemAttributes[i].attributeValue;
+        }
     }
 
     public void deactivateTooltip()             //deactivating the tooltip after you went out of a slot
