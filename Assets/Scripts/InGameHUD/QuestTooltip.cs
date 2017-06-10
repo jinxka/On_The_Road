@@ -36,7 +36,7 @@ public class QuestTooltip : MonoBehaviour {
         transform.GetChild(0).gameObject.SetActive(true);
         tooltipNameText.GetComponent<Text>().text = item.itemName;
         tooltipDescText.GetComponent<Text>().text = item.itemDesc;
-        tooltipObjText.GetComponent<Text>().text = item.itemAttributes[0].attributeName + "         " + itemVariables.counters[0] + " / " + item.itemAttributes[0].attributeValue;
+        tooltipObjText.GetComponent<Text>().text = item.itemAttributes[0].attributeName + "         " + item.itemValue + " / " + item.itemAttributes[0].attributeValue;
         tooltipRewardText.GetComponent<Text>().text = item.itemAttributes[1].attributeName;
     }
 

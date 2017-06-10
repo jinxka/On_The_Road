@@ -10,10 +10,12 @@ public class PlayerInventory : MonoBehaviour
     public GameObject craftSystem;
     public GameObject questLog;
     public GameObject questLogPanel;
+    public GameObject skillsPanel;
     private Inventory craftSystemInventory;
     private CraftSystem cS;
     private Inventory mainInventory;
     private Inventory characterSystemInventory;
+    private Inventory skillsInventory;
     private QuestLogController questController;
     private Tooltip toolTip;
 
@@ -183,12 +185,14 @@ public class PlayerInventory : MonoBehaviour
             craftSystemInventory = craftSystem.GetComponent<Inventory>();
         if (questLog != null)
             questController = questLog.GetComponent<QuestLogController>();
+        if (skillsPanel != null)
+            skillsInventory = skillsPanel.GetComponent<Inventory>();
 
         playerHealth = GetComponent<PlayerHealth>();
         playerShooting = transform.GetChild(1).GetComponent<PlayerShooting>();
         playerMovement = GetComponent<PlayerMovement>();
     }
-
+    
     //void UpdateHPBar()
     //{
     //    hpText.text = (currentHealth + "/" + maxHealth);
@@ -213,7 +217,10 @@ public class PlayerInventory : MonoBehaviour
                 if ((playerHealth.currentHealth + item.itemAttributes[i].attributeValue) > playerHealth.startingHealth)
                     playerHealth.currentHealth = playerHealth.startingHealth;
                 else
+                {
                     playerHealth.currentHealth += item.itemAttributes[i].attributeValue;
+                    playerHealth.SetHealthUI();
+                }
             }
             /*if (item.itemAttributes[i].attributeName == "Mana")
             {
@@ -328,6 +335,20 @@ public class PlayerInventory : MonoBehaviour
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 mainInventory.closeInventory();
+            }
+        }
+
+        if (Input.GetKeyDown(inputManagerDatabase.SkillsPanelKeyCode))
+        {
+            if (!skillsPanel.activeSelf)
+            {
+                skillsInventory.openInventory();
+            }
+            else
+            {
+                if (toolTip != null)
+                    toolTip.deactivateTooltip();
+                skillsInventory.closeInventory();
             }
         }
 
