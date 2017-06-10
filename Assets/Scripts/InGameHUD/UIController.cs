@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour {
     public GameObject exitCanvas;
     public GameObject optionsCanvas;
     public GameObject errorCanvas;
-    public Canvas inventoryCanvas;
+    //public Canvas inventoryCanvas;
     public Button menuButton;
     public menuController menuController;
     public Camera cam;
@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour {
         menuCanvas.SetActive(false);
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
-        inventoryCanvas.enabled = false;
+        //inventoryCanvas.enabled = false;
         errorCanvas.SetActive(false);
 	}
 	
@@ -36,13 +36,13 @@ public class UIController : MonoBehaviour {
                 menuController.closeMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        /*if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (inventoryCanvas.enabled == false)
                 inventoryOpen();
             else
                 inventoryClose();
-        }
+        }*/
     }
 
     public void menuPress()
@@ -53,7 +53,7 @@ public class UIController : MonoBehaviour {
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = true;
     }
 
-    public void inventoryOpen()
+   /* public void inventoryOpen()
     {
         //Time.timeScale = 0;
         inventoryCanvas.enabled = true;
@@ -67,12 +67,12 @@ public class UIController : MonoBehaviour {
         inventoryCanvas.enabled = false;
         UiCanvas.enabled = true;
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = false;
-    }
+    }*/
 
     public void closeAllPanels()
     {
         menuCanvas.SetActive(false);
-        inventoryClose();
+        //inventoryClose();
         menuController.closePanels();
     }
 }
