@@ -608,7 +608,9 @@ public class Inventory : MonoBehaviour
         {
             if (SlotContainer.transform.GetChild(i).childCount == 0)
             {
-                GameObject item = (GameObject)Instantiate(prefabItem);
+                if (prefabItem == null)
+                    getPrefabs();            
+                GameObject item = (GameObject)Instantiate(prefabItem);       
                 ItemOnObject itemOnObject = item.GetComponent<ItemOnObject>();
                 itemOnObject.item = itemDatabase.getItemByID(id);
                 if (itemOnObject.item.itemValue <= itemOnObject.item.maxStack && value <= itemOnObject.item.maxStack)

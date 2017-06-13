@@ -76,9 +76,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Coins"))
-        {
-            Destroy(other.gameObject, 0f);
-        }
+        //if (other.gameObject.CompareTag("Coins"))
+        //{
+        //    Destroy(other.gameObject, 0f);
+        //}
     }
 }
