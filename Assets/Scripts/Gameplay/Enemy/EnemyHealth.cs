@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI; //new
 
 public class EnemyHealth : MonoBehaviour
@@ -8,7 +9,6 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 1;
     public AudioClip deathClip;
-    public GameObject coins;
     public float lifetime;
 
     public Slider healthSlider;                        //new
@@ -26,6 +26,22 @@ public class EnemyHealth : MonoBehaviour
 
     private questManager QuestManager;
 
+    //LootBox
+    public GameObject LootBox;
+    public float DropRate = 100;
+    public int minItemInLootBox = 1;
+    public int maxItemInLootBox = 3;
+    static ItemDataBaseList inventoryItemList;
+    private int counter;
+    private int creatingItemsForLootBox = 0;
+    private int randomItemNumber;
+    //end LootBox
+
+
+    private void Start()
+    {
+        inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
+    }
 
     void Awake ()
     {
@@ -82,9 +98,8 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
         gameObject.layer = 8;
-        Vector3 posCoins = transform.position;
-        posCoins.y = 0.75f;
-        Instantiate(coins, posCoins, transform.rotation);
+        if (Random.Range(0, DropRate) < DropRate)
+            CreateLootBox();
         Destroy(gameObject, lifetime);
 
         //QuestManager.ItemsInInventory[0].
@@ -106,5 +121,37 @@ public class EnemyHealth : MonoBehaviour
             healthCanvas.enabled = true;
         healthSlider.value = currentHealth;
         FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / startingHealth);
+    }
+
+    private void CreateLootBox()
+    {
+        int itemAmountForLootBox = Random.Range(minItemInLootBox, maxItemInLootBox);
+        List<Item> itemsForLootBox = new List<Item>();
+
+        while (creatingItemsForLootBox < itemAmountForLootBox)
+        {
+            randomItemNumber = Random.Range(1, inventoryItemList.itemList.Count - 1);
+            int raffle = Random.Range(1, 100);
+
+            if (raffle <= inventoryItemList.itemList[randomItemNumber].rarity)
+            {
+                itemsForLootBox.Add(inventoryItemList.itemList[randomItemNumber].getCopy());
+                creatingItemsForLootBox++;
+            }
+        }
+        if (itemsForLootBox.Count == 0)
+            return;
+        Vector3 posLootBox = transform.position;
+        posLootBox.y = 0.5f;
+        GameObject lootBox = Instantiate(LootBox, posLootBox, transform.rotation); ;
+        LootBox sI = LootBox.GetComponent<LootBox>();
+        sI.storageItems.Clear();
+        for (int i = 0; i < itemsForLootBox.Count; i++)
+        {
+            sI.storageItems.Add(inventoryItemList.getItemByID(itemsForLootBox[i].itemID));
+
+            int randomValue = Random.Range(1, sI.storageItems[sI.storageItems.Count - 1].maxStack);
+            sI.storageItems[sI.storageItems.Count - 1].itemValue = randomValue;
+        }
     }
 }

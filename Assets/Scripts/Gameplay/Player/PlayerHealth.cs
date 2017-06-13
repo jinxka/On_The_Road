@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        playerShooting.DisableEffects ();
+        //playerShooting.DisableEffects ();
 
         anim.SetTrigger ("Die");
 
@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
         playerAudio.Play ();
 
         playerMovement.enabled = false;
-        playerShooting.enabled = false;
+        //playerShooting.enabled = false;
     }
 
 

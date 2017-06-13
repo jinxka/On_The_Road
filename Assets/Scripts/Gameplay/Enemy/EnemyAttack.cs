@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject == player)
+        if (other.gameObject == player)
         {
             playerInRange = true;
         }
@@ -46,7 +46,8 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange&& enemyHealth.currentHealth > 0)
+
+        if (timer >= timeBetweenAttacks && playerInRange&& enemyHealth.currentHealth > 0)
         {
             Attack ();
         }

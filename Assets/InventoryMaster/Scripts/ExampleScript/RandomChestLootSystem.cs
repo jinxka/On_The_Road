@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class RandomChestLootSystem : MonoBehaviour
 {
-
-
     public int amountOfChest = 10;
 
     public int minItemInChest = 2;
