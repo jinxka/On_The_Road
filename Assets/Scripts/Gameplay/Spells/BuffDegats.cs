@@ -4,42 +4,29 @@ using System.Collections;
 public class BuffDegats : MonoBehaviour {
     private bool buffDegats = false;
     private int damageX = 2;
-    public string shortcut;
     public GameObject Aura;
 
     public float cooldown = 30.0F;
-    private float timer = 0.0F;
-    public float Duration = 2.0F;
-    private float BuffDuration = 0.0f;
+    public int Duration = 2;
     // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetButton(shortcut) && Time.time >= timer && Time.timeScale != 0)
-        {
-            activeBuff();
-        }
-        else if (Time.time > BuffDuration)
-        {
-            deactiveBuff();
-        }
-    }
 
-    void activeBuff ()
+    IEnumerator DmgBoost()
     {
-        buffDegats = true;
         Aura.SetActive(true);
-        timer = Time.time + Duration + cooldown;
-        BuffDuration = Time.time + Duration;
-    }
-
-    void deactiveBuff ()
-    {
+        buffDegats = true;
+        yield return new WaitForSeconds(Duration);
         buffDegats = false;
         Aura.SetActive(false);
+    }
+
+    public void UseSpell()
+    {
+        DmgBoost();
+    }
+
+    public float GetCooldown()
+    {
+        return cooldown;
     }
 
     public bool isBuffActive()
