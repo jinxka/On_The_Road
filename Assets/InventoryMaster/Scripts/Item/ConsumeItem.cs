@@ -268,7 +268,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
 
         }
-        if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
+        if (!gearable) // && item.itemType)  != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
         {
 
             if (duplication != null)
