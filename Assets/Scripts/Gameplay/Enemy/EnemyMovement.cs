@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
+    private bool Aggro = false;
 
 
     void Awake ()
@@ -19,16 +20,31 @@ public class EnemyMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+
+    }
 
     void Update ()
     {
-        if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && Aggro)
         {
-            nav.SetDestination (player.position);
+            nav.updatePosition = true;
+            nav.SetDestination(player.position);
         }
         else
         {
-            nav.enabled = false;
+            nav.updatePosition = false;
         }
+    }
+
+    public void SetAggro(bool aggro)
+    {
+        Aggro = aggro;
+    }
+
+    public bool GetAggro()
+    {
+        return Aggro;
     }
 }

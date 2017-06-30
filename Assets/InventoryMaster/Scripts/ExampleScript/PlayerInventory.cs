@@ -29,7 +29,7 @@ public class PlayerInventory : MonoBehaviour
     Image manaImage;
 
     public PlayerHealth playerHealth;
-    public PlayerShooting playerShooting;
+    public Tir_normal playerShooting;
     public PlayerMovement playerMovement;
 
     int normalSize = 3;
@@ -189,7 +189,7 @@ public class PlayerInventory : MonoBehaviour
             skillsInventory = skillsPanel.GetComponent<Inventory>();
 
         playerHealth = GetComponent<PlayerHealth>();
-        playerShooting = transform.GetChild(1).GetComponent<PlayerShooting>();
+        playerShooting = transform.GetChild(0).GetComponent<Tir_normal>();
         playerMovement = GetComponent<PlayerMovement>();
     }
     
@@ -238,10 +238,10 @@ public class PlayerInventory : MonoBehaviour
             }
             if (item.itemAttributes[i].attributeName == "Damage")
             {
-                if ((playerShooting.damagePerShot + item.itemAttributes[i].attributeValue) > playerShooting.maxDamage)
-                    playerShooting.damagePerShot = playerShooting.maxDamage;
-                else
-                    playerShooting.damagePerShot += item.itemAttributes[i].attributeValue;
+                //if ((playerShooting.BulletDmg) + item.itemAttributes[i].attributeValue) > playerShooting.maxDamage)
+                    //playerShooting.damagePerShot = playerShooting.maxDamage;
+                //else
+                    playerShooting.BulletDmg += item.itemAttributes[i].attributeValue;
             }
         }
         //if (HPMANACanvas != null)
@@ -262,9 +262,9 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                playerShooting.maxDamage += item.itemAttributes[i].attributeValue;
+                playerShooting.BulletDmg += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "AttackSpeed")
-                playerShooting.timeBetweenBullets = (1 / (float)(item.itemAttributes[i].attributeValue));
+                playerShooting.fireRate = (1 / (float)(item.itemAttributes[i].attributeValue));
         }
         //if (HPMANACanvas != null)
         //{
@@ -284,7 +284,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
-                playerShooting.maxDamage -= item.itemAttributes[i].attributeValue;
+                playerShooting.BulletDmg -= item.itemAttributes[i].attributeValue;
         }
         //if (HPMANACanvas != null)
         //{

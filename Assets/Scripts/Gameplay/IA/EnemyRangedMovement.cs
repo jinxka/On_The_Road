@@ -14,6 +14,12 @@ public class EnemyRangedMovement : MonoBehaviour
     public bool isMelee = false;
 
 
+    private Vector3 direction;
+    private Vector3 localDirection;
+    private float localDirectionZ;
+    private float localDirectionX;
+    private Vector3 lastPosition;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -28,11 +34,13 @@ public class EnemyRangedMovement : MonoBehaviour
     {
         if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
         {
-            nav.enabled = true;
+            nav.updatePosition = true;
 
             if (retreat && !isMelee)
             {
-                nav.SetDestination((player.transform.position - transform.position) * -2);
+                FindVelocity();
+                nav.SetDestination(transform.position + direction);
+                Debug.LogError(direction);
             }
             else
             {
@@ -41,8 +49,18 @@ public class EnemyRangedMovement : MonoBehaviour
         }
         else
         {
-            nav.enabled = false;
+            nav.updatePosition = false;
         }
+    }
+
+    private void FindVelocity()
+    {
+        lastPosition = player.transform.position;
+        direction = transform.position - lastPosition;
+        localDirection = transform.InverseTransformDirection(direction);
+        localDirectionZ = Mathf.Clamp(transform.InverseTransformDirection(direction).z, -1, 1);
+        localDirectionX = Mathf.Clamp(transform.InverseTransformDirection(direction).x, -1, 1);
+
     }
 
     void FixedUpdate()

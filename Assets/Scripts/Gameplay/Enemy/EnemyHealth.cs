@@ -26,6 +26,10 @@ public class EnemyHealth : MonoBehaviour
 
     private questManager QuestManager;
 
+    //Aggro
+    private EnemyMovement enemyMovement;
+    //End Aggro
+
     //LootBox
     public GameObject LootBox;
     public float DropRate = 100;
@@ -54,6 +58,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = startingHealth;
         healthCanvas.enabled = false;        //new
         QuestManager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<questManager>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
 
@@ -70,7 +75,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isDead)
             return;
-
+        if (enemyMovement.GetAggro() == false)
+            enemyMovement.SetAggro(true);
         enemyAudio.Play ();
 
         currentHealth -= amount;
