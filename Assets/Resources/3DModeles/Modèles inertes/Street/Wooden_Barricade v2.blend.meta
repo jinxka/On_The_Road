@@ -1,35 +1,15 @@
 fileFormatVersion: 2
-guid: 9b12258d0913cae40bb3ee5216d33897
-timeCreated: 1496676739
+guid: 74369b44ecca55f46ad40a95b6b67460
+timeCreated: 1499347013
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Circle
-    100002: Circle_004
-    100004: Circle_005
-    100006: Circle_006
-    100008: //RootNode
-    400000: Circle
-    400002: Circle_004
-    400004: Circle_005
-    400006: Circle_006
-    400008: //RootNode
-    2300000: Circle
-    2300002: Circle_004
-    2300004: Circle_005
-    2300006: Circle_006
-    2300008: //RootNode
-    3300000: Circle
-    3300002: Circle_004
-    3300004: Circle_005
-    3300006: Circle_006
-    3300008: //RootNode
-    4300000: Cube_001
-    4300002: Circle
-    4300004: Circle_005
-    4300006: Circle_004
-    4300008: Circle_006
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Wooden_barricade
     7400000: Default Take
     9500000: //RootNode
   materials:
