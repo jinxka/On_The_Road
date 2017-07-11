@@ -17,7 +17,7 @@ public class optionsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         optionsCanvas.enabled = false;
-        audioButtons.SetActive(true);
+        audioButtons.SetActive(false);
         videoButtons.SetActive(false);
         controlsButtons.SetActive(false);
         errorCanvas.enabled = false;

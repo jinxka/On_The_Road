@@ -1,0 +1,198 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 570 (ID=0x1086)
+    Vendor:   NVIDIA
+    VRAM:     1233 MB
+    Driver:   22.21.13.8253
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\LitJson.dll (this message is harmless)
+Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\LitJson.dll into Unity Child Domain
+- Completed reload, in  0.027 seconds
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\System.dll (this message is harmless)
+OnLevelWasLoaded was found on Fader
+This message has been deprecated and will be removed in a later version of Unity.
+Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
+ 
+(Filename:  Line: 376)
+
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.138329 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 1f4c -> priority: 1 
+  Thread -> id: 1e78 -> priority: 1 
+  Thread -> id: 890 -> priority: 1 
+  Thread -> id: 37d4 -> priority: 1 
+The referenced script on this Behaviour (Game Object 'Item') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 23.035872 ms
+
+Unloading 165 unused Assets to reduce memory usage. Loaded Objects now: 2435.
+Total: 3.057160 ms (FindLiveObjects: 0.094560 ms CreateObjectMapping: 0.069944 ms MarkObjects: 1.234091 ms  DeleteObjects: 1.657662 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at DragItem.createDuplication (UnityEngine.GameObject Item) [0x00000] in <filename unknown>:0 
+  at DragItem.OnEndDrag (UnityEngine.EventSystems.PointerEventData data) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IEndDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IEndDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at DragItem.createDuplication (UnityEngine.GameObject Item) [0x00000] in <filename unknown>:0 
+  at DragItem.OnEndDrag (UnityEngine.EventSystems.PointerEventData data) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IEndDragHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IEndDragHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ConsumeItem.consumeIt () [0x00000] in <filename unknown>:0 
+  at Hotbar.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.255646 ms
+
+Unloading 445 unused Assets to reduce memory usage. Loaded Objects now: 51337.
+Total: 18.714600 ms (FindLiveObjects: 2.197709 ms CreateObjectMapping: 0.477906 ms MarkObjects: 3.970946 ms  DeleteObjects: 12.067437 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 26.972294 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 51337.
+Total: 13.550387 ms (FindLiveObjects: 2.245139 ms CreateObjectMapping: 0.624700 ms MarkObjects: 4.491479 ms  DeleteObjects: 6.187567 ms)
+
+The referenced script on this Behaviour (Game Object 'Item') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
+ 
+(Filename:  Line: 1743)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 20.453314 ms
+
+Unloading 173 unused Assets to reduce memory usage. Loaded Objects now: 2436.
+Total: 2.199810 ms (FindLiveObjects: 0.089757 ms CreateObjectMapping: 0.069944 ms MarkObjects: 1.150337 ms  DeleteObjects: 0.889470 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.659464 ms
+
+Unloading 447 unused Assets to reduce memory usage. Loaded Objects now: 51337.
+Total: 18.754225 ms (FindLiveObjects: 2.215720 ms CreateObjectMapping: 0.440382 ms MarkObjects: 4.070009 ms  DeleteObjects: 12.027513 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 19.456375 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 51337.
+Total: 12.987527 ms (FindLiveObjects: 2.133768 ms CreateObjectMapping: 0.629803 ms MarkObjects: 4.350989 ms  DeleteObjects: 5.872365 ms)
+

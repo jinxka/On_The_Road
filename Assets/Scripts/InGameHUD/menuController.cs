@@ -40,7 +40,7 @@ public class menuController : MonoBehaviour {
     public void exitYes()
     {
         Time.timeScale = 1;
-        Initiate.Fade("MenuScene", Color.black, 1.5f);
+        Initiate.Fade("Main_Menu", Color.black, 1.5f);
     }
 
     public void optionsPress()
