@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Heal : MonoBehaviour {
+public class Heal : MonoBehaviour, ISpell {
 
     public int healPower = 20;
     public float cooldown = 10.0F;
@@ -22,7 +22,7 @@ public class Heal : MonoBehaviour {
         playerHealth.currentHealth = playerHealth.currentHealth + healPower;
         playerHealth.SetHealthUI();
     }
-
+    
     public float GetCooldown()
     {
         return cooldown;

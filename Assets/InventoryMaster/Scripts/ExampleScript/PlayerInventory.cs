@@ -189,7 +189,7 @@ public class PlayerInventory : MonoBehaviour
             skillsInventory = skillsPanel.GetComponent<Inventory>();
 
         playerHealth = GetComponent<PlayerHealth>();
-        playerShooting = transform.GetChild(0).GetComponent<Tir_normal>();
+        playerShooting = transform.GetChild(2).GetComponent<Tir_normal>();
         playerMovement = GetComponent<PlayerMovement>();
     }
     

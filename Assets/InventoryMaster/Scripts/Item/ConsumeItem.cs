@@ -38,6 +38,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             if (data.button == PointerEventData.InputButton.Right)
             {
                 //item from craft system to inventory
+                  
+                
                 if (transform.parent.GetComponent<CraftResultSlot>() != null)
                 {
                     bool check = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().checkIfItemAllreadyExist(item.itemID, item.itemValue);
@@ -146,26 +148,31 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         itemFromDup = duplication.GetComponent<ItemOnObject>().item;
 
                     inventory.ConsumeItem(item);
-
-                    item.itemValue--;
-                    if (itemFromDup != null)
+                    if (item.itemType != ItemType.Skill)
                     {
-                        duplication.GetComponent<ItemOnObject>().item.itemValue--;
-                        if (itemFromDup.itemValue <= 0)
+                        item.itemValue--;
+                        if (itemFromDup != null)
+                        {
+                            duplication.GetComponent<ItemOnObject>().item.itemValue--;
+                            if (itemFromDup.itemValue <= 0)
+                            {
+                                if (tooltip != null)
+                                    tooltip.deactivateTooltip();
+                                inventory.deleteItemFromInventory(item);
+                                Destroy(duplication.gameObject);
+                            }
+                        }
+                        if (item.itemValue <= 0)
                         {
                             if (tooltip != null)
                                 tooltip.deactivateTooltip();
                             inventory.deleteItemFromInventory(item);
-                            Destroy(duplication.gameObject); 
+                            Destroy(this.gameObject);
+
                         }
                     }
-                    if (item.itemValue <= 0)
-                    {
-                        if (tooltip != null)
-                            tooltip.deactivateTooltip();
-                        inventory.deleteItemFromInventory(item);
-                        Destroy(this.gameObject);                        
-                    }
+                    else
+                        GameObject.FindGameObjectWithTag("Player").transform.GetChild(item.itemValue).GetComponent<ISpell>().UseSpell();
 
                 }
                 
@@ -268,7 +275,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
 
         }
-        if (!gearable) // && item.itemType)  != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
+        if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
         {
 
             if (duplication != null)
@@ -276,27 +283,33 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
             inventory.ConsumeItem(item);
 
-
-            item.itemValue--;
-            if (itemFromDup != null)
+            if (item.itemType != ItemType.Skill)
             {
-                duplication.GetComponent<ItemOnObject>().item.itemValue--;
-                if (itemFromDup.itemValue <= 0)
+                item.itemValue--;
+                if (itemFromDup != null)
+                {
+                    duplication.GetComponent<ItemOnObject>().item.itemValue--;
+                    if (itemFromDup.itemValue <= 0)
+                    {
+                        if (tooltip != null)
+                            tooltip.deactivateTooltip();
+                        inventory.deleteItemFromInventory(item);
+                        Destroy(duplication.gameObject);
+
+                    }
+                }
+                if (item.itemValue <= 0)
                 {
                     if (tooltip != null)
                         tooltip.deactivateTooltip();
                     inventory.deleteItemFromInventory(item);
-                    Destroy(duplication.gameObject);
-
+                    Destroy(this.gameObject);
                 }
             }
-            if (item.itemValue <= 0)
-            {
-                if (tooltip != null)
-                    tooltip.deactivateTooltip();
-                inventory.deleteItemFromInventory(item);
-                Destroy(this.gameObject); 
-            }
+            else
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(item.itemValue).GetComponent<ISpell>().UseSpell();
+ 
+
 
         }        
     }
