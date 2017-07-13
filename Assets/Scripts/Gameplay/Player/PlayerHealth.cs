@@ -97,7 +97,6 @@ public class PlayerHealth : MonoBehaviour
         //playerShooting.enabled = false;
     }
 
-
     public void RestartLevel ()
     {
         SceneManager.LoadScene (0);

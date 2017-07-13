@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public Color FullHealthColor = Color.green;      //new
     public Color ZeroHealthColor = Color.red;       //new
     public Canvas healthCanvas;                     //new
+	public bool ranged = false;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     //Aggro
     private EnemyMovement enemyMovement;
+	private EnemyRangedMovement enemyRangedMovement;
     //End Aggro
 
     //LootBox
@@ -57,8 +59,11 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth = startingHealth;
         healthCanvas.enabled = false;        //new
-        QuestManager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<questManager>();
-        enemyMovement = GetComponent<EnemyMovement>();
+        //QuestManager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<questManager>();
+		if (ranged)
+			enemyRangedMovement = GetComponent<EnemyRangedMovement> ();
+		else
+        	enemyMovement = GetComponent<EnemyMovement>();
     }
 
 
@@ -75,8 +80,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isDead)
             return;
-        if (enemyMovement.GetAggro() == false)
-            enemyMovement.SetAggro(true);
+		if (ranged)
+			if (enemyRangedMovement.GetAggro() == false)
+				enemyRangedMovement.SetAggro(true);
+		else
+        	if (enemyMovement.GetAggro() == false)
+            	enemyMovement.SetAggro(true);
         enemyAudio.Play ();
 
         currentHealth -= amount;
@@ -104,7 +113,7 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
         gameObject.layer = 8;
-        if (Random.Range(0, DropRate) < DropRate)
+        if (Random.Range(0, 100) < DropRate)
             CreateLootBox();
         Destroy(gameObject, lifetime);
 
