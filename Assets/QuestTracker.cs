@@ -24,17 +24,36 @@ public class QuestTracker : MonoBehaviour {
 
     public void trackQuest(Item quest)
     {
-        GameObject questObject = (GameObject)Instantiate(prefabQuest);
-        QuestOnObject questOnObject = questObject.GetComponent<QuestOnObject>();
-        questOnObject.item = quest;
-        questObject.transform.SetParent(SlotContainer.transform);
-        questObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-        updateQuestList();
+        int j = 0;
+        for (int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].itemID == quest.itemID)
+                j = 1;        
+        }
+
+        if (j == 0)
+        {
+            GameObject questObject = (GameObject)Instantiate(prefabQuest);
+            ObjectiveOnObject objOnObject = questObject.GetComponent<ObjectiveOnObject>();
+            objOnObject.item = quest;
+            questObject.transform.SetParent(SlotContainer.transform);
+            questObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            updateQuestList();
+        }
     }
 
     public void unTrackQuest(Item quest)
     {
-
+        for (int i = 0; i < questList.Count; i++)
+        {
+            if (questList[i].itemID == quest.itemID)
+                questList.Remove(questList[i]);
+        }
+        for (int i = 0; i < SlotContainer.transform.childCount; i++)
+        {
+            if (SlotContainer.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item.itemID == quest.itemID)
+                Destroy(SlotContainer.transform.GetChild(i).gameObject);
+        }
     }
 
     private void updateQuestList()
@@ -42,7 +61,7 @@ public class QuestTracker : MonoBehaviour {
         questList.Clear();
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
-            questList.Add(SlotContainer.transform.GetChild(i).GetComponent<QuestOnObject>().item);
+            questList.Add(SlotContainer.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item);
         }
     }   
 }
