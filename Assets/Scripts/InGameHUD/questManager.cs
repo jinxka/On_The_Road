@@ -15,6 +15,7 @@ public class questManager : MonoBehaviour {
     [SerializeField]
     public List<Item> ItemsInInventory = new List<Item>();
 
+
     // Use this for initialization
     void Start () {
         if (questDatabase == null)

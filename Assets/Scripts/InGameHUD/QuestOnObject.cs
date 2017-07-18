@@ -10,6 +10,9 @@ public class QuestOnObject : MonoBehaviour                   //Saves the Item in
     private Image image;
     public int[] counters;
 
+    private QuestTracker tracker;
+    private Button trackButton;
+
     void Update()
     {
         text.text = "" + item.itemName;                     //sets the itemValue         
@@ -26,5 +29,16 @@ public class QuestOnObject : MonoBehaviour                   //Saves the Item in
         {
             counters[i] = 0;
         }
+
+        if (tracker == null)
+            tracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
+        trackButton = GameObject.FindGameObjectWithTag("TrackButton").transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
+        trackButton.onClick.AddListener(onTrackQuest);
+
+    }
+
+    public void onTrackQuest()
+    {
+        tracker.trackQuest(item);
     }
 }
