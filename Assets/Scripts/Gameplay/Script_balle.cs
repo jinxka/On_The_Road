@@ -22,13 +22,13 @@ public class Script_balle : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemies")
         {
-            Destroy(gameObject);
             EnemyHealth enemyHealth = col.gameObject.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damagePerShot, col.gameObject.GetComponent<Rigidbody>().transform.position);
             }
         }
+		Destroy(gameObject);
     }
 
     public void setDmg(int dmg)

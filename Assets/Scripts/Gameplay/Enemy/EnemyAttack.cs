@@ -1,55 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
+	public float timer = 2f;
     public int attackDamage = 10;
 
-
+	float Range = 2;
     Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
+	Transform playerTransform;
+	Transform myTransform;
     bool playerInRange;
-    float timer;
-
+	bool IsAttacking = false;
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
+		playerTransform = player.GetComponent<Transform> ();
         playerHealth = player.GetComponent <PlayerHealth> ();
+		myTransform = this.GetComponent<Transform> ();
         enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent <Animator> ();
+		if (anim == null)
+			anim = GetComponentInParent<Animator> ();
     }
 
-
-    void OnTriggerEnter (Collider other)
-    {
-        if (other.gameObject == player)
-        {
-            playerInRange = true;
-        }
-    }
-
-
-    void OnTriggerExit (Collider other)
-    {
-        if(other.gameObject == player)
-        {
-            playerInRange = false;
-        }
-    }
-
+	void IsAtRange()
+	{
+		if (Math.Sqrt ((Math.Pow (playerTransform.position.x - myTransform.position.x, 2) + (Math.Pow (playerTransform.position.z - myTransform.position.z, 2)))) <= Range)
+			playerInRange = true;
+		else
+			playerInRange = false;
+	}
 
     void Update ()
     {
-        timer += Time.deltaTime;
 
-
-        if (timer >= timeBetweenAttacks && playerInRange&& enemyHealth.currentHealth > 0)
+		IsAtRange ();
+		if (!IsAttacking && playerInRange && enemyHealth.currentHealth > 0)
         {
-            Attack ();
+			StartCoroutine(Attack());
         }
 
         if(playerHealth.currentHealth <= 0)
@@ -58,15 +52,18 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+	IEnumerator Attack ()
+	{
+		if(playerHealth.currentHealth > 0)
+		{
+			anim.SetTrigger("Attack");
+			IsAttacking = true;
+			yield return new WaitForSeconds (timer);
+			if (playerInRange)
+				playerHealth.TakeDamage (attackDamage);
+			yield return new WaitForSeconds (0.5f);
+			IsAttacking = false;
 
-    void Attack ()
-    {
-        timer = 0f;
-
-        if(playerHealth.currentHealth > 0)
-        {
-            anim.SetTrigger("Attack");
-            playerHealth.TakeDamage (attackDamage);
-        }
-    }
+		}
+	}
 }

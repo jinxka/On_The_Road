@@ -5,7 +5,11 @@ using UnityEngine;
 public class AggroRange : MonoBehaviour {
 
     EnemyMovement enemyMovement;
-    public bool LinkAggro = false;
+	public EnemyMovement [] friends ;
+
+	private bool activated = false;
+
+	private bool CallHelp = true; 
 
     // Use this for initialization
     void Start () {
@@ -14,17 +18,24 @@ public class AggroRange : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-            enemyMovement.SetAggro(true);
+		if (other.tag == "Player" && !activated) {
+			enemyMovement.SetAggro (true);
+			foreach (EnemyMovement friend in friends) {
+				if (!friend.GetAggro())
+					friend.SetAggro (true);
+			}
+			activated = true;
+		}
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (LinkAggro && enemyMovement.GetAggro() && other.tag == "Enemies")
-        {
-            if (!other.GetComponent<EnemyMovement>().GetAggro())
-                other.GetComponent<EnemyMovement>().SetAggro(true);
-        }
-    }
+//    private void OnTriggerStay(Collider other)
+//    {
+//		if (LinkAggro && enemyMovement.GetAggro() && other.tag == "Enemies" && CallHelp)
+//		{
+//            if (!other.GetComponent<EnemyMovement>().GetAggro())
+//                other.GetComponent<EnemyMovement>().SetAggro(true);
+//			CallHelp = false;
+//        }
+//    }
 }

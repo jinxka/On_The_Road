@@ -7,7 +7,7 @@ public class Blink : MonoBehaviour {
     private float nextBlink;
     public float invTime;
     private float stopInv;
-    private GameObject[] blinkPoints;
+    public GameObject[] blinkPoints;
     private Transform position;
     private GameObject blinkPoint;
     private Renderer[] bossParts;
@@ -19,7 +19,6 @@ public class Blink : MonoBehaviour {
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         position = GetComponent<Transform>();
-        blinkPoints = GameObject.FindGameObjectsWithTag("BlinkPoint");
         bossParts = GetComponentsInChildren<Renderer>();
         //healthBar = GetComponentInChildren<>();
     }

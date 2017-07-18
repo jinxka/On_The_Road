@@ -19,6 +19,7 @@ public class EnemyRangedMovement : MonoBehaviour
     private float localDirectionZ;
     private float localDirectionX;
     private Vector3 lastPosition;
+	private bool Aggro = false;
 
     void Awake()
     {
@@ -32,7 +33,7 @@ public class EnemyRangedMovement : MonoBehaviour
 
     void Update()
     {
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
+		if (Aggro && enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
         {
             nav.updatePosition = true;
 
@@ -102,4 +103,14 @@ public class EnemyRangedMovement : MonoBehaviour
     {
         return isMelee;
     }
+
+	public void SetAggro(bool aggro)
+	{
+		Aggro = aggro;
+	}
+
+	public bool GetAggro()
+	{
+		return Aggro;
+	}
 }

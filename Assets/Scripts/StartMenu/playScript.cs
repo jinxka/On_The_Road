@@ -19,6 +19,6 @@ public class playScript : MonoBehaviour {
 
     public void launchGame()
     {
-        Initiate.Fade("Ingame_Ramy", myFadeColor, 0.7f);
+        Initiate.Fade("Zone_Introduction", myFadeColor, 0.7f);
     }
 }
