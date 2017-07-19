@@ -7,6 +7,7 @@ public class BossQuest : MonoBehaviour
 
     private questManager questManager;
     private QuestTracker questTracker;
+    private Inventory playerInv;
 
 
     // Use this for initialization
@@ -14,6 +15,7 @@ public class BossQuest : MonoBehaviour
     {
         questTracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
         questManager = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(0).GetComponent<questManager>();
+        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
     }
 
@@ -45,7 +47,10 @@ public class BossQuest : MonoBehaviour
                 {
                     questManager.ItemsInInventory[j].itemValue += 1;
                     if (questManager.ItemsInInventory[j].itemValue == questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+                    {
                         questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+                        playerInv.addItemToInventory(40);
+                    }
                 }
                 else
                     return;
