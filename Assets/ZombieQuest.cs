@@ -6,13 +6,13 @@ public class ZombieQuest : MonoBehaviour {
 
     private questManager questManager;
     private QuestTracker questTracker;
-    private EnemyHealth health;
+
 
 	// Use this for initialization
 	void Start () {
        questTracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
        questManager = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(0).GetComponent<questManager>();
-       health = this.GetComponent<EnemyHealth>();
+       
     }
 	
 	// Update is called once per frame

@@ -16,7 +16,7 @@ public class PlayerStatsUI : MonoBehaviour {
        
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMovement = player.GetComponent<PlayerMovement>();
-        playerShooting = player.transform.GetChild(2).GetComponent<Tir_normal>();
+        playerShooting = player.transform.GetChild(0).GetComponent<Tir_normal>();
     }
 	
 	// Update is called once per frame
