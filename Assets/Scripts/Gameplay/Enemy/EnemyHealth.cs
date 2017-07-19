@@ -58,8 +58,8 @@ public class EnemyHealth : MonoBehaviour
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
         currentHealth = startingHealth;
-        healthCanvas.enabled = false;        //new
-        //QuestManager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<questManager>();
+        //healthCanvas.enabled = false;        //new
+        
 		if (ranged)
 			enemyRangedMovement = GetComponent<EnemyRangedMovement> ();
 		else
@@ -86,7 +86,7 @@ public class EnemyHealth : MonoBehaviour
 		else
         	if (enemyMovement.GetAggro() == false)
             	enemyMovement.SetAggro(true);
-        enemyAudio.Play ();
+        enemyAudio.Play();
 
         currentHealth -= amount;
 
