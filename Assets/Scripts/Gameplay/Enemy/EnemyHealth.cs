@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
-    bool isDead;
+    public bool isDead = false;
     bool isSinking;
 
     private questManager QuestManager;
@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
     //end LootBox
 
     public bool isZombie = false;
+    public bool isBoss = false;
     private void Start()
     {
         inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
@@ -118,6 +119,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (isZombie)
             this.GetComponent<ZombieQuest>().updateQuest();
+        if (isBoss)
+            this.GetComponent<BossQuest>().updateQuest();
         Destroy(gameObject, lifetime);
 
         //QuestManager.ItemsInInventory[0].

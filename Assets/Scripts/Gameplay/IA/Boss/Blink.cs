@@ -13,6 +13,7 @@ public class Blink : MonoBehaviour {
     private Renderer[] bossParts;
     private Canvas healthBar;
     private bool inv = false;
+    private EnemyHealth health;
     GameObject player;
 
     // Use this for initialization
@@ -20,11 +21,13 @@ public class Blink : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         position = GetComponent<Transform>();
         bossParts = GetComponentsInChildren<Renderer>();
-        //healthBar = GetComponentInChildren<>();
+        health = this.GetComponent<EnemyHealth>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (health.isDead == true)
+            return;
 	    if (Time.time > nextBlink)
         {
             blinkPoint = blinkPoints[Random.Range(0, blinkPoints.Length)];

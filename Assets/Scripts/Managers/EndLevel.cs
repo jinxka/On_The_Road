@@ -18,7 +18,8 @@ public class EndLevel : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene ().buildIndex + 1);
-	}
+        //SceneManager.LoadScene(SceneManager.GetActiveScene ().buildIndex + 1);
+        Initiate.Fade("Zone_Colonie", myFadeColor, 0.7f);
+    }
 
 }

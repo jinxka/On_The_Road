@@ -42,9 +42,13 @@ public class BossQuest : MonoBehaviour
             if (questManager.ItemsInInventory[j].itemID == 2)
             {
                 if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+                {
                     questManager.ItemsInInventory[j].itemValue += 1;
+                    if (questManager.ItemsInInventory[j].itemValue == questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+                        questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+                }
                 else
-                    questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+                    return;
             }
 
         }
