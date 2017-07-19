@@ -24,8 +24,8 @@ public class QuestTooltip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        tooltipObjText.GetComponent<Text>().text = item.itemAttributes[0].attributeName + "         " + item.itemValue + " / " + item.itemAttributes[0].attributeValue;
+    }
 
     public void activateTooltip()
     {

@@ -22,16 +22,28 @@ public class ZombieQuest : MonoBehaviour {
 
     public void updateQuest()
     {
-        for (int i = 0; i < questTracker.questList.Count; i++)
+        /*for (int i = 0; i < questTracker.questList.Count; i++)
         {
             if (questTracker.questList[i].itemID == 1)
             {
                 if (questTracker.questList[i].itemValue < questTracker.questList[i].itemAttributes[0].attributeValue)
                     questTracker.questList[i].itemValue += 1;
                 else
-                    questTracker.questList[i].itemIcon = Resources.Load("Sprites/Cross", typeof(Sprite)) as Sprite;
+                    questTracker.questList[i].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
             }
          
+        }*/
+
+        for (int j = 0; j < questManager.ItemsInInventory.Count; j++)
+        {
+            if (questManager.ItemsInInventory[j].itemID == 1)
+            {
+                if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+                    questManager.ItemsInInventory[j].itemValue += 1;
+                else
+                    questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+            }
+
         }
     }
 

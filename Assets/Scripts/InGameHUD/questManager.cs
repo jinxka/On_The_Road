@@ -24,9 +24,10 @@ public class questManager : MonoBehaviour {
             prefabQuest = Resources.Load("Prefabs/Quest") as GameObject;
         SlotContainer = transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
 
+        addQuestToLog(3);
         addQuestToLog(1);
-        //addQuestToLog(2);
-        //addQuestToLog(3);
+        addQuestToLog(2);
+        
     }
 	
 	// Update is called once per frame
@@ -54,10 +55,5 @@ public class questManager : MonoBehaviour {
         {
             ItemsInInventory.Add(SlotContainer.transform.GetChild(i).GetComponent<QuestOnObject>().item);
         }
-    }
-
-    public void updateQuest(int itemID)
-    {
-
     }
 }

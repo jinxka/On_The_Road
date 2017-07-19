@@ -39,6 +39,7 @@ public class QuestTracker : MonoBehaviour {
             questObject.transform.SetParent(SlotContainer.transform);
             questObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
             updateQuestList();
+            Debug.Log("Combien d'occurences ?");
         }
     }
 
