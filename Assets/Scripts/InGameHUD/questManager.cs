@@ -55,4 +55,9 @@ public class questManager : MonoBehaviour {
             ItemsInInventory.Add(SlotContainer.transform.GetChild(i).GetComponent<QuestOnObject>().item);
         }
     }
+
+    public void updateQuest(int itemID)
+    {
+
+    }
 }

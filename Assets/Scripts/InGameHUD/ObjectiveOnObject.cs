@@ -20,7 +20,6 @@ public class ObjectiveOnObject : MonoBehaviour                   //Saves the Ite
         text.text = "" + item.itemAttributes[0].attributeName;                     //sets the itemValue         
         image.sprite = item.itemIcon;
         objective.text = item.itemValue + "/" + item.itemAttributes[0].attributeValue;
-
     }
 
     void Start()
@@ -37,7 +36,7 @@ public class ObjectiveOnObject : MonoBehaviour                   //Saves the Ite
 
         if (tracker == null)
             tracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
-        trackButton = GameObject.FindGameObjectWithTag("TrackButton").transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
+        trackButton = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
         untrackButton = this.transform.GetChild(3).GetComponent<Button>();
         trackButton.onClick.AddListener(onTrackQuest);
         untrackButton.onClick.AddListener(onUntrackQuest);

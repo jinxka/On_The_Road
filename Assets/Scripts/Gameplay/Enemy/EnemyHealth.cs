@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
     private int randomItemNumber;
     //end LootBox
 
-
+    public bool isZombie = false;
     private void Start()
     {
         inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
@@ -115,6 +115,9 @@ public class EnemyHealth : MonoBehaviour
         gameObject.layer = 8;
         if (Random.Range(0, 100) < DropRate)
             CreateLootBox();
+
+        if (isZombie)
+            this.GetComponent<ZombieQuest>().updateQuest();
         Destroy(gameObject, lifetime);
 
         //QuestManager.ItemsInInventory[0].
