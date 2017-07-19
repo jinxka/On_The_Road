@@ -49,6 +49,6 @@ public class Lance_grenade : MonoBehaviour {
         bullet = Instantiate(grenadeCasing);
         bullet.transform.rotation = transform.rotation;
         bullet.transform.position = transform.position;
-        bullet.velocity = transform.TransformDirection(new Vector3(0,1,2) * ejectSpeed);
+        bullet.velocity = transform.TransformDirection(new Vector3(0,0,1) * ejectSpeed);
     }
 }

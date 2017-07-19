@@ -82,11 +82,10 @@ public class EnemyHealth : MonoBehaviour
         if(isDead)
             return;
 		if (ranged)
-			if (enemyRangedMovement.GetAggro() == false)
-				enemyRangedMovement.SetAggro(true);
-		else
-        	if (enemyMovement.GetAggro() == false)
-            	enemyMovement.SetAggro(true);
+			if (enemyRangedMovement.GetAggro () == false)
+				enemyRangedMovement.SetAggro (true);
+		else if (enemyMovement.GetAggro () == false)
+			enemyMovement.SetAggro (true);
         enemyAudio.Play();
 
         currentHealth -= amount;
