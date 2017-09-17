@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
 			playerInRange = false;
 	}
 
-    void Update ()
+    void FixedUpdate ()
     {
 
 		IsAtRange ();

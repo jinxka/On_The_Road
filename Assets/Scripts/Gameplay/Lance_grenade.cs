@@ -24,7 +24,7 @@ public class Lance_grenade : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         if (Input.GetButton("Fire2") && Time.time > nextFire)
         {
