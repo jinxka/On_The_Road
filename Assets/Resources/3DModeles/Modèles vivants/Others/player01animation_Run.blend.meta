@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1c356d5f55e7f33499c8ff36db16556f
-timeCreated: 1496676702
+timeCreated: 1505663655
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -73,9 +73,10 @@ ModelImporter:
     400064: UpperLegRight
     4300000: Cube_001
     7400000: Default Take
-    7400002: Run
-    7400004: Walk_blocking
-    7400006: Walk_polish
+    7400002: Hidle
+    7400004: Run
+    7400006: Walk_blocking
+    7400008: Walk_polish
     9500000: //RootNode
     13700000: Cube_001
   materials:

@@ -2,175 +2,32 @@ Initialize engine version: 5.6.1f1 (2860b30f0b54)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
     Vendor:   NVIDIA
     VRAM:     3072 MB
-    Driver:   22.21.13.8476
+    Driver:   22.21.13.8541
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\LitJson.dll (this message is harmless)
-Loading C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\LitJson.dll into Unity Child Domain
-- Completed reload, in  0.038 seconds
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Ram\Desktop\GitHubOTR\On_The_Road\OTR_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\LitJson.dll (this message is harmless)
+Loading C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\LitJson.dll into Unity Child Domain
+- Completed reload, in  0.057 seconds
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\jinxka\Desktop\On_The_Road\OTR_Data\Managed\System.dll (this message is harmless)
 OnLevelWasLoaded was found on Fader
 This message has been deprecated and will be removed in a later version of Unity.
 Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
  
 (Filename:  Line: 376)
 
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 1.043773 ms
-Setting up 4 worker threads for Enlighten.
-  Thread -> id: 3b0c -> priority: 1 
-  Thread -> id: 444c -> priority: 1 
-  Thread -> id: bf8 -> priority: 1 
-  Thread -> id: 1378 -> priority: 1 
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'HealthSlider') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'HealthSlider') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'HealthSlider') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'HealthSlider') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item(Clone)') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'HealthSlider') is missing!
- 
-(Filename:  Line: 1743)
-
-Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 57.247864 ms
-
-Unloading 64 unused Assets to reduce memory usage. Loaded Objects now: 173484.
-Total: 79.869873 ms (FindLiveObjects: 8.970392 ms CreateObjectMapping: 2.491008 ms MarkObjects: 22.250668 ms  DeleteObjects: 46.156902 ms)
-
-Can not play a disabled audio source
- 
-(Filename:  Line: 536)
-
-The referenced script on this Behaviour (Game Object '<null>') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object '<null>') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object '<null>') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object '<null>') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object '<null>') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Item') is missing!
- 
-(Filename:  Line: 1743)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 467.625427 ms
-
-Unloading 866 unused Assets to reduce memory usage. Loaded Objects now: 63779.
-Total: 27.469536 ms (FindLiveObjects: 2.657315 ms CreateObjectMapping: 1.220287 ms MarkObjects: 5.659854 ms  DeleteObjects: 17.931778 ms)
-

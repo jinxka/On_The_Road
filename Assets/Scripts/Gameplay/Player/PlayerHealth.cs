@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    void Update ()
+    void FixedUpdate ()
     {
         for(int i = 0; i < nb_quests; i++)
         {

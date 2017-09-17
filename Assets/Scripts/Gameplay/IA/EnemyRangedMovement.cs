@@ -31,7 +31,7 @@ public class EnemyRangedMovement : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
 		if (Aggro && enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
         {
@@ -51,7 +51,11 @@ public class EnemyRangedMovement : MonoBehaviour
         else
         {
             nav.updatePosition = false;
-        }
+		}
+
+		if (!retreat)
+			Turning();
+
     }
 
     private void FindVelocity()
@@ -62,12 +66,6 @@ public class EnemyRangedMovement : MonoBehaviour
         localDirectionZ = Mathf.Clamp(transform.InverseTransformDirection(direction).z, -1, 1);
         localDirectionX = Mathf.Clamp(transform.InverseTransformDirection(direction).x, -1, 1);
 
-    }
-
-    void FixedUpdate()
-    {
-        if (!retreat)
-            Turning();
     }
 
         void Turning()
