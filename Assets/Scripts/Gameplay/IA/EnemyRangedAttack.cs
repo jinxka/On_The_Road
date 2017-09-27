@@ -28,7 +28,7 @@ public class EnemyRangedAttack : MonoBehaviour {
         anim = GetComponentInParent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         timer += Time.deltaTime;
 

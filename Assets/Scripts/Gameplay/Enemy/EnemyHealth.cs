@@ -81,12 +81,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isDead)
             return;
-		if (ranged)
-			if (enemyRangedMovement.GetAggro () == false)
-				enemyRangedMovement.SetAggro (true);
+		if (ranged && (enemyRangedMovement.GetAggro () == false))
+			enemyRangedMovement.SetAggro (true);
 		else if (enemyMovement.GetAggro () == false)
 			enemyMovement.SetAggro (true);
-        enemyAudio.Play();
+		enemyAudio.Play();
 
         currentHealth -= amount;
 
@@ -120,9 +119,7 @@ public class EnemyHealth : MonoBehaviour
             this.GetComponent<ZombieQuest>().updateQuest();
         if (isBoss)
             this.GetComponent<BossQuest>().updateQuest();
-        Destroy(gameObject, lifetime);
-
-        //QuestManager.ItemsInInventory[0].
+		StartSinking ();
     }
 
 
@@ -130,9 +127,10 @@ public class EnemyHealth : MonoBehaviour
     {
         GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
+		GetComponent <CapsuleCollider> ().isTrigger = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
-        Destroy (gameObject, 2f);
+		Destroy (gameObject, lifetime);
     }
 
     private void SetHealthUI() //new
