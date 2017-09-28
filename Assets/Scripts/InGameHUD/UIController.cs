@@ -4,10 +4,12 @@ using System.Collections;
 
 public class UIController : MonoBehaviour {
 
+	public GameObject mapPanel;
     public GameObject menuCanvas;
     public GameObject exitCanvas;
     public GameObject optionsCanvas;
     public GameObject errorCanvas;
+	public GameObject worldMapCanvas;
     //public Canvas inventoryCanvas;
     public Button menuButton;
     public menuController menuController;
@@ -17,24 +19,29 @@ public class UIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         menuCanvas.SetActive(false);
+		worldMapCanvas.SetActive (false);
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
         //inventoryCanvas.enabled = false;
         errorCanvas.SetActive(false);
+		mapPanel = GameObject.Find ("Panel");
+		mapPanel.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown("escape"))
-        {
-            if (menuCanvas.activeSelf == false)
-            {
-                closeAllPanels();
-                menuPress();
-            }
-            else
-                menuController.closeMenu();
-        }
+		if (Input.GetKeyDown ("escape")) {
+			if (menuCanvas.activeSelf == false) {
+				closeAllPanels ();
+				menuPress ();
+			} else
+				menuController.closeMenu ();
+		} else if (Input.GetKey (KeyCode.Tab)) {
+			if (mapPanel.activeSelf == false)
+				mapPanel.SetActive (true);
+			else
+				mapPanel.SetActive (false);
+		}
 
         /*if (Input.GetKeyDown(KeyCode.Tab))
         {

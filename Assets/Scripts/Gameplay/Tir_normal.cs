@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tir_normal : MonoBehaviour
 {
-    public Rigidbody bulletCasing = null;
+	public Rigidbody bulletCasing = null;
     public int ejectSpeed = 100;
     public float fireRate = 0.5F;
     public float quickFireRate = 0.0F;
@@ -40,7 +40,7 @@ public class Tir_normal : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
@@ -100,8 +100,8 @@ public class Tir_normal : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
         }
-        Rigidbody bullet = null;
-        bullet = Instantiate(bulletCasing);
+		Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
+		bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
         if ((buffdmg != null) && (buffdmg.isBuffActive()))
         {
             bullet.GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.getDmgX());
@@ -110,9 +110,6 @@ public class Tir_normal : MonoBehaviour
         {
             bullet.GetComponent<Script_balle>().setDmg(BulletDmg);
         }
-        bullet.transform.rotation = transform.rotation;
-        bullet.transform.position = transform.position;
-        bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
     }
 
 }

@@ -7,6 +7,7 @@ public class menuController : MonoBehaviour {
     public Canvas UICanvas;
     public GameObject exitCanvas;
     public GameObject optionsCanvas;
+	public GameObject worldMapCanvas;
     public Light sun;
     public Camera cam;
 
@@ -14,6 +15,8 @@ public class menuController : MonoBehaviour {
     void Start () {
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
+		//worldMapCanvas = GameObject.Find ("panelWorldMap");
+		worldMapCanvas.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,7 @@ public class menuController : MonoBehaviour {
         UICanvas.enabled = true;
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
+		worldMapCanvas.SetActive (false);
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = false;
     }
 
@@ -35,6 +39,8 @@ public class menuController : MonoBehaviour {
         exitCanvas.SetActive(true);
         menuCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
+		worldMapCanvas.SetActive (false);
+
     }
 
     public void exitYes()
@@ -48,6 +54,12 @@ public class menuController : MonoBehaviour {
         menuCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
     }
+
+	public void worldMapPress()
+	{
+		menuCanvas.SetActive (false);
+		worldMapCanvas.SetActive (true);
+	}
 
     public void optionsBackPress()
     {
@@ -67,5 +79,7 @@ public class menuController : MonoBehaviour {
     {
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
+		worldMapCanvas.SetActive (false);
+
     }
 }

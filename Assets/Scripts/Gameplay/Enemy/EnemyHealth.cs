@@ -68,7 +68,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    void Update ()
+    void FixedUpdate ()
     {
         if(isSinking)
         {
