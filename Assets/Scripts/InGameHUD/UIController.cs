@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
     public GameObject exitCanvas;
     public GameObject optionsCanvas;
     public GameObject errorCanvas;
+	public GameObject worldMapCanvas;
     //public Canvas inventoryCanvas;
     public Button menuButton;
     public menuController menuController;
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         menuCanvas.SetActive(false);
+		worldMapCanvas.SetActive (false);
         exitCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
         //inventoryCanvas.enabled = false;
