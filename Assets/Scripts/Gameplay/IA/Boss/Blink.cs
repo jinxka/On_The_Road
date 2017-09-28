@@ -14,21 +14,25 @@ public class Blink : MonoBehaviour {
     private Canvas healthBar;
     private bool inv = false;
     private EnemyHealth health;
-    GameObject player;
+	public Boss1Attack1 attack;
+	GameObject player;
+	private EnemyMovement enemyMovement;
 
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         position = GetComponent<Transform>();
         bossParts = GetComponentsInChildren<Renderer>();
-        health = this.GetComponent<EnemyHealth>();
+		health = this.GetComponent<EnemyHealth>();
+		enemyMovement = GetComponentInParent<EnemyMovement>();
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (health.isDead == true)
+	void FixedUpdate () {
+		if (health.isDead == true || !enemyMovement.GetAggro())
             return;
-	    if (Time.time > nextBlink)
+		
+		if (Time.time > nextBlink && !attack.IsAttacking())
         {
             blinkPoint = blinkPoints[Random.Range(0, blinkPoints.Length)];
             position.position = blinkPoint.GetComponent<Transform>().position;
@@ -48,12 +52,8 @@ public class Blink : MonoBehaviour {
             }
             inv = false;
         }
+		Turning();
 	}
-
-    void FixedUpdate()
-    {
-            Turning();
-    }
 
     void Turning()
     {

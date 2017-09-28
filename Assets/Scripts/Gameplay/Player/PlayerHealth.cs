@@ -95,11 +95,12 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
         //playerShooting.enabled = false;
+		RestartLevel ();
     }
 
     public void RestartLevel ()
     {
-        SceneManager.LoadScene (0);
+		SceneManager.LoadScene (0);
     }
 
     public void SetHealthUI() //new
