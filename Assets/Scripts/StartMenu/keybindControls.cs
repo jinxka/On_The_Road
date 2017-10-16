@@ -10,7 +10,7 @@ public class keybindControls : MonoBehaviour {
     public GameObject otherPanel;
     public GameObject tooltipPanel;
     public GameObject errorCanvas;
-    public ActionBar actionBar;
+    //public ActionBar actionBar;
 
     private string[] actionBarDefaultBinds = new string[5];
 
@@ -116,8 +116,8 @@ public class keybindControls : MonoBehaviour {
                             actionBarKeybinds[id].setString(kcode.ToString());
                             actionBarKeybinds[id].setText(kcode.ToString());
                             PlayerPrefs.SetString("keybindAction" + id, kcode.ToString());
-                            if (actionBar)
-                                actionBar.setKey(id, kcode.ToString());
+                            /*if (actionBar)
+                                actionBar.setKey(id, kcode.ToString());*/
                         }
                     }                    
                 }
@@ -151,8 +151,7 @@ public class keybindControls : MonoBehaviour {
 
     IEnumerator fadeErrorPanel()
     {
-        for (int i = 0; i < 5; i++)
-            yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5f);
         errorCanvas.SetActive(false);
     }
 }
