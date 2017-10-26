@@ -4,7 +4,7 @@ using System.Collections;
 
 public class UIController : MonoBehaviour {
 
-	public GameObject mapPanel;
+    public GameObject mapPanel;
     public GameObject menuCanvas;
     public GameObject exitCanvas;
     public GameObject optionsCanvas;

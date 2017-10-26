@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth pHealth;
+
     public float startingHealth = 100f;                 
     public float currentHealth;
     public float startingArmor = 10f;
@@ -37,6 +39,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake ()
     {
+        if (pHealth == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            pHealth = this;
+        }
+        else if (pHealth != this)
+        {
+            Destroy(gameObject);
+        }
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();

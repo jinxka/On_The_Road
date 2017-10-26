@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class Tir_normal : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Tir_normal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (Input.GetButton("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (clip >= 1)
             {

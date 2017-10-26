@@ -8,9 +8,12 @@ public class EndLevel : MonoBehaviour {
     [SerializeField]
     SceneLoading sceneLoading;
 
-	void OnTriggerEnter(Collider other)
+    [SerializeField]
+    string sceneToLoad;
+
+    void OnTriggerEnter(Collider other)
 	{
-        sceneLoading.loadScene("Zone_Tunnel");
+        sceneLoading.loadScene(sceneToLoad);
     }
 
 }

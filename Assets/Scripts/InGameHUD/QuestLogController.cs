@@ -5,6 +5,7 @@ public class QuestLogController : MonoBehaviour {
 
     public GameObject questLogPanel;
     private questManager questSystem;
+    public static QuestLogController qlController;
 
 
 	// Use this for initialization
@@ -13,10 +14,18 @@ public class QuestLogController : MonoBehaviour {
         questLogPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update () {
-	
-	}
+    void Awake()
+    {
+        if (qlController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            qlController = this;
+        }
+        else if (qlController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void openQuestLog()
     {
