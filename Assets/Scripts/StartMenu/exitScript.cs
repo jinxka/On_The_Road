@@ -42,6 +42,7 @@ public class exitScript : MonoBehaviour {
 
     public void exitGame()
     {
+		Debug.LogError("test");
         Application.Quit();
     }
 
