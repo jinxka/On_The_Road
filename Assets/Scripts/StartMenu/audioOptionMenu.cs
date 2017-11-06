@@ -21,12 +21,6 @@ public class audioOptionMenu : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        audioController = audioController.GetComponent<GameObject>();
-        generalVolumeSlider = generalVolumeSlider.GetComponent<Slider>();
-        musicSlider = musicSlider.GetComponent<Slider>();
-        voiceSlider = voiceSlider.GetComponent<Slider>();
-        ambientSoundsSlider = ambientSoundsSlider.GetComponent<Slider>();
-
         generalVolumeSlider.normalizedValue = PlayerPrefs.GetFloat("generalVolumeValue", 1.0f);
         voiceSlider.normalizedValue = PlayerPrefs.GetFloat("voiceValue", 1.0f);
         musicSlider.normalizedValue = PlayerPrefs.GetFloat("musicValue", 1.0f);
