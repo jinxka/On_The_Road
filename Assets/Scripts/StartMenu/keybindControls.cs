@@ -9,7 +9,7 @@ public class keybindControls : MonoBehaviour {
     public GameObject actionBarPanel;
     public GameObject otherPanel;
     public GameObject tooltipPanel;
-    public GameObject errorCanvas;
+    public ErrorScript errorPanel;
     //public ActionBar actionBar;
 
     private string[] actionBarDefaultBinds = new string[5];
@@ -41,11 +41,6 @@ public class keybindControls : MonoBehaviour {
             actionBarKeybinds[i].setString(PlayerPrefs.GetString("keybindAction" + i, actionBarDefaultBinds[i]));
         }
 
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        
     }
 
     void hidePanels()
@@ -127,12 +122,6 @@ public class keybindControls : MonoBehaviour {
                 break;
         }
         hideTooltipPanel();
-        hideErrorPanel();
-    }
-
-    private void hideErrorPanel()
-    {
-        StartCoroutine(fadeErrorPanel());
     }
 
     private bool checkKeybinds(string keyPressed)
@@ -141,17 +130,10 @@ public class keybindControls : MonoBehaviour {
         {
             if (keyPressed == actionBarKeybinds[i].getString().ToUpper())
             {
-                errorCanvas.SetActive(true);
-                errorCanvas.transform.GetChild(0).GetComponent<Text>().text = "Key already bound to Action Bar action " + (i + 1);               
+                errorPanel.DisplayErrorMessage("Key already bound to Action Bar action " + (i + 1));             
                 return (false);
             }
         }
         return (true);
-    }
-
-    IEnumerator fadeErrorPanel()
-    {
-        yield return new WaitForSeconds(5f);
-        errorCanvas.SetActive(false);
     }
 }
