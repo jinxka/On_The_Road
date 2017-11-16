@@ -314,14 +314,10 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(inputManagerDatabase.QuestPanelKeyCode))
         {
-            if (!questLogPanel.activeSelf)
-            {
+            if (questController.questLogCanvas.alpha == 0)
                 questController.openQuestLog();
-            }
             else
-            {
                 questController.closeQuestLog();
-            }
         }
 
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))

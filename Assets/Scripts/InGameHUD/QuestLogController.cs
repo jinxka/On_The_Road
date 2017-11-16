@@ -4,15 +4,8 @@ using System.Collections;
 public class QuestLogController : MonoBehaviour {
 
     public GameObject questLogPanel;
-    private questManager questSystem;
     public static QuestLogController qlController;
-
-
-	// Use this for initialization
-	void Start () {
-        questSystem = this.GetComponent<questManager>();
-        questLogPanel.SetActive(false);
-    }
+    public CanvasGroup questLogCanvas;
 
     void Awake()
     {
@@ -29,11 +22,15 @@ public class QuestLogController : MonoBehaviour {
 
     public void openQuestLog()
     {
-        questLogPanel.SetActive(true);
+        questLogCanvas.alpha = 1;
+        questLogCanvas.interactable = true;
+        questLogCanvas.blocksRaycasts = true;
     }
 
     public void closeQuestLog()
     {
-        questLogPanel.SetActive(false);
+        questLogCanvas.alpha = 0;
+        questLogCanvas.interactable = false;
+        questLogCanvas.blocksRaycasts = false;
     }
 }

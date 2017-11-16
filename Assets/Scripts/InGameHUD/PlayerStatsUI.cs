@@ -5,19 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerStatsUI : MonoBehaviour {
 
-    public GameObject player;
     public PlayerHealth playerHealth;
     public Tir_normal playerShooting;
     public PlayerMovement playerMovement;
-    
-	// Use this for initialization
-	void Start () {
-        player = GameObject.Find("Player");
-       
-        playerHealth = player.GetComponent<PlayerHealth>();
-        playerMovement = player.GetComponent<PlayerMovement>();
-        playerShooting = player.transform.GetChild(0).GetComponent<Tir_normal>();
-    }
 	
 	// Update is called once per frame
 	void Update () {
