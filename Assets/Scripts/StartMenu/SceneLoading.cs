@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoading : MonoBehaviour {
 
     public static SceneLoading sceneLoader;
+	public GameObject menuCanvas;
 
     [SerializeField]
     Image progressBarFull;
@@ -19,15 +20,18 @@ public class SceneLoading : MonoBehaviour {
 
     void Awake()
     {
-        if (sceneLoader == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            sceneLoader = this;
-        }
-        else if (sceneLoader != this)
-        {
-            Destroy(gameObject);
-        }
+		if (sceneLoader == null)
+			sceneLoader = this;
+//        if (sceneLoader == null)
+//		{
+//			if (menuCanvas != null)
+//				DontDestroyOnLoad(menuCanvas);
+//            sceneLoader = this;
+//        }
+//        else if (sceneLoader != this)
+//        {
+//            Destroy(gameObject);
+//        }
     }
 
     public void loadScene(string sceneToLoad)
