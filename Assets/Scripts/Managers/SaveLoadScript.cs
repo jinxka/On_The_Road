@@ -7,15 +7,15 @@ using System.IO;
 using UnityEngine.SceneManagement;
 
 public class SaveLoadScript : MonoBehaviour {
-	private int nbrSave = 0;
+	private SceneLoading sceneLoading;
 	private string baseName = "saveFile_";
 	private string FileName = "saveFile_";
-
 	// Use this for initialization
 	void Start () {
+		sceneLoading = this.GetComponent<SceneLoading> ();
 	}
 
-	public void save () {
+	public void save (int nbrSave = 0) {
 		Debug.Log("Save start");
 		FileName = baseName + nbrSave + ".otr";
 		Debug.Log("FileName = " + FileName);
@@ -24,24 +24,26 @@ public class SaveLoadScript : MonoBehaviour {
 
 		SaveManager saver = new SaveManager ();
 		saver.nbrSave = nbrSave;
+		saver.scene = SceneManager.GetActiveScene ().name;
 
 		binary.Serialize (fStream, saver);
 		fStream.Close ();
 		Debug.Log("Game saved");
-		Debug.Log("Game saved");
 	}
 
-	public void load () {
+	public void load (int nbrSave = 0) {
 		Debug.Log("load start");
+		FileName = baseName + nbrSave + ".otr";
 		Debug.Log("FileName = " + FileName);
 		if (File.Exists (Application.persistentDataPath + FileName)) {
-			Debug.Log(FileName + "+ exist");
+			Debug.Log(FileName + " exists");
 			BinaryFormatter binary = new BinaryFormatter ();
 			FileStream fStream = File.Open (Application.persistentDataPath + FileName, FileMode.Open);
 			SaveManager saver = (SaveManager)binary.Deserialize (fStream);
+			Debug.Log ("Scene = " + saver.scene);
+			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
-			SceneManager.LoadScene("Main_Menu", LoadSceneMode.Single);
-			Debug.Log("Game loaded");
+			sceneLoading.loadScene(saver.scene);
 		}
 		Debug.Log("Load over");
 	}
@@ -51,4 +53,5 @@ public class SaveLoadScript : MonoBehaviour {
 [Serializable]
 class SaveManager {
 	public int nbrSave;
+	public string scene;
 }

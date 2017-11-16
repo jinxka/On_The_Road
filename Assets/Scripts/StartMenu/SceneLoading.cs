@@ -38,6 +38,7 @@ public class SceneLoading : MonoBehaviour {
 
     private IEnumerator waitForSceneToLoad(string sceneToLoad)
     {
+		Debug.Log("Scene loading is starting");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         int progress;
         while (!asyncLoad.isDone)
@@ -48,5 +49,6 @@ public class SceneLoading : MonoBehaviour {
             yield return null;
         }
         progressGroup.alpha = 0;
+		Debug.Log("Scene loading is over");
     }
 }
