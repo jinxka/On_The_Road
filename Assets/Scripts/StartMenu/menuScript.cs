@@ -4,6 +4,9 @@ using System.Collections;
 
 public class menuScript : MonoBehaviour {
 
+	[SerializeField]
+	GameObject loadPanel;
+
     public void onButtonHover(Image _image)
     {
         _image.enabled = true;
@@ -13,4 +16,11 @@ public class menuScript : MonoBehaviour {
     {
         _image.enabled = false;
     }
+
+	public void showHideLoadPanel()
+	{
+		loadPanel.SetActive (!loadPanel.activeSelf);
+	}
+
+
 }

@@ -25,6 +25,7 @@ public class SaveLoadScript : MonoBehaviour {
 		SaveManager saver = new SaveManager ();
 		saver.nbrSave = nbrSave;
 		saver.scene = SceneManager.GetActiveScene ().name;
+		saver.modified = DateTime.Now; 
 
 		binary.Serialize (fStream, saver);
 		fStream.Close ();
@@ -54,4 +55,5 @@ public class SaveLoadScript : MonoBehaviour {
 class SaveManager {
 	public int nbrSave;
 	public string scene;
+	public DateTime modified;
 }
