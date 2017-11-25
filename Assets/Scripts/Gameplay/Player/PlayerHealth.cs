@@ -35,19 +35,13 @@ public class PlayerHealth : MonoBehaviour
     bool quest_active;
     int nb_quests;
 
+    public ParticleSystem heal_dust;
+    public GameObject aura;
+
     private bool forcefield = false;
 
     void Awake ()
     {
-        if (pHealth == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            pHealth = this;
-        }
-        else if (pHealth != this)
-        {
-            Destroy(gameObject);
-        }
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
@@ -60,18 +54,6 @@ public class PlayerHealth : MonoBehaviour
 
     void FixedUpdate ()
     {
-        for(int i = 0; i < nb_quests; i++)
-        {
-
-        }
-        if(damaged)
-        {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
         damaged = false;
     }
 
@@ -97,21 +79,19 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        //playerShooting.DisableEffects ();
-
         anim.SetTrigger ("Die");
 
         playerAudio.clip = deathClip;
         playerAudio.Play ();
 
         playerMovement.enabled = false;
-        //playerShooting.enabled = false;
-		RestartLevel ();
+        StartCoroutine(RestartLevel());
     }
 
-    public void RestartLevel ()
+    private IEnumerator RestartLevel ()
     {
-		SceneManager.LoadScene (0);
+        yield return new WaitForSeconds(2f);
+        SceneLoading.Instance.loadScene(SceneManager.GetActiveScene().name);
     }
 
     public void SetHealthUI() //new

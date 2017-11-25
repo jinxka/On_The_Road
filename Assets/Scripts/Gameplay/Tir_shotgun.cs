@@ -91,9 +91,9 @@ public class Tir_shotgun : MonoBehaviour {
             Shrapnels[i] = Instantiate(shrapnelCasing);
             Shrapnels[i].transform.rotation = transform.rotation;
             Shrapnels[i].transform.position = transform.position;
-            if ((buffdmg != null) && (buffdmg.isBuffActive()))
+            if ((buffdmg != null) && (buffdmg.buffDegats))
             {
-                Shrapnels[i].GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.getDmgX());
+                Shrapnels[i].GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.damageX);
             }
             else
             {

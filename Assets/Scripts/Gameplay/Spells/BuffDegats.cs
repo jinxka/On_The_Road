@@ -1,41 +1,59 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using System.Collections;
 
 public class BuffDegats : MonoBehaviour {
-    private bool buffDegats = false;
-    private int damageX = 2;
-    public GameObject Aura;
+    public bool buffDegats = false;
+    public int damageX = 2;
+	private GameObject Aura;
 
     public float cooldown = 30.0F;
     public int Duration = 2;
-    // Use this for initialization
+    bool onCooldown = false;
 
-    IEnumerator DmgBoost()
+    float currentTime;
+
+    [SerializeField]
+    Image cooldownImage;
+
+    public void UseSpell()
+    {
+        if (onCooldown)
+            return;
+        if (Aura == null)
+            Aura = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().aura;
+        float startTime = Time.time;
+        cooldownImage.enabled = true;
+        currentTime = cooldown;
+        cooldownImage.fillAmount = 1f;
+        StartCoroutine(triggerCooldown(startTime));
+        StartCoroutine(triggerBuff());
+    }
+
+    private IEnumerator triggerCooldown(float startTime)
+    {
+        onCooldown = true;
+        while (cooldownImage.fillAmount > 0)
+        {
+            currentTime -= Time.deltaTime;
+            cooldownImage.fillAmount = currentTime / cooldown;
+            yield return null;
+        }
+        onCooldown = false;
+        cooldownImage.enabled = false;
+    }
+
+    private IEnumerator triggerBuff()
     {
         Aura.SetActive(true);
         buffDegats = true;
         yield return new WaitForSeconds(Duration);
-        buffDegats = false;
         Aura.SetActive(false);
+        buffDegats = false;
     }
 
-    public void UseSpell()
+    void Start()
     {
-        DmgBoost();
-    }
-
-    public float GetCooldown()
-    {
-        return cooldown;
-    }
-
-    public bool isBuffActive()
-    {
-        return buffDegats;
-    }
-
-    public int getDmgX()
-    {
-        return damageX;
+        Aura = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().aura;
     }
 }

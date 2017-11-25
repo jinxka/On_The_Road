@@ -41,7 +41,6 @@ public class EnemyRangedMovement : MonoBehaviour
             {
                 FindVelocity();
                 nav.SetDestination(transform.position + direction);
-                Debug.LogError(direction);
             }
             else
             {

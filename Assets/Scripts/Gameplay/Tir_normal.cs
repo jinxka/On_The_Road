@@ -43,25 +43,19 @@ public class Tir_normal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject())
+		if ((clip >= 1) && Input.GetButton ("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject ()) {
+			shoot ();
+			clip = clip - 1;
+		} 
+		else
+			DisableEffects ();
+        if (Input.GetKeyDown(fireMode_Key))
         {
-            if (clip >= 1)
-            {
-                shoot();
-                clip = clip - 1;
-            }
+            fullAuto = !fullAuto;
         }
-        else
+        if (Input.GetKeyDown(reload_Key) && (clip < clipSize))
         {
-            DisableEffects();
-            if (Input.GetKeyDown(fireMode_Key))
-            {
-                fullAuto = !fullAuto;
-            }
-            if (Input.GetKeyDown(reload_Key) && (clip < clipSize))
-            {
-                reload();
-            }
+            reload();
         }
     }
 
@@ -103,9 +97,9 @@ public class Tir_normal : MonoBehaviour
         }
 		Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
 		bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
-        if ((buffdmg != null) && (buffdmg.isBuffActive()))
+        if ((buffdmg != null) && (buffdmg.buffDegats))
         {
-            bullet.GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.getDmgX());
+            bullet.GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.damageX);
         }
         else
         {
