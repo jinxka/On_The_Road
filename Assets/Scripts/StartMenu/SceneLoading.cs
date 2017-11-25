@@ -6,8 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoading : MonoBehaviour {
 
-    public static SceneLoading sceneLoader;
-	public GameObject menuCanvas;
+    #region UnityCompliant Singleton
+    public static SceneLoading Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+    #endregion
 
     [SerializeField]
     Image progressBarFull;
@@ -18,22 +35,6 @@ public class SceneLoading : MonoBehaviour {
     [SerializeField]
     CanvasGroup progressGroup;
 
-    void Awake()
-    {
-		if (sceneLoader == null)
-			sceneLoader = this;
-//        if (sceneLoader == null)
-//		{
-//			if (menuCanvas != null)
-//				DontDestroyOnLoad(menuCanvas);
-//            sceneLoader = this;
-//        }
-//        else if (sceneLoader != this)
-//        {
-//            Destroy(gameObject);
-//        }
-    }
-
     public void loadScene(string sceneToLoad)
     {       
         progressGroup.alpha = 1;
@@ -42,7 +43,6 @@ public class SceneLoading : MonoBehaviour {
 
     private IEnumerator waitForSceneToLoad(string sceneToLoad)
     {
-		Debug.Log("Scene loading is starting");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         int progress;
         while (!asyncLoad.isDone)
@@ -53,6 +53,5 @@ public class SceneLoading : MonoBehaviour {
             yield return null;
         }
         progressGroup.alpha = 0;
-		Debug.Log("Scene loading is over");
     }
 }

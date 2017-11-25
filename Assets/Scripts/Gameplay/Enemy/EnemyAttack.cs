@@ -23,10 +23,8 @@ public class EnemyAttack : MonoBehaviour
 		playerTransform = player.GetComponent<Transform> ();
         playerHealth = player.GetComponent <PlayerHealth> ();
 		myTransform = this.GetComponent<Transform> ();
-        enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent <Animator> ();
-		if (anim == null)
-			anim = GetComponentInParent<Animator> ();
+        enemyHealth = GetComponentInParent<EnemyHealth>();
+		anim = GetComponentInParent <Animator> ();
     }
 
 	void IsAtRange()

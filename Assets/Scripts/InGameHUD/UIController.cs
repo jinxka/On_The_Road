@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
-    //public GameObject mapPanel;
     public CanvasGroup menuCanvas;
-	//public GameObject worldMapCanvas;
-    //public Canvas inventoryCanvas;
     public Button menuButton;
     public Camera cam;
     public Canvas UiCanvas;
+    [SerializeField]
+    Slider ammoSlider;
+    [SerializeField]
+    Text ammoIndicator;
+    [SerializeField]
+    Tir_normal playerShooting;
 
 	// Use this for initialization
 	void Start () {
+        playerShooting = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Tir_normal>();
 	}
 	
 	// Update is called once per frame
@@ -23,12 +28,14 @@ public class UIController : MonoBehaviour {
                 openMenu();
             else
                 closeMenu();
-		} /*else if (Input.GetKey (KeyCode.Tab)) {
-			if (mapPanel.activeSelf == false)
-				mapPanel.SetActive (true);
-			else
-				mapPanel.SetActive (false);
-		}*/
+		}
+        ammoSlider.value = playerShooting.clip;
+        ammoIndicator.text = playerShooting.clip.ToString();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
     public void openMenu()
@@ -45,6 +52,11 @@ public class UIController : MonoBehaviour {
         menuCanvas.interactable = false;
         menuCanvas.blocksRaycasts = false;
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = false;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        InventoryPersistence.Instance.showInventory();
     }
 }
 

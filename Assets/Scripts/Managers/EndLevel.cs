@@ -6,14 +6,11 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour {
 
     [SerializeField]
-    SceneLoading sceneLoading;
-
-    [SerializeField]
     string sceneToLoad;
 
     void OnTriggerEnter(Collider other)
 	{
-        sceneLoading.loadScene(sceneToLoad);
+        SceneLoading.Instance.loadScene(sceneToLoad);
     }
 
 }

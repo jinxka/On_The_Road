@@ -8,24 +8,17 @@ public class menuController : MonoBehaviour {
  
     [SerializeField]
     SceneLoading sceneLoader;
-
-    // Use this for initialization
-    void Start () {
-		//worldMapCanvas = GameObject.Find ("panelWorldMap");
-		//worldMapCanvas.SetActive (false);
-	}
-
-	/*public void worldMapPress()
-	{
-		menuCanvas.SetActive (false);
-		//worldMapCanvas.SetActive (true);
-	}*/
-
+    
     public void nightPress()
     {
         if (sun.enabled)
             sun.enabled = false;
         else
             sun.enabled = true;
+    }
+
+    public void reloadGame()
+    {
+        SceneLoading.Instance.loadScene("Main_Menu");
     }
 }

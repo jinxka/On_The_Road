@@ -16,7 +16,6 @@ public class PlayerInventory : MonoBehaviour
     private Inventory mainInventory;
     private Inventory characterSystemInventory;
     private Inventory skillsInventory;
-    private QuestLogController questController;
     private Tooltip toolTip;
 
     private InputManager inputManagerDatabase;
@@ -156,18 +155,12 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        //if (HPMANACanvas != null)
-        //{
-        //    hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
 
-        //    manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-
-        //    hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-        //    manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-
-        //    UpdateHPBar();
-        //    UpdateManaBar();
-        //}
+        inventory = InventoryPersistence.Instance.inventory;
+        craftSystem = InventoryPersistence.Instance.craftSystem;
+        characterSystem = InventoryPersistence.Instance.characterSystem;
+        questLog = QuestLogController.Instance.gameObject;
+        questLogPanel = QuestLogController.Instance.questLogPanel;
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -183,31 +176,10 @@ public class PlayerInventory : MonoBehaviour
             characterSystemInventory = characterSystem.GetComponent<Inventory>();
         if (craftSystem != null)
             craftSystemInventory = craftSystem.GetComponent<Inventory>();
-        if (questLog != null)
-            questController = questLog.GetComponent<QuestLogController>();
         if (skillsPanel != null)
             skillsInventory = skillsPanel.GetComponent<Inventory>();
 
-        playerHealth = GetComponent<PlayerHealth>();
-        playerShooting = transform.GetChild(0).GetComponent<Tir_normal>();
-        playerMovement = GetComponent<PlayerMovement>();
     }
-    
-    //void UpdateHPBar()
-    //{
-    //    hpText.text = (currentHealth + "/" + maxHealth);
-    //    float fillAmount = currentHealth / maxHealth;
-    //    hpImage.fillAmount = fillAmount;
-    //}
-
-    //void UpdateManaBar()
-    //{
-    //    manaText.text = (currentMana + "/" + maxMana);
-    //    float fillAmount = currentMana / maxMana;
-    //    manaImage.fillAmount = fillAmount;
-    //}
-
-
     public void OnConsumeItem(Item item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
@@ -222,13 +194,6 @@ public class PlayerInventory : MonoBehaviour
                     playerHealth.SetHealthUI();
                 }
             }
-            /*if (item.itemAttributes[i].attributeName == "Mana")
-            {
-                if ((currentMana + item.itemAttributes[i].attributeValue) > maxMana)
-                    currentMana = maxMana;
-                else
-                    currentMana += item.itemAttributes[i].attributeValue;
-            }*/
             if (item.itemAttributes[i].attributeName == "Armor")
             {
                 if ((playerHealth.armor + item.itemAttributes[i].attributeValue) > playerHealth.startingArmor)
@@ -238,17 +203,9 @@ public class PlayerInventory : MonoBehaviour
             }
             if (item.itemAttributes[i].attributeName == "Damage")
             {
-                //if ((playerShooting.BulletDmg) + item.itemAttributes[i].attributeValue) > playerShooting.maxDamage)
-                    //playerShooting.damagePerShot = playerShooting.maxDamage;
-                //else
                     playerShooting.BulletDmg += item.itemAttributes[i].attributeValue;
             }
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
 
     public void OnGearItem(Item item)
@@ -257,8 +214,6 @@ public class PlayerInventory : MonoBehaviour
         {
             if (item.itemAttributes[i].attributeName == "Health")
                playerHealth.startingHealth += item.itemAttributes[i].attributeValue;
-            /*if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana += item.itemAttributes[i].attributeValue;*/
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
@@ -266,11 +221,6 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "AttackSpeed")
                 playerShooting.fireRate = (1 / (float)(item.itemAttributes[i].attributeValue));
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
 
     public void OnUnEquipItem(Item item)
@@ -279,18 +229,11 @@ public class PlayerInventory : MonoBehaviour
         {
             if (item.itemAttributes[i].attributeName == "Health")
                 playerHealth.startingHealth -= item.itemAttributes[i].attributeValue;
-            /*if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana -= item.itemAttributes[i].attributeValue;*/
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
                 playerShooting.BulletDmg -= item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
     }
 
 
@@ -314,10 +257,10 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(inputManagerDatabase.QuestPanelKeyCode))
         {
-            if (questController.questLogCanvas.alpha == 0)
-                questController.openQuestLog();
+            if (QuestLogController.Instance.questLogCanvas.alpha == 0)
+                QuestLogController.Instance.openQuestLog();
             else
-                questController.closeQuestLog();
+                QuestLogController.Instance.closeQuestLog();
         }
 
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
@@ -334,7 +277,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(inputManagerDatabase.SkillsPanelKeyCode))
+        /*if (Input.GetKeyDown(inputManagerDatabase.SkillsPanelKeyCode))
         {
             if (!skillsPanel.activeSelf)
             {
@@ -346,9 +289,9 @@ public class PlayerInventory : MonoBehaviour
                     toolTip.deactivateTooltip();
                 skillsInventory.closeInventory();
             }
-        }
+        }*/
 
-        if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
+        /*if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
         {
             if (!craftSystem.activeSelf)
                 craftSystemInventory.openInventory();
@@ -360,7 +303,7 @@ public class PlayerInventory : MonoBehaviour
                     toolTip.deactivateTooltip();
                 craftSystemInventory.closeInventory();
             }
-        }
+        }*/
 
     }
 

@@ -83,7 +83,7 @@ public class EnemyHealth : MonoBehaviour
             return;
 		if (ranged && (enemyRangedMovement.GetAggro () == false))
 			enemyRangedMovement.SetAggro (true);
-		else if (enemyMovement.GetAggro () == false)
+		else if (!ranged && enemyMovement.GetAggro () == false)
 			enemyMovement.SetAggro (true);
 		enemyAudio.Play();
 
