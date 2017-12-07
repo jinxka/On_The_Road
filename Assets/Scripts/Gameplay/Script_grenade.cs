@@ -26,9 +26,10 @@ public class Script_grenade : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Enemies")
+        if (col.gameObject.tag != "Player")
         {
             Explose();
+            Destroy(gameObject);
         }
     }
 }

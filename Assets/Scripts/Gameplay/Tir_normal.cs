@@ -95,8 +95,9 @@ public class Tir_normal : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
         }
-		Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
+        Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
 		bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
+        bullet.transform.Rotate(Vector3.right * 90);
         if ((buffdmg != null) && (buffdmg.buffDegats))
         {
             bullet.GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.damageX);
