@@ -4,9 +4,12 @@ using System.Collections;
 public class Script_explosion : MonoBehaviour {
     public float timer = 2F;
     public int damageExplosion = 100;
+    public GameObject exploEffect;
 
 	// Use this for initialization
 	void Start () {
+        GameObject test =  Instantiate(exploEffect, transform.position, transform.rotation);
+        test.transform.parent = gameObject.transform;
         Destroy(gameObject, 1F);
     }
 	

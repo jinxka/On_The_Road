@@ -40,6 +40,7 @@ public class UIController : MonoBehaviour {
 
     public void openMenu()
     {
+        Time.timeScale = 0;
         menuCanvas.alpha = 1;
         menuCanvas.interactable = true;
         menuCanvas.blocksRaycasts = true;
@@ -48,6 +49,7 @@ public class UIController : MonoBehaviour {
 
     public void closeMenu()
     {
+        Time.timeScale = 1;
         menuCanvas.alpha = 0;
         menuCanvas.interactable = false;
         menuCanvas.blocksRaycasts = false;

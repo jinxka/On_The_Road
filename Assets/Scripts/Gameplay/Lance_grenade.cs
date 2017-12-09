@@ -45,10 +45,9 @@ public class Lance_grenade : MonoBehaviour {
         gunParticles.Play(); */
         nextFire = Time.time + fireRate;
 
-        Rigidbody bullet = null;
-        bullet = Instantiate(grenadeCasing);
-        bullet.transform.rotation = transform.rotation;
-        bullet.transform.position = transform.position;
-        bullet.velocity = transform.TransformDirection(new Vector3(0,0,1) * ejectSpeed);
+        Rigidbody grenade = null;
+        grenade = Instantiate(grenadeCasing, transform.position, transform.rotation);
+        grenade.velocity = transform.TransformDirection(new Vector3(0,0,1) * ejectSpeed);
+        grenade.transform.Rotate(Vector3.right * 180);
     }
 }
