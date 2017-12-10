@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour {
 
     public CanvasGroup menuCanvas;
     public Button menuButton;
+	public GameObject mapPanel;
     public Camera cam;
     public Canvas UiCanvas;
     [SerializeField]
@@ -19,6 +20,7 @@ public class UIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         playerShooting = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Tir_normal>();
+		mapPanel.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -28,6 +30,11 @@ public class UIController : MonoBehaviour {
                 openMenu();
             else
                 closeMenu();
+		}else if (Input.GetKey (KeyCode.Tab)) {
+			if (mapPanel.activeSelf == false)
+				mapPanel.SetActive (true);
+			else
+				mapPanel.SetActive (false);
 		}
         ammoSlider.value = playerShooting.clip;
         ammoIndicator.text = playerShooting.clip.ToString();
