@@ -30,11 +30,12 @@ public class UIController : MonoBehaviour {
                 openMenu();
             else
                 closeMenu();
-		}else if (Input.GetKey (KeyCode.Tab)) {
+		} else if (Input.GetKeyDown(KeyCode.Tab))
+		{
 			if (mapPanel.activeSelf == false)
-				mapPanel.SetActive (true);
+				mapPanel.SetActive(true);
 			else
-				mapPanel.SetActive (false);
+				mapPanel.SetActive(false);
 		}
         ammoSlider.value = playerShooting.clip;
         ammoIndicator.text = playerShooting.clip.ToString();
