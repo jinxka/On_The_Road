@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class EnemyRangedMovement : MonoBehaviour
 {
     Animator anim;
-    GameObject player;
+    Transform player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
@@ -21,23 +22,29 @@ public class EnemyRangedMovement : MonoBehaviour
     private float localDirectionX;
     private Vector3 lastPosition;
 	private bool Aggro = false;
+    private float timer;
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        timer = Time.time;
+    }
 
     void FixedUpdate()
     {
-		if (Aggro && enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
+
+        if (Aggro && enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
         {
             nav.updatePosition = true;
-            anim.SetTrigger(animRun);
+            anim.SetBool(animRun, true);
 
             if (retreat && !isMelee)
             {
@@ -46,7 +53,8 @@ public class EnemyRangedMovement : MonoBehaviour
             }
             else
             {
-                nav.SetDestination(player.transform.position);
+                if (timer + 1F < Time.time)
+                    nav.SetDestination(player.position);
             }
         }
         else
