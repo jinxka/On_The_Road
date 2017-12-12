@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     UnityEngine.AI.NavMeshAgent nav;
     private bool Aggro = false;
 	public bool dontMove = false;
+    public string animRun;
 
     void Awake ()
     {
@@ -31,11 +32,13 @@ public class EnemyMovement : MonoBehaviour
 			return;
         if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && Aggro)
         {
+            anim.SetBool(animRun, true);
             nav.updatePosition = true;
             nav.SetDestination(player.position);
         }
         else
         {
+            anim.SetBool(animRun, false);
             nav.updatePosition = false;
         }
     }

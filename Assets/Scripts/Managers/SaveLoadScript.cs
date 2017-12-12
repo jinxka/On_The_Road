@@ -7,13 +7,8 @@ using System.IO;
 using UnityEngine.SceneManagement;
 
 public class SaveLoadScript : MonoBehaviour {
-	private SceneLoading sceneLoading;
 	private string baseName = "saveFile_";
 	private string FileName = "saveFile_";
-	// Use this for initialization
-	void Start () {
-		sceneLoading = this.GetComponent<SceneLoading> ();
-	}
 
 	public void save (int nbrSave = 0) {
 		Debug.Log("Save start");
@@ -25,9 +20,9 @@ public class SaveLoadScript : MonoBehaviour {
 		SaveManager saver = new SaveManager ();
 		saver.nbrSave = nbrSave;
 		saver.scene = SceneManager.GetActiveScene ().name;
-		saver.modified = DateTime.Now; 
-
-		binary.Serialize (fStream, saver);
+		saver.modified = DateTime.Now;
+        Debug.Log("modified = " + saver.modified);
+        binary.Serialize (fStream, saver);
 		fStream.Close ();
 		Debug.Log("Game saved");
 	}
@@ -44,7 +39,7 @@ public class SaveLoadScript : MonoBehaviour {
 			Debug.Log ("Scene = " + saver.scene);
 			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
-			sceneLoading.loadScene(saver.scene);
+            SceneLoading.Instance.loadScene(saver.scene);
 		}
 		Debug.Log("Load over");
 	}

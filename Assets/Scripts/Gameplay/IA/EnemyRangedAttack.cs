@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyRangedAttack : MonoBehaviour {
     public float timeBetweenAttacks = 10f;
     public int attackDamage = 10;
+    public string animAttack;
 
     Animator anim;
     GameObject player;
@@ -37,7 +38,7 @@ public class EnemyRangedAttack : MonoBehaviour {
         melee = enemyRangedMovement.getIsMelee();
         if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0 && !retreat)
         {
-           Attack();
+            StartCoroutine(Attack());
         }
 
         if (!playerInRange || retreat)
@@ -51,16 +52,17 @@ public class EnemyRangedAttack : MonoBehaviour {
         }
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
         timer = 0f;
-
         if (playerHealth.currentHealth > 0)
         {
-            anim.SetTrigger("Attack");
+            anim.SetTrigger(animAttack);
+            yield return new WaitForSeconds(0.5f);
             shoot();
         }
     }
+
 
     public void shoot()
     {/*

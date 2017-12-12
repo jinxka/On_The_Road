@@ -45,6 +45,8 @@ public class EnemyHealth : MonoBehaviour
 
     public bool isZombie = false;
     public bool isBoss = false;
+    public string animDeath;
+
     private void Start()
     {
         inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
@@ -107,7 +109,7 @@ public class EnemyHealth : MonoBehaviour
         healthCanvas.enabled = false;       //new
         capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger ("Dead");
+        anim.SetTrigger (animDeath);
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();

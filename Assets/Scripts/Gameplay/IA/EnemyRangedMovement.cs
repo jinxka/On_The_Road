@@ -12,6 +12,7 @@ public class EnemyRangedMovement : MonoBehaviour
     bool playerInRange = false;
     bool retreat = false;
     public bool isMelee = false;
+    public string animRun;
 
 
     private Vector3 direction;
@@ -36,6 +37,7 @@ public class EnemyRangedMovement : MonoBehaviour
 		if (Aggro && enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && (!playerInRange || retreat ))
         {
             nav.updatePosition = true;
+            anim.SetTrigger(animRun);
 
             if (retreat && !isMelee)
             {
