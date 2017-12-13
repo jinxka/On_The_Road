@@ -33,7 +33,6 @@ public class Script_balle : MonoBehaviour
 
     public void setDmg(int dmg)
     {
-        Debug.Log("dameged = " + dmg);
         damagePerShot = dmg;
     }
 }

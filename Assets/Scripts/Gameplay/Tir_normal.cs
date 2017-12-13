@@ -101,7 +101,6 @@ public class Tir_normal : MonoBehaviour
         bullet.transform.Rotate(Vector3.right * 90);
         if ((damageBuff != null) && (damageBuff.buffDegats))
         {
-            Debug.Log("BUFFDEGATS UP!");
             bullet.GetComponent<Script_balle>().setDmg(BulletDmg * damageBuff.damageX);
         }
         else
