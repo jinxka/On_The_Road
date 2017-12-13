@@ -27,6 +27,7 @@ public class EnemyRangedAttack : MonoBehaviour {
         enemyHealth = GetComponentInParent<EnemyHealth>();
         enemyRangedMovement = GetComponentInParent<EnemyRangedMovement>();
         anim = GetComponentInParent<Animator>();
+        timer = timeBetweenAttacks + 1F;
     }
 
     void FixedUpdate()

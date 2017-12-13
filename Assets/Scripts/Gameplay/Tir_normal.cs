@@ -14,8 +14,10 @@ public class Tir_normal : MonoBehaviour
     private float nextFire = 0.0F;
     private bool fullAuto = false;
 
+    [SerializeField]
+    BuffDegats damageBuff;
+
     public int BulletDmg;
-    private BuffDegats buffdmg;
 
     //Clip systeme
     public int clip;
@@ -29,7 +31,6 @@ public class Tir_normal : MonoBehaviour
 
     void Awake()
     {
-        buffdmg = GetComponentInParent<BuffDegats>();
         gunParticles = GetComponent<ParticleSystem>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
@@ -98,9 +99,10 @@ public class Tir_normal : MonoBehaviour
         Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
 		bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
         bullet.transform.Rotate(Vector3.right * 90);
-        if ((buffdmg != null) && (buffdmg.buffDegats))
+        if ((damageBuff != null) && (damageBuff.buffDegats))
         {
-            bullet.GetComponent<Script_balle>().setDmg(BulletDmg * buffdmg.damageX);
+            Debug.Log("BUFFDEGATS UP!");
+            bullet.GetComponent<Script_balle>().setDmg(BulletDmg * damageBuff.damageX);
         }
         else
         {
