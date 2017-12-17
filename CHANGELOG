@@ -1,0 +1,134 @@
+# Changelog
+
+Tous les changements notables seront documentés dans ce fichier.
+
+### A venir
+- Nouvelle zone : Zone Forêt !
+- Mise à jour graphique et fonctionnelle de l'inventaire
+- Nouveaux ennemis : sangliers des enfers !
+- Nouvelle intrigue : la Zone Colonie libérée du premier boss devient occupée par des survivants 
+
+
+## [0.5.0] - 2017-12-11
+### Ajouté
+- Nouvelles cartes pour les différentes zones
+- Ajout de décoration et bâtiments dans toutes les zones
+- Nouveaux modèles d'ennemis : chauve-souris démoniaque et sanglier des enfers !
+- Des ennemis occupent à présent les espaces jusqu'à maintenant vides
+- Indication visuelle plus claire quand un butin au sol est à portée d'être ramassé
+- Ajout d'une barre de boutons pour ouvrir l'inventaire, la fiche de personnage, la carte du monde et le journal de quêtes
+
+### Changé
+- Les ennemis apparaissent maintenant en moins grand nombre dans la Zone d'Introduction
+- Nouveau modèle de butin au sol quand un ennemi meurt
+
+### Corrigé
+- Résolu un bug qui empechait certains boutons de fonctionner dans le menu du jeu
+
+## [0.4.1] - 2017-11-16
+### Ajouté
+- Sauvegarde en jeu et chargement d'une partie dans le menu d'accueil
+
+### Corrigé
+- Correction de bugs mineurs dans l'interface en jeu et dans le système de quêtes
+- Certains ennemis invicibles peuvent maintenant être abattus !
+
+
+## [0.4.0] - 2017-11-06
+### Ajouté
+- Ecran de chargement avec barre de progression entre les différentes scènes
+- Persistence de l'inventaire et du journal de quêtes entre les différentes scènes
+- Nouvel espace à explorer dans la Zone d'Introduction
+
+### Changé
+- On ne peut désormais plus tirer en cliquant sur un élément d'interface
+
+### Corrigé
+- Correction de bugs mineurs dans l'interface en jeu et dans le menu d'accueil
+- Optimisation de certains scripts d'interface
+- Résolution d'erreurs diverses
+
+
+## [0.3.2] - 2017-10-18
+### Ajouté
+- Nouveaux espaces à explorer dans la Zone d'Introduction
+- Ajout de bâtiment et décorations dans la Zone Colonie
+
+### Changé
+- Remplacement de l'ancienne icône de personnage
+- Corrections de bugs mineurs dans l'interface
+
+
+## [0.3.1] - 2017-09-29
+### Ajouté
+- Divers ajouts de décoration sur les Zone d'Introduction et Zone Tunnel
+- Ajout d'une carte générale du jeu 
+- Ajout d'icônes d'améliorations du joueur, leur temps d'effet et une bulle d'aide
+
+### Supprimé
+- Suppression d'éléments inutiles dans les répertoires du projet
+
+
+## [0.3.0] - 2017-09-11
+### Ajouté
+- Ajout de décoration dans diverses zones, ajout d'herbe et végétation
+- Ajout d'une carte du niveau actuel parcouru par le joueur
+
+### Corrigé
+- Les éléments de décor des différentes zones ont maintenant une collision
+- Résolu un bug qui empechait certains ennemis de disparaître après leur mort
+
+
+## [0.2.1] - 2017-07-18
+### Ajouté
+- Fenêtre de quêtes, bouton pour traquer une quête, affichage rapide des quêtes, cacher une quête
+- Plusieurs quêtes ajoutées
+
+### Corrigé
+- Correction de bugs mineurs sur l'inventaire
+
+
+## [0.2.0] - 2017-06-30
+### Ajouté
+- Nouveaux bâtiments et objets dans la Zone d'Introduction
+- Zone Tunnel et Zone Colonie modélisées
+
+### Changé
+- Mise à jour et optimisation de certains modèles dans la Zone d'Introduction
+
+### Corrigé
+- Optimisations du menu d'accueil
+- Optimisations du comportement des ennemis
+
+
+## [0.1.3] - 2017-06-14
+### Ajouté
+- Les ennemis ont maintenant une portée d'aggression et peuvent être liés les uns aux autres
+- Nouveaux sorts : champ de force, mine, amélioration de dégats et soin
+- Certains ennemis ont maintenant un comportement de fuite face au joueur
+
+### Corrigé
+- Les ennemis contournent à présent les obstacles pour attaquer le joueur
+
+
+## [0.1.2] - 2017-06-10
+### Ajouté
+- Nouvelle fenêtre de compétences
+- Nouvelle fenêtre d'aide pour les compétences
+- Nouvelle fenêtre de caractéristiques du personnage
+- Les ennemis font maintenant tomber du butin au sol après leur mort
+
+### Changé
+- Mises à jour d'interface mineures
+- Minimap améliorée
+
+### Corrigé
+- Le bug qui changeait la taille des objets dans l'inventaire a été corrigé
+
+
+
+## [0.1.1] - 2017-05-29
+### Ajouté
+- Nouveaux effets pour les sorts
+- Nouveau modèles et animations pour le personnage principal
+- Ajouts de nouveaux modèles pour peupler les scènes
