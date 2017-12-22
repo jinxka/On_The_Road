@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Script_explosion : MonoBehaviour {
-    public float timer = 2F;
     public int damageExplosion = 100;
     public GameObject exploEffect;
 

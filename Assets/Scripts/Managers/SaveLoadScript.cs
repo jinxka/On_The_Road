@@ -21,7 +21,10 @@ public class SaveLoadScript : MonoBehaviour {
 		saver.nbrSave = nbrSave;
 		saver.scene = SceneManager.GetActiveScene ().name;
 		saver.modified = DateTime.Now;
+        saver.currentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth;
         Debug.Log("modified = " + saver.modified);
+        Debug.Log("currentHealth = " + saver.currentHealth);
+        Debug.Log("Scene = " + saver.scene);
         binary.Serialize (fStream, saver);
 		fStream.Close ();
 		Debug.Log("Game saved");
@@ -40,7 +43,8 @@ public class SaveLoadScript : MonoBehaviour {
 			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
             SceneLoading.Instance.loadScene(saver.scene);
-		}
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth = saver.currentHealth;
+        }
 		Debug.Log("Load over");
 	}
 		
@@ -51,4 +55,5 @@ class SaveManager {
 	public int nbrSave;
 	public string scene;
 	public DateTime modified;
+    public float currentHealth;
 }

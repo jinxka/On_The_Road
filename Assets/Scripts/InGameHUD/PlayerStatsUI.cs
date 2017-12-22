@@ -16,7 +16,7 @@ public class PlayerStatsUI : MonoBehaviour {
             "\nAttacks per Second : " + (Mathf.Round((1 / playerShooting.fireRate) * 100f) / 100f) +
             "\nDamage per Second : " + (Mathf.Round((playerShooting.BulletDmg/ playerShooting.fireRate) * 100f) / 100f) +
             "\n" +
-            "\nMaximum Health : " + playerHealth.startingHealth +
+            "\nMaximum Health : " + playerHealth.maxHealth +
             "\nArmor : " + playerHealth.startingArmor + 
             "\n" +
             "\nMovement Speed : " + playerMovement.speed + "%";

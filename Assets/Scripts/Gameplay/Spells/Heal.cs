@@ -27,10 +27,10 @@ public class Heal : MonoBehaviour {
         if (playerHealth == null)
             setVariables();
         heal_dust.Play();
-        if ((playerHealth.currentHealth + healPower) <= playerHealth.startingHealth)
+        if ((playerHealth.currentHealth + healPower) <= playerHealth.maxHealth)
             playerHealth.currentHealth = playerHealth.currentHealth + healPower;
         else
-            playerHealth.currentHealth = playerHealth.startingHealth;
+            playerHealth.currentHealth = playerHealth.maxHealth;
         playerHealth.SetHealthUI();
  
         currentTime = cooldown;

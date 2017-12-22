@@ -186,8 +186,8 @@ public class PlayerInventory : MonoBehaviour
         {
             if (item.itemAttributes[i].attributeName == "Health")
             {
-                if ((playerHealth.currentHealth + item.itemAttributes[i].attributeValue) > playerHealth.startingHealth)
-                    playerHealth.currentHealth = playerHealth.startingHealth;
+                if ((playerHealth.currentHealth + item.itemAttributes[i].attributeValue) > playerHealth.maxHealth)
+                    playerHealth.currentHealth = playerHealth.maxHealth;
                 else
                 {
                     playerHealth.currentHealth += item.itemAttributes[i].attributeValue;
@@ -213,7 +213,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-               playerHealth.startingHealth += item.itemAttributes[i].attributeValue;
+               playerHealth.maxHealth += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
@@ -228,7 +228,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                playerHealth.startingHealth -= item.itemAttributes[i].attributeValue;
+                playerHealth.maxHealth -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 playerHealth.startingArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")

@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 using Assets.Scripts.Others;
 using System.Collections.Generic;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth pHealth;
 
-    public float startingHealth = 100f;                 
-    public float currentHealth;
+    public float maxHealth = 100f;                 
+    public float currentHealth = 100f;
     public float startingArmor = 10f;
     public float armor;
     
@@ -46,7 +47,6 @@ public class PlayerHealth : MonoBehaviour
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
         playerShooting = GetComponentInChildren <PlayerShooting> ();
-        currentHealth = startingHealth;
         nb_quests = 0;
         SetHealthUI();      //new
     }
@@ -96,11 +96,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void SetHealthUI() //new
     {
-        
-        healthSlider.value = currentHealth;
-
-        
-        FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / startingHealth);
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+            FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / maxHealth);
+        }
     }
 
     public void ForceField(bool isActive)
