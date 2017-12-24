@@ -23,7 +23,7 @@ public class SpellPanel : MonoBehaviour {
             heal.UseSpell();
         if (Input.GetKeyDown("a"))
             damageBuff.UseSpell();
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("space"))
            sprint.UseSpell();
         if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
             rCA.UseSpell();
