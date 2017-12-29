@@ -95,7 +95,7 @@ public class LootBox : MonoBehaviour {
             itemDatabase = (ItemDataBaseList)Resources.Load("ItemDatabase");
     }
 
-    void Update()
+    void FixedUpdate()
     {
 
         float distance = Vector3.Distance(this.gameObject.transform.position, player.transform.position);

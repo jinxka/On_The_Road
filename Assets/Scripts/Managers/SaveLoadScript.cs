@@ -9,8 +9,9 @@ using UnityEngine.SceneManagement;
 public class SaveLoadScript : MonoBehaviour {
 	private string baseName = "saveFile_";
 	private string FileName = "saveFile_";
+    private questManager questManager;
 
-	public void save (int nbrSave = 0) {
+    public void save (int nbrSave = 0) {
 		Debug.Log("Save start");
 		FileName = baseName + nbrSave + ".otr";
 		Debug.Log("FileName = " + FileName);
@@ -22,6 +23,7 @@ public class SaveLoadScript : MonoBehaviour {
 		saver.scene = SceneManager.GetActiveScene ().name;
 		saver.modified = DateTime.Now;
         saver.currentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth;
+        saver.questDatabase = (ItemDataBaseList)Resources.Load("QuestDatabase");
         Debug.Log("modified = " + saver.modified);
         Debug.Log("currentHealth = " + saver.currentHealth);
         Debug.Log("Scene = " + saver.scene);
@@ -39,7 +41,8 @@ public class SaveLoadScript : MonoBehaviour {
 			BinaryFormatter binary = new BinaryFormatter ();
 			FileStream fStream = File.Open (Application.persistentDataPath + FileName, FileMode.Open);
 			SaveManager saver = (SaveManager)binary.Deserialize (fStream);
-			Debug.Log ("Scene = " + saver.scene);
+
+            Debug.Log ("Scene = " + saver.scene);
 			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
             SceneLoading.Instance.loadScene(saver.scene);
@@ -47,6 +50,21 @@ public class SaveLoadScript : MonoBehaviour {
         }
 		Debug.Log("Load over");
 	}
+
+    void updateQuest()
+    {
+        for (int j = 0; j < questManager.ItemsInInventory.Count; j++)
+        {
+            if (questManager.ItemsInInventory[j].itemID == 1)
+            {
+                if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+                    questManager.ItemsInInventory[j].itemValue += 1;
+                else
+                    questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+            }
+
+        }
+    }
 		
 }
 
@@ -56,4 +74,6 @@ class SaveManager {
 	public string scene;
 	public DateTime modified;
     public float currentHealth;
+    [SerializeField]
+    public ItemDataBaseList questDatabase;
 }

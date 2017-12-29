@@ -162,7 +162,7 @@ public class EnemyHealth : MonoBehaviour
         if (itemsForLootBox.Count == 0)
             return;
         Vector3 posLootBox = transform.position;
-        posLootBox.y = 0.5f;
+        posLootBox.y = 0f;
         GameObject lootBox = Instantiate(LootBox, posLootBox, transform.rotation); ;
         LootBox sI = LootBox.GetComponent<LootBox>();
         sI.storageItems.Clear();
