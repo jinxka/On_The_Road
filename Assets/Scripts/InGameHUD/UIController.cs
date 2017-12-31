@@ -8,22 +8,22 @@ public class UIController : MonoBehaviour {
     public CanvasGroup menuCanvas;
     public Button menuButton;
 	public GameObject mapPanel;
-    public Camera cam;
+    Camera cam;
     public Canvas UiCanvas;
 	public CanvasGroup worldMapCanvas;
     [SerializeField]
     Slider ammoSlider;
     [SerializeField]
     Text ammoIndicator;
-    [SerializeField]
     Tir_normal playerShooting;
 
 	// Use this for initialization
 	void Start () {
-        playerShooting = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Tir_normal>();
+        playerShooting = GameObject.FindGameObjectWithTag("Shooter").GetComponent<Tir_normal>();
 		mapPanel.SetActive (false);
+        cam = Camera.main;
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
