@@ -217,6 +217,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
         {
             itemObj.transform.SetParent(transform, false);
             itemObj.transform.localPosition = Vector3.zero;
+            itemObj.transform.SetAsFirstSibling();
             DragAndDropItem item = itemObj.GetComponent<DragAndDropItem>();
             if (item != null)
             {
@@ -251,6 +252,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 // Place first item into second cell
                 firstItem.transform.SetParent(secondCell.transform, false);
                 firstItem.transform.localPosition = Vector3.zero;
+                firstItem.transform.SetAsFirstSibling();
                 secondCell.SetBackgroundState(true);
             }
             if (secondItem != null)
@@ -258,6 +260,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 // Place second item into first cell
                 secondItem.transform.SetParent(firstCell.transform, false);
                 secondItem.transform.localPosition = Vector3.zero;
+                secondItem.transform.SetAsFirstSibling();
                 firstCell.SetBackgroundState(true);
             }
         }
