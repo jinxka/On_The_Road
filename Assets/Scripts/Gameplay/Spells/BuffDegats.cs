@@ -18,6 +18,8 @@ public class BuffDegats : MonoBehaviour {
 
     public void UseSpell()
     {
+		AudioManager.instance.Play("DamageBuff");
+	
         if (onCooldown)
             return;
         if (Aura == null)
