@@ -109,10 +109,11 @@ public class EnemyHealth : MonoBehaviour
         healthCanvas.enabled = false;       //new
         capsuleCollider.isTrigger = true;
 
+		AudioManager.instance.Play("ZombieDeath");
         anim.SetTrigger (animDeath);
 
-        enemyAudio.clip = deathClip;
-        enemyAudio.Play ();
+        //enemyAudio.clip = deathClip;
+        //enemyAudio.Play ();
         gameObject.layer = 8;
         if (Random.Range(0, 100) < DropRate)
             CreateLootBox();

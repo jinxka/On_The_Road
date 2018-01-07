@@ -43,6 +43,7 @@ public class Lance_grenade : MonoBehaviour {
         gunLight.enabled = true;
         gunParticles.Stop();
         gunParticles.Play(); */
+		AudioManager.instance.Play("GrenadeShoot");
         nextFire = Time.time + fireRate;
 
         Rigidbody grenade = null;

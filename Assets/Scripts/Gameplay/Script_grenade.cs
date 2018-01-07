@@ -14,6 +14,7 @@ public class Script_grenade : MonoBehaviour
 
     void Explose()
     {
+		AudioManager.instance.Play("GrenadeExplosion");
         Instantiate(Explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }

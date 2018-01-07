@@ -55,6 +55,7 @@ public class EnemyAttack : MonoBehaviour
 		if(playerHealth.currentHealth > 0)
 		{
 			anim.SetTrigger("Attack");
+			AudioManager.instance.Play("ZombieAttack");
 			IsAttacking = true;
 			yield return new WaitForSeconds (timer);
 			if (playerInRange)

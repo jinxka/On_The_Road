@@ -62,6 +62,7 @@ public class Tir_normal : MonoBehaviour
 
     void reload()
     {
+		AudioManager.instance.Play("AkReload");
         int reload = 0;
         reload = clipSize - clip;
         if (reload > ammoLeft)
@@ -83,8 +84,9 @@ public class Tir_normal : MonoBehaviour
 
     public void shoot()
     {
-        gunAudio.Play();
-        gunLight.enabled = true;
+        //gunAudio.Play();
+		AudioManager.instance.Play("AkShoot");
+		gunLight.enabled = true;
         gunParticles.Stop();
         gunParticles.Play();
 

@@ -56,10 +56,12 @@ public class Boss1Attack1 : MonoBehaviour {
 		pattern = Random.Range(0, 10)%2;
 		if (pattern == 1){
 			anim.SetTrigger("Attack01");
+			AudioManager.instance.Play("BossAttack1");
 			yield return new WaitForSeconds (0.5f);
 		}
 		else{
 			anim.SetTrigger("Attack02");
+			AudioManager.instance.Play("BossAttack2");
 			yield return new WaitForSeconds (1);
 		}
         if (playerHealth.currentHealth > 0)
