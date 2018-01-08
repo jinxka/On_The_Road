@@ -15,6 +15,8 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     [Header("Item Characteristics")]
     public itemTypes itemType;
     public enum itemTypes { weapon, head, shoulders, legs, boots, gloves };
+    [SerializeField]
+    public List<NewItemAttribute> itemAttributes = new List<NewItemAttribute>();
 
     NewInventoryTooltip inventoryTooltip;
     NewInventory inventory;

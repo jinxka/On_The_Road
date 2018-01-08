@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MapObject
 {
@@ -11,12 +12,24 @@ public class MapObject
 
 public class MiniMapController : MonoBehaviour {
 
+    [HideInInspector]
 	public Transform playerPos;
-	public Camera mapCamera;
+    [HideInInspector]
+    public Camera mapCamera;
 
 	public static List<MapObject> mapObjects = new List<MapObject>();
 
-	public static void RegisterMapObject(GameObject o, Image i)
+    [SerializeField]
+    Image mapImage;
+
+    void Start()
+    {
+        mapImage.material = Resources.Load("Materials/" + SceneManager.GetActiveScene().name) as Material;
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        mapCamera = GameObject.FindGameObjectWithTag("MapCamera").GetComponent<Camera>();
+    }
+
+    public static void RegisterMapObject(GameObject o, Image i)
 	{
 		Image image = Instantiate(i);
 		mapObjects.Add(new MapObject(){owner = o, icon = image});
