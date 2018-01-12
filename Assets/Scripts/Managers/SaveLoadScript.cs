@@ -23,7 +23,7 @@ public class SaveLoadScript : MonoBehaviour {
 		saver.scene = SceneManager.GetActiveScene ().name;
 		saver.modified = DateTime.Now;
         saver.currentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().currentHealth;
-        saver.questDatabase = (ItemDataBaseList)Resources.Load("QuestDatabase");
+//        saver.test = Test.Instance.gameObject;
         Debug.Log("modified = " + saver.modified);
         Debug.Log("currentHealth = " + saver.currentHealth);
         Debug.Log("Scene = " + saver.scene);
@@ -41,7 +41,7 @@ public class SaveLoadScript : MonoBehaviour {
 			BinaryFormatter binary = new BinaryFormatter ();
 			FileStream fStream = File.Open (Application.persistentDataPath + FileName, FileMode.Open);
 			SaveManager saver = (SaveManager)binary.Deserialize (fStream);
-
+// GameObject test = Instantiate(saver.test) as GameObject;
             Debug.Log ("Scene = " + saver.scene);
 			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
@@ -74,6 +74,5 @@ class SaveManager {
 	public string scene;
 	public DateTime modified;
     public float currentHealth;
-    [SerializeField]
-    public ItemDataBaseList questDatabase;
+    public GameObject test;
 }
