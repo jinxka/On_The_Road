@@ -3,25 +3,6 @@ using System.Collections;
 
 public class QuestLogController : MonoBehaviour {
 
-    #region UnityCompliant Singleton
-    public static QuestLogController Instance
-    {
-        get;
-        private set;
-    }
-
-    public virtual void Awake()
-    {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-            return;
-        }
-        Destroy(gameObject);
-    }
-    #endregion
-
     public GameObject questLogPanel;
     public CanvasGroup questLogCanvas;
 

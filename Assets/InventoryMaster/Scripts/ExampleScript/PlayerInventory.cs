@@ -159,8 +159,6 @@ public class PlayerInventory : MonoBehaviour
         inventory = InventoryPersistence.Instance.inventory;
         craftSystem = InventoryPersistence.Instance.craftSystem;
         characterSystem = InventoryPersistence.Instance.characterSystem;
-        questLog = QuestLogController.Instance.gameObject;
-        questLogPanel = QuestLogController.Instance.questLogPanel;
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -254,15 +252,7 @@ public class PlayerInventory : MonoBehaviour
                 characterSystemInventory.closeInventory();
             }
         }
-
-        if (Input.GetKeyDown(inputManagerDatabase.QuestPanelKeyCode))
-        {
-            if (QuestLogController.Instance.questLogCanvas.alpha == 0)
-                QuestLogController.Instance.openQuestLog();
-            else
-                QuestLogController.Instance.closeQuestLog();
-        }
-
+      
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
         {
             if (!inventory.activeSelf)

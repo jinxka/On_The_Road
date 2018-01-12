@@ -10,17 +10,9 @@ public class ShortCutIconsController : MonoBehaviour {
     [SerializeField]
     Text tooltipText;
 
-    public void onInventoryClick()
+    public void TogglePanel(CanvasGroup panel)
     {
-        
-    }
-
-    public void onQuestClick()
-    {
-        if (QuestLogController.Instance.questLogCanvas.alpha == 0)
-            QuestLogController.Instance.openQuestLog();
-        else
-            QuestLogController.Instance.closeQuestLog();
+        GUIManager.Instance.TogglePanel(panel);
     }
 
     public void showTooltip(string iconName)
