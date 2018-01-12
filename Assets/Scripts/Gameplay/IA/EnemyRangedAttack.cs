@@ -73,6 +73,8 @@ public class EnemyRangedAttack : MonoBehaviour {
         gunLight.enabled = true;
         gunParticles.Stop();
         gunParticles.Play();*/
+		AudioManager.instance.Play("BatAttack");
+
         Rigidbody bullet = null;
 
         bullet = Instantiate(bulletCasing);
