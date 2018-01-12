@@ -44,9 +44,13 @@ public class Tir_normal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		if ((clip >= 1) && Input.GetButton ("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject ()) {
-			shoot ();
-			clip = clip - 1;
+		
+		if ( Input.GetButton ("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject ()) {
+			if (clip >= 1) {
+				shoot ();
+				clip = clip - 1;
+			} else
+				AudioManager.instance.Play ("EmptyAk");
 		} 
 		else
 			DisableEffects ();
