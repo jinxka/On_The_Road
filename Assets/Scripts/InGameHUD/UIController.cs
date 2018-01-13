@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour {
 
     public CanvasGroup menuPanel;
-    public CanvasGroup mapPanel;
     Camera cam;
 	public CanvasGroup worldMapPanel;
     [SerializeField]
@@ -23,12 +22,10 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("escape")) {
+		if (Input.GetKeyDown(GUIManager.Instance.Menu)) {
             ToggleMenu();
 		}
-        else if (Input.GetKeyDown (KeyCode.Tab)) {
-            GUIManager.Instance.TogglePanel(mapPanel);
-		} else if (Input.GetKeyDown (KeyCode.M)) {
+		else if (Input.GetKeyDown(GUIManager.Instance.GlobalMap)) {
             GUIManager.Instance.TogglePanel(worldMapPanel);
 		}
         ammoSlider.value = playerShooting.clip;

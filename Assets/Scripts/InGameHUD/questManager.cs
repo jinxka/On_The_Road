@@ -29,11 +29,13 @@ public class questManager : MonoBehaviour {
         addQuestToLog(2);
         
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyDown(GUIManager.Instance.QuestLog))
+            GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
+    }
 
     public GameObject addQuestToLog(int id)
     {
@@ -42,6 +44,7 @@ public class questManager : MonoBehaviour {
        questOnObject.item = questDatabase.getItemByID(id);
        quest.transform.SetParent(SlotContainer.transform);
        quest.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        quest.transform.localScale = new Vector3(1, 1, 1);
        quest.transform.GetChild(1).GetComponent<Image>().sprite = questOnObject.item.itemIcon;
        questOnObject.item.indexItemInList = 0;
        updateItemList();

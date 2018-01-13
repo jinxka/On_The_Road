@@ -32,7 +32,7 @@ public class QuestOnObject : MonoBehaviour                   //Saves the Item in
 
         if (tracker == null)
             tracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
-        trackButton = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
+        trackButton = GameObject.FindGameObjectWithTag("QuestManager").transform.GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
         trackButton.onClick.AddListener(onTrackQuest);
 
     }

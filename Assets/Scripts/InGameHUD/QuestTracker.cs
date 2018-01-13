@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class QuestTracker : MonoBehaviour {
 
+    #region UnityCompliant Singleton
+    public static QuestTracker Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+    #endregion
+
     [SerializeField]
     private GameObject prefabQuest;
     [SerializeField]
-    private GameObject SlotContainer;
+    GameObject grid;
     public List<Item> questList = new List<Item>();
 
     // Use this for initialization
     void Start () {
         if (prefabQuest == null)
             prefabQuest = Resources.Load("Prefabs/Objective") as GameObject;
-        SlotContainer = transform.GetChild(3).GetChild(0).gameObject;
     }
 	
 	// Update is called once per frame
@@ -36,8 +54,9 @@ public class QuestTracker : MonoBehaviour {
             GameObject questObject = (GameObject)Instantiate(prefabQuest);
             ObjectiveOnObject objOnObject = questObject.GetComponent<ObjectiveOnObject>();
             objOnObject.item = quest;
-            questObject.transform.SetParent(SlotContainer.transform);
+            questObject.transform.SetParent(grid.transform);
             questObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            questObject.transform.localScale = new Vector3(1, 1, 1);
             updateQuestList();
             Debug.Log("Combien d'occurences ?");
         }
@@ -50,19 +69,19 @@ public class QuestTracker : MonoBehaviour {
             if (questList[i].itemID == quest.itemID)
                 questList.Remove(questList[i]);
         }
-        for (int i = 0; i < SlotContainer.transform.childCount; i++)
+        for (int i = 0; i < grid.transform.childCount; i++)
         {
-            if (SlotContainer.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item.itemID == quest.itemID)
-                Destroy(SlotContainer.transform.GetChild(i).gameObject);
+            if (grid.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item.itemID == quest.itemID)
+                Destroy(grid.transform.GetChild(i).gameObject);
         }
     }
 
     private void updateQuestList()
     {
         questList.Clear();
-        for (int i = 0; i < SlotContainer.transform.childCount; i++)
+        for (int i = 0; i < grid.transform.childCount; i++)
         {
-            questList.Add(SlotContainer.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item);
+            questList.Add(grid.transform.GetChild(i).GetComponent<ObjectiveOnObject>().item);
         }
     }   
 }
