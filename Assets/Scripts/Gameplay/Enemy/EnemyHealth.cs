@@ -47,6 +47,9 @@ public class EnemyHealth : MonoBehaviour
     public bool isBoss = false;
     public string animDeath;
 
+    [SerializeField]
+    NewLootTable lootTable;
+
     private void Start()
     {
         inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
@@ -116,7 +119,7 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.Play ();
         gameObject.layer = 8;
         if (Random.Range(0, 100) < DropRate)
-            CreateLootBox();
+            CreateNewLootBox();
 
         if (isZombie)
             this.GetComponent<ZombieQuest>().updateQuest();
@@ -142,6 +145,15 @@ public class EnemyHealth : MonoBehaviour
             healthCanvas.enabled = true;
         healthSlider.value = currentHealth;
         FillImage.color = Color.Lerp(ZeroHealthColor, FullHealthColor, currentHealth / startingHealth);
+    }
+
+    private void CreateNewLootBox()
+    {
+        Vector3 posLootBox = transform.position;
+        posLootBox.y = 0f;
+        GameObject lootBox = Instantiate(LootBox, posLootBox, transform.rotation);
+        NewLootBox nlb = lootBox.GetComponent<NewLootBox>();
+        nlb.lootboxItem = lootTable.GenerateItem();
     }
 
     private void CreateLootBox()
