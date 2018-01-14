@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidBody;
     int floorMask;
     float camRayLength = 100f;
-
+    private float acutalSpeed;
+    private float slowTime = 0;
+    private float slowDuration = 0;
     private Vector3 direction;
     private Vector3 localDirection;
     private float localDirectionZ;
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
         anim = GetComponent<Animator>();
         playerRigidBody = GetComponent<Rigidbody>();
+        acutalSpeed = speed;
     }
 
     void FixedUpdate()
@@ -32,12 +35,15 @@ public class PlayerMovement : MonoBehaviour
         Turning();
         FindVelocity();
         Animating(h, v);
+
+        if ((acutalSpeed < speed) && (Time.time - slowTime > slowDuration))
+            acutalSpeed = speed;
     }
 
     void Move (float h, float v)
     {
         movement.Set(h, 0f, v);
-        movement = movement.normalized * speed * Time.deltaTime;
+        movement = movement.normalized * acutalSpeed * Time.deltaTime;
         playerRigidBody.MovePosition(transform.position +  movement);
     }
 
@@ -72,6 +78,13 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsWalking", walking);
         anim.SetFloat("Direction_Z", localDirectionZ);
         anim.SetFloat("Direction_X", localDirectionX);
+    }
+
+    public void Slow(float slow, float slowduration)
+    {
+        acutalSpeed = slow;
+        slowTime = Time.time;
+        slowDuration = slowduration;
     }
 
     void OnTriggerEnter(Collider other)

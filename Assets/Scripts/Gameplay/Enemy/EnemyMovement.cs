@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
-    private bool Aggro = false;
+    public bool Aggro = false;
 	public bool dontMove = false;
     public string animRun;
 
@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
     {
 		if (dontMove)
 			return;
-        if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && Aggro)
+        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && Aggro && (Vector3.Distance(this.transform.position, player.transform.position) >= nav.stoppingDistance))
         {
             anim.SetBool(animRun, true);
             nav.updatePosition = true;
