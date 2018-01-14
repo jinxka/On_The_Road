@@ -18,6 +18,12 @@ public class NewInventory : MonoBehaviour {
         addItemToBackpack("Baseball Helmet");
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(GUIManager.Instance.Inventory))
+            GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
+    }
+
     public void addItemToBackpack(string name)
     {
         foreach (NewInventorySlot slot in backpackItemSlots)

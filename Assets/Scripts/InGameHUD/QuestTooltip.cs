@@ -17,6 +17,8 @@ public class QuestTooltip : MonoBehaviour {
     private Text tooltipObjText;
     [SerializeField]
     CanvasGroup questDetail;
+    [SerializeField]
+    Button trackButton;
 
 	// Update is called once per frame
 	void Update () {
@@ -26,10 +28,12 @@ public class QuestTooltip : MonoBehaviour {
 
     public void activateTooltip()
     {
+        trackButton.onClick.RemoveAllListeners();
         tooltipNameText.text = item.itemName;
         tooltipDescText.text = item.itemDesc;
         tooltipObjText.text = item.itemAttributes[0].attributeName + "         " + item.itemValue + " / " + item.itemAttributes[0].attributeValue;
         tooltipRewardText.text = item.itemAttributes[1].attributeName;
         questDetail.alpha = 1;
+        trackButton.onClick.AddListener(() => QuestTracker.Instance.trackQuest(item));
     }
 }

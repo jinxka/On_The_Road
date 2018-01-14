@@ -16,7 +16,6 @@ public class ErrorScript : MonoBehaviour {
     {
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             Instance = this;
             return;
         }
