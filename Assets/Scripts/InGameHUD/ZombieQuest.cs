@@ -11,7 +11,7 @@ public class ZombieQuest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        questTracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
-       questManager = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(0).GetComponent<questManager>();
+       questManager = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<questManager>();
        
     }
 	

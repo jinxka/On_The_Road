@@ -10,7 +10,8 @@ public class EndLevel : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
 	{
-        SceneLoading.Instance.loadScene(sceneToLoad);
+        if (other.tag == "Player")
+            SceneLoading.Instance.loadScene(sceneToLoad);
     }
 
 }

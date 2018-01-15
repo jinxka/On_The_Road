@@ -14,9 +14,11 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     [Space(10)]
     [Header("Item Characteristics")]
     public itemTypes itemType;
-    public enum itemTypes { weapon, head, shoulders, legs, boots, gloves };
+    public enum itemTypes { weapon, helmet, shoulderpads, pants, boots, gloves };
     [SerializeField]
     public List<NewItemAttribute> itemAttributes = new List<NewItemAttribute>();
+    public enum itemRarities { common, rare, epic, legendary };
+    public itemRarities itemRarity;
 
     NewInventoryTooltip inventoryTooltip;
     NewInventory inventory;

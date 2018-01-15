@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class NewInventory : MonoBehaviour {
 
+    #region UnityCompliant Singleton
+    public static NewInventory Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+    #endregion
+
     public NewInventorySlot[] equippedItemSlots;
     public NewInventorySlot[] backpackItemSlots;
 
@@ -24,7 +43,7 @@ public class NewInventory : MonoBehaviour {
             GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
     }
 
-    public void addItemToBackpack(string name)
+    public bool addItemToBackpack(string name)
     {
         foreach (NewInventorySlot slot in backpackItemSlots)
         {
@@ -35,11 +54,12 @@ public class NewInventory : MonoBehaviour {
                 item.GetComponent<RectTransform>().localPosition = Vector3.zero;
                 backpackItemList.Add(item.GetComponent<NewItem>());
                 slot.isAvailable = false;
-                break;
+                return true;
             }
             else
                 ErrorScript.Instance.DisplayErrorMessage("Inventory is full!");
         }
+        return false;
     }
 
     public void equipItem(NewItem itemToEquip)

@@ -6,8 +6,8 @@ public class EnemyAttack : MonoBehaviour
 {
 	public float timer = 2f;
     public int attackDamage = 10;
-
-	float Range = 2;
+    public string animAttack = "Attack";
+    public float Range = 2;
     Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
 
 	void IsAtRange()
 	{
-		if (Math.Sqrt ((Math.Pow (playerTransform.position.x - myTransform.position.x, 2) + (Math.Pow (playerTransform.position.z - myTransform.position.z, 2)))) <= Range)
+		if (Vector3.Distance(this.transform.position, player.transform.position) <= Range)
 			playerInRange = true;
 		else
 			playerInRange = false;
@@ -41,7 +41,8 @@ public class EnemyAttack : MonoBehaviour
 		IsAtRange ();
 		if (!IsAttacking && playerInRange && enemyHealth.currentHealth > 0)
         {
-			StartCoroutine(Attack());
+            anim.SetTrigger(animAttack);
+            StartCoroutine(Attack());
         }
 
         if(playerHealth.currentHealth <= 0)
@@ -52,17 +53,12 @@ public class EnemyAttack : MonoBehaviour
 
 	IEnumerator Attack ()
 	{
-		if(playerHealth.currentHealth > 0)
-		{
-			anim.SetTrigger("Attack");
-			AudioManager.instance.Play("ZombieAttack");
-			IsAttacking = true;
-			yield return new WaitForSeconds (timer);
-			if (playerInRange)
-				playerHealth.TakeDamage (attackDamage);
-			yield return new WaitForSeconds (0.5f);
-			IsAttacking = false;
-
-		}
+	    //AudioManager.instance.Play("ZombieAttack");
+	    IsAttacking = true;
+	    yield return new WaitForSeconds (timer);
+	    if (playerInRange)
+		    playerHealth.TakeDamage (attackDamage);
+	    yield return new WaitForSeconds (4f);
+	    IsAttacking = false;
 	}
 }
