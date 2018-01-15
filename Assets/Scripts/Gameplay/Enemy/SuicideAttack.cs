@@ -48,6 +48,7 @@ public class SuicideAttack : MonoBehaviour {
         if ((!IsAttacking && playerInRange) || enemyHealth.currentHealth <= 0)
         {
             Explose();
+			AudioManager.instance.Play("GrenadeExplosion");
         }
 
         if (playerHealth.currentHealth <= 0)
