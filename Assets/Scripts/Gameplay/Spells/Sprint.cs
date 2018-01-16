@@ -47,9 +47,9 @@ public class Sprint : MonoBehaviour {
 
     public void UseSpell()
     {
-		AudioManager.instance.Play("SpeedBuff");
         if (onCooldown)
             return;
+		AudioManager.instance.Play("SpeedBuff");
         if (playerMovement == null)
             setVariables();
         float startTime = Time.time;

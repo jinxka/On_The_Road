@@ -18,10 +18,9 @@ public class BuffDegats : MonoBehaviour {
 
     public void UseSpell()
     {
-		AudioManager.instance.Play("DamageBuff");
-	
         if (onCooldown)
             return;
+		AudioManager.instance.Play("DamageBuff");
         if (Aura == null)
             Aura = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().aura;
         float startTime = Time.time;
