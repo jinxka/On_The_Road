@@ -22,9 +22,10 @@ public class Heal : MonoBehaviour {
 
     public void UseSpell()
     {
-		AudioManager.instance.Play ("HealBuff");
+		
         if (onCooldown)
             return;
+		AudioManager.instance.Play ("HealBuff");
         if (playerHealth == null)
             setVariables();
         heal_dust.Play();
