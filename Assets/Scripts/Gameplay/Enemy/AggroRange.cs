@@ -24,7 +24,7 @@ public class AggroRange : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !activated)
+        if (other.tag == "Player" && !activated && !enemyMovement.GetAggro())
         {
            enemyMovement.SetAggro(true);
            foreach (EnemyMovement friend in friends)
