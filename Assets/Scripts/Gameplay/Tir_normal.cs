@@ -45,7 +45,7 @@ public class Tir_normal : MonoBehaviour
     void FixedUpdate()
     {
 		
-		if ( Input.GetButton ("Fire1") && (Time.time > nextFire) && !EventSystem.current.IsPointerOverGameObject ()) {
+		if ( Input.GetButton ("Fire1") && (Time.time > nextFire)) {
 			if (clip >= 1) {
 				shoot ();
 				clip = clip - 1;
