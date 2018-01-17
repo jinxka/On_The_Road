@@ -66,6 +66,7 @@ public class Charge : MonoBehaviour {
         transform.position += transform.forward * Time.deltaTime * movementSpeed;
         isCharging = true;
         isReady = false;
+		AudioManager.instance.Play("BoarAttack");
     }
 
     void OnCollisionEnter(Collision collision)
