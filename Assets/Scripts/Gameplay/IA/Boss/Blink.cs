@@ -7,13 +7,14 @@ public class Blink : MonoBehaviour {
     private float nextBlink;
     public float invTime;
     private float stopInv;
-    public GameObject[] blinkPoints;
+    public GameObject[] waypoints;
     private Transform position;
-    private GameObject blinkPoint;
+    public int waypointsId;
     private Renderer[] bossParts;
     private Canvas healthBar;
     private bool inv = false;
     private EnemyHealth health;
+    private CapsuleCollider collider;
 	public Boss1Attack1 attack;
 	GameObject player;
 	private EnemyMovement enemyMovement;
@@ -25,6 +26,8 @@ public class Blink : MonoBehaviour {
         bossParts = GetComponentsInChildren<Renderer>();
 		health = this.GetComponent<EnemyHealth>();
 		enemyMovement = GetComponentInParent<EnemyMovement>();
+        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        collider = GetComponent<CapsuleCollider>();
     }
 	
 	// Update is called once per frame
@@ -34,13 +37,14 @@ public class Blink : MonoBehaviour {
 		
 		if (Time.time > nextBlink && !attack.IsAttacking())
         {
-            blinkPoint = blinkPoints[Random.Range(0, blinkPoints.Length)];
-            position.position = blinkPoint.GetComponent<Transform>().position;
+            waypointsId = Random.Range(0, waypoints.Length); ;
+            position.position = waypoints[waypointsId].transform.position;
             nextBlink = Time.time + blinkTime + invTime;
             stopInv = Time.time + invTime;
             foreach (Renderer test in bossParts)
             {
                 test.enabled = false;
+                collider.enabled = false;
             }
             inv = true;
         }
@@ -48,6 +52,7 @@ public class Blink : MonoBehaviour {
         {
             foreach (Renderer test in bossParts)
             {
+                collider.enabled = true;
                 test.enabled = true;
             }
             inv = false;

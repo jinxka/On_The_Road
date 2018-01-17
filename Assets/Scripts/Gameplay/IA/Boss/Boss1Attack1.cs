@@ -18,7 +18,7 @@ public class Boss1Attack1 : MonoBehaviour {
     public Rigidbody bulletCasing = null;
     public int ejectSpeed = 25;
 
-	bool isAttacking = false;
+    public bool isAttacking = false;
     Blink blink;
 	private EnemyMovement enemyMovement;
 
@@ -39,7 +39,7 @@ public class Boss1Attack1 : MonoBehaviour {
 			isAttacking = false;
 			return;
 		}
-		if (!isAttacking && !blink.IsInv() && enemyHealth.currentHealth > 0)
+		if (!isAttacking && !blink.IsInv() && enemyHealth.currentHealth > 0 && (Time.time - timer >= 2F))
         {
 			StartCoroutine(Attack());
         }
@@ -78,7 +78,7 @@ public class Boss1Attack1 : MonoBehaviour {
 		}
 		bulletShot = 0;
 		isAttacking = false;
-		yield return new WaitForSeconds(0.5f);
+        timer = Time.time;
     }
 
 	public bool IsAttacking()
