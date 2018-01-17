@@ -65,7 +65,7 @@ public class SlowCharge : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && enemyMovement.GetAggro())
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(Degats);
             collision.gameObject.GetComponent<PlayerMovement>().Slow(slow, slowDuration);
