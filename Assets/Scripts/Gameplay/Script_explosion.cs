@@ -7,8 +7,11 @@ public class Script_explosion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject test =  Instantiate(exploEffect, transform.position, transform.rotation);
-        test.transform.parent = gameObject.transform;
+        if (exploEffect != null)
+        {
+            GameObject test = Instantiate(exploEffect, transform.position, transform.rotation);
+            test.transform.parent = gameObject.transform;
+        }
         Destroy(gameObject, 1F);
     }
 	
