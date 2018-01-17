@@ -35,6 +35,6 @@ public class menuScript : MonoBehaviour {
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        InventoryPersistence.Instance.hideInventory();
+        //InventoryPersistence.Instance.hideInventory();
     }
 }
