@@ -7,6 +7,7 @@ public class Melee : MonoBehaviour {
 
     IEnumerator MeleeAttack()
     {
+		AudioManager.instance.Play("MeleeAttack");
         Instantiate(meleeAttack, transform.position, transform.rotation);
         yield return null;
     }

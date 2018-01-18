@@ -99,7 +99,6 @@ public class PlayerHealth : MonoBehaviour
         playerAudio.Play ();
 
         playerMovement.enabled = false;
-        StartCoroutine(RestartLevel());
     }
 
     private IEnumerator RestartLevel ()
