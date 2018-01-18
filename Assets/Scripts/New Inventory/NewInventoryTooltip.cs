@@ -24,9 +24,12 @@ public class NewInventoryTooltip : MonoBehaviour {
 
     public void showTooltip(NewItem itemToShow)
     {
+        string description = itemToShow.itemDescription;
         itemIcon.sprite = itemToShow.itemIcon;
-        itemName.text = itemToShow.itemName;
-        itemDescription.text = itemToShow.itemDescription;
+        itemName.text = itemToShow.itemName + ", " + itemToShow.itemRarity + " " + itemToShow.itemType;
+        foreach (NewItemAttribute attribute in itemToShow.itemAttributes)
+        description += ("\n" + attribute.attributeName + ": +" + attribute.attributeValue);
+        itemDescription.text = description;
         tooltipCanvasGroup.alpha = 1;
     }
 

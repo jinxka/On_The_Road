@@ -86,7 +86,7 @@ public class MiniMapController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-        if (Input.GetKeyDown(GUIManager.Instance.LevelMap))
+        if (Input.GetKeyDown(NewInputManager.Instance.LevelMap))
             GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
 		DrawMapIcons();
 	}

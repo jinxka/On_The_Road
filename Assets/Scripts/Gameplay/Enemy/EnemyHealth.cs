@@ -153,7 +153,7 @@ public class EnemyHealth : MonoBehaviour
         posLootBox.y = 0f;
         GameObject lootBox = Instantiate(LootBox, posLootBox, transform.rotation);
         NewLootBox nlb = lootBox.GetComponent<NewLootBox>();
-        //nlb.lootboxItem = lootTable.GenerateItem();
+        nlb.lootboxItem = lootTable.GenerateItem();
     }
 
     private void CreateLootBox()

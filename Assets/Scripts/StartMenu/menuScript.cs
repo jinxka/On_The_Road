@@ -8,11 +8,6 @@ public class menuScript : MonoBehaviour {
 	[SerializeField]
 	GameObject loadPanel;
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
-    }
-
     public void onButtonHover(Image _image)
     {
         _image.enabled = true;
@@ -31,10 +26,5 @@ public class menuScript : MonoBehaviour {
     public void newGame(string sceneToLoad)
     {
         SceneLoading.Instance.loadScene(sceneToLoad);
-    }
-
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-    {
-        //InventoryPersistence.Instance.hideInventory();
     }
 }
