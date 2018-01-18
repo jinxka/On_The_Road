@@ -33,6 +33,7 @@ public class MoovableDoor : MonoBehaviour {
     {
         doorOpen = !doorOpen;
         anim.SetBool("Open", doorOpen);
+		AudioManager.instance.Play("DoorOpen");
     }
 
     private void OnTriggerEnter(Collider other)

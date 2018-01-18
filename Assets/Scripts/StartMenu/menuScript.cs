@@ -11,6 +11,8 @@ public class menuScript : MonoBehaviour {
     public void onButtonHover(Image _image)
     {
         _image.enabled = true;
+		AudioManager.instance.Play("MenuNavigation");
+
     }
 
     public void onButtonOut(Image _image)
