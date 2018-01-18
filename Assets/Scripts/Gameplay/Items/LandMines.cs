@@ -2,12 +2,20 @@
 using System.Collections;
 
 public class LandMines : MonoBehaviour {
-    public Rigidbody landMineCasing = null;
+    public GameObject landMineCasing = null;
     public float cooldown = 1F;
+
+    public void FixedUpdate()
+    {
+        if (Input.GetKeyDown("k"))
+            UseSpell();
+    }
 
     public void UseSpell()
     {
-        Instantiate(landMineCasing, transform.position, transform.rotation);
+        GameObject mine;
+        mine = Instantiate(landMineCasing, transform.position, transform.rotation);
+        mine.transform.Rotate(Vector3.right * 90);
     }
 
     public float GetCooldown()
