@@ -14,8 +14,8 @@ public class BossQuest : MonoBehaviour
     void Start()
     {
         questTracker = GameObject.FindGameObjectWithTag("Objective").GetComponent<QuestTracker>();
-        questManager = GameObject.FindGameObjectWithTag("QuestLog").transform.GetChild(0).GetChild(0).GetComponent<questManager>();
         playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        questManager = questManager.Instance;
 
     }
 

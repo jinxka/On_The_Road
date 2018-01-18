@@ -26,7 +26,6 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         inventoryTooltip = GameObject.FindGameObjectWithTag("NewInventoryTooltip").GetComponent<NewInventoryTooltip>();
-        inventory = GameObject.FindGameObjectWithTag("NewInventory").GetComponent<NewInventory>();
     }
 
     public void showItemInfo()
@@ -43,10 +42,15 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     {
         if (data.button == PointerEventData.InputButton.Right)
         {
-            if (itemType == itemTypes.consumable)
-                inventory.ConsumeItem(this);
-            else
-                inventory.EquipItem(this);
+            TriggerItem();
         }
+    }
+
+    public void TriggerItem()
+    {
+        if (itemType == itemTypes.consumable)
+            NewInventory.Instance.ConsumeItem(this);
+        else
+            NewInventory.Instance.EquipItem(this);
     }
 }

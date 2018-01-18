@@ -35,6 +35,7 @@ public class NewInputManager : MonoBehaviour {
     public KeyCode ActionBar2 = KeyCode.Alpha2;
     public KeyCode ActionBar3 = KeyCode.Alpha3;
     public KeyCode ActionBar4 = KeyCode.Alpha4;
+    public KeyCode ActionBar5 = KeyCode.T;
     public KeyCode Skill0 = KeyCode.Mouse0;
     public KeyCode Skill1 = KeyCode.Mouse1;
     public KeyCode Skill2 = KeyCode.A;

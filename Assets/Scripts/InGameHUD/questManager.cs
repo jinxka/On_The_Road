@@ -6,6 +6,25 @@ using System.Collections.Generic;
 
 public class questManager : MonoBehaviour {
 
+    #region UnityCompliant Singleton
+    public static questManager Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+#endregion
+
     [SerializeField]
     private ItemDataBaseList questDatabase;
     [SerializeField]

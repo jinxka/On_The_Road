@@ -9,10 +9,8 @@ public class keybindControls : MonoBehaviour {
     public GameObject actionBarPanel;
     public GameObject otherPanel;
     public GameObject tooltipPanel;
-    public ErrorScript errorPanel;
-    //public ActionBar actionBar;
 
-    private string[] actionBarDefaultBinds = new string[5];
+    private string[] actionBarDefaultBinds = new string[4];
 
     public keybind[] movementKeybinds;
     public keybind[] actionBarKeybinds;
@@ -27,11 +25,10 @@ public class keybindControls : MonoBehaviour {
         otherPanel.SetActive(false);
         tooltipPanel.SetActive(false);
 
-        actionBarDefaultBinds[0] = "a";
-        actionBarDefaultBinds[1] = "e";
-        actionBarDefaultBinds[2] = "r";
-        actionBarDefaultBinds[3] = "f";
-        actionBarDefaultBinds[4] = "m";
+        actionBarDefaultBinds[0] = "1";
+        actionBarDefaultBinds[1] = "2";
+        actionBarDefaultBinds[2] = "3";
+        actionBarDefaultBinds[3] = "4";
 
         
 
@@ -132,7 +129,7 @@ public class keybindControls : MonoBehaviour {
         {
             if (keyPressed == actionBarKeybinds[i].getString().ToUpper())
             {
-                errorPanel.DisplayErrorMessage("Key already bound to Action Bar action " + (i + 1));             
+                ErrorScript.Instance.DisplayErrorMessage("Key already bound to Action Bar action " + (i + 1));             
                 return (false);
             }
         }
