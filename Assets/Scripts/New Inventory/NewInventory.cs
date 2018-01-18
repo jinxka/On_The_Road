@@ -39,7 +39,7 @@ public class NewInventory : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(GUIManager.Instance.Inventory))
+        if (Input.GetKeyDown(NewInputManager.Instance.Inventory))
             GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
     }
 
@@ -62,8 +62,16 @@ public class NewInventory : MonoBehaviour {
         return false;
     }
 
-    public void equipItem(NewItem itemToEquip)
+    public void ConsumeItem(NewItem itemToConsume)
     {
+        itemToConsume.gameObject.GetComponent<NewConsumable>().Consume(itemToConsume);
+        Destroy(itemToConsume.gameObject);
+        UpdateItemList();
+    }
+
+    public void EquipItem(NewItem itemToEquip)
+    {
+        
         foreach (NewInventorySlot slot in equippedItemSlots)
         {
             if (slot.slotType.ToString() == itemToEquip.itemType.ToString())
@@ -73,20 +81,86 @@ public class NewInventory : MonoBehaviour {
                     itemToEquip.transform.SetParent(slot.gameObject.transform);
                     itemToEquip.GetComponent<RectTransform>().localPosition = Vector3.zero;
                     slot.isAvailable = false;
+                    UpdatePlayerStats(itemToEquip, true);
                     break;
                 }
                 else
                 {
                     Transform itemToMove = slot.gameObject.transform.GetChild(0);
+                    NewItem movingItem = itemToMove.GetComponent<NewItem>();
                     itemToMove.SetParent(itemToEquip.transform.parent);
                     itemToMove.GetComponent<RectTransform>().localPosition = Vector3.zero;
                     itemToEquip.transform.SetParent(slot.gameObject.transform);
                     itemToEquip.GetComponent<RectTransform>().localPosition = Vector3.zero;
+                    UpdatePlayerStats(itemToEquip, true);
+                    UpdatePlayerStats(movingItem, false);
                     break;
                 }
             }
             else
                 ErrorScript.Instance.DisplayErrorMessage("Can't equip item!");
+        }
+        UpdateItemList();
+    }
+    
+    public void AddToPlayerStats(NewItem item)
+    {
+        foreach (NewItemAttribute attribute in item.itemAttributes)
+        {
+            switch (attribute.attributeName)
+            {
+                case "Health":
+                    PlayerHealth.Instance.currentHealth += attribute.attributeValue;
+                    break;
+                case "Movement Speed":
+                    PlayerHealth.Instance.playerMovement.speed += attribute.attributeValue;
+                    break;
+                case "Damage":
+                    PlayerHealth.Instance.playerShooting.BulletDmg += attribute.attributeValue;
+                    break;
+            }
+        }
+    }
+
+    void UpdatePlayerStats(NewItem item, bool add)
+    {
+        int multiplier = (add == true) ? 1 : -1; 
+        foreach (NewItemAttribute attribute in item.itemAttributes)
+        {
+            switch (attribute.attributeName)
+            {
+                case "Health":
+                    PlayerHealth.Instance.maxHealth += (attribute.attributeValue * multiplier);
+                    break;
+                case "Movement Speed":
+                    PlayerHealth.Instance.playerMovement.speed += (attribute.attributeValue * multiplier);
+                    break;
+                case "Damage":
+                    PlayerHealth.Instance.playerShooting.BulletDmg += (attribute.attributeValue * multiplier);
+                    break;
+            }
+        }
+    }
+
+    void UpdateItemList()
+    {
+        equippedItemList.Clear();
+        backpackItemList.Clear();
+
+        foreach (NewInventorySlot equippedSlot in equippedItemSlots)
+        {
+            if (equippedSlot.transform.childCount > 0)
+            {
+                equippedItemList.Add(equippedSlot.transform.GetChild(0).GetComponent<NewItem>());
+            }
+        }
+
+        foreach (NewInventorySlot backpackSlot in backpackItemSlots)
+        {
+            if (backpackSlot.transform.childCount > 0)
+            {
+                equippedItemList.Add(backpackSlot.transform.GetChild(0).GetComponent<NewItem>());
+            }
         }
     }
 }

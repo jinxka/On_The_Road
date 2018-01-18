@@ -14,7 +14,7 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     [Space(10)]
     [Header("Item Characteristics")]
     public itemTypes itemType;
-    public enum itemTypes { weapon, helmet, shoulderpads, pants, boots, gloves };
+    public enum itemTypes { weapon, helmet, armor, pants, boots, gloves, consumable };
     [SerializeField]
     public List<NewItemAttribute> itemAttributes = new List<NewItemAttribute>();
     public enum itemRarities { common, rare, epic, legendary };
@@ -43,7 +43,10 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     {
         if (data.button == PointerEventData.InputButton.Right)
         {
-            inventory.equipItem(this);
+            if (itemType == itemTypes.consumable)
+                inventory.ConsumeItem(this);
+            else
+                inventory.EquipItem(this);
         }
     }
 }

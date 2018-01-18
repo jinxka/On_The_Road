@@ -204,6 +204,8 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
             Destroy(item.gameObject);
         }
         SetBackgroundState(false);
+        Debug.Log("Enlevé de " + name);
+        this.GetComponent<NewInventorySlot>().isAvailable = true;
     }
 
     /// <summary>
@@ -254,7 +256,10 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 firstItem.transform.localPosition = Vector3.zero;
                 firstItem.transform.SetAsFirstSibling();
                 secondCell.SetBackgroundState(true);
+                secondCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = false;
             }
+            else
+                secondCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = true;
             if (secondItem != null)
             {
                 // Place second item into first cell
@@ -262,7 +267,10 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 secondItem.transform.localPosition = Vector3.zero;
                 secondItem.transform.SetAsFirstSibling();
                 firstCell.SetBackgroundState(true);
+                firstCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = false;
             }
+            else
+                firstCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = true;
         }
     }
 

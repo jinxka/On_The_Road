@@ -33,7 +33,7 @@ public class questManager : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(GUIManager.Instance.QuestLog))
+        if (Input.GetKeyDown(NewInputManager.Instance.QuestLog))
             GUIManager.Instance.TogglePanel(GetComponent<CanvasGroup>());
     }
 

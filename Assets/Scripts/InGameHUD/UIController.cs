@@ -22,10 +22,10 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(GUIManager.Instance.Menu)) {
+		if (Input.GetKeyDown(NewInputManager.Instance.Menu)) {
             ToggleMenu();
 		}
-		else if (Input.GetKeyDown(GUIManager.Instance.GlobalMap)) {
+		else if (Input.GetKeyDown(NewInputManager.Instance.GlobalMap)) {
             GUIManager.Instance.TogglePanel(worldMapPanel);
 		}
         ammoSlider.value = playerShooting.clip;

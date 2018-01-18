@@ -8,6 +8,24 @@ using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour
 {
+    #region UnityCompliant Singleton
+    public static PlayerHealth Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(gameObject);
+    }
+    #endregion
+
     public static PlayerHealth pHealth;
 
     public float maxHealth = 100f;                 
@@ -26,10 +44,10 @@ public class PlayerHealth : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 
-    Animator anim;
-    AudioSource playerAudio;
-    PlayerMovement playerMovement;
-    PlayerShooting playerShooting;
+    public Animator anim;
+    public AudioSource playerAudio;
+    public PlayerMovement playerMovement;
+    public Tir_normal playerShooting;
     IList<Quest> quests;
     bool isDead;
     bool damaged;
@@ -41,12 +59,8 @@ public class PlayerHealth : MonoBehaviour
 
     private bool forcefield = false;
 
-    void Awake ()
+    void Start ()
     {
-        anim = GetComponent <Animator> ();
-        playerAudio = GetComponent <AudioSource> ();
-        playerMovement = GetComponent <PlayerMovement> ();
-        playerShooting = GetComponentInChildren <PlayerShooting> ();
         nb_quests = 0;
         SetHealthUI();      //new
     }

@@ -11,6 +11,11 @@ public class Melee : MonoBehaviour {
         yield return null;
     }
 
+    public void FixedUpdate()
+    {
+        if (Input.GetKeyDown("b"))
+            UseSpell();
+    }
     public void UseSpell()
     {
         MeleeAttack();

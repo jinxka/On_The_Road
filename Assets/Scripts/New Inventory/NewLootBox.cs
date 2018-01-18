@@ -54,7 +54,7 @@ public class NewLootBox : MonoBehaviour {
     public void FixedUpdate()
     {
         float distance = Vector3.Distance(this.gameObject.transform.position, player.transform.position);
-        if (distance <= distanceToOpenBox && Input.GetKeyDown(GUIManager.Instance.PickUpLoot))
+        if (distance <= distanceToOpenBox && Input.GetKeyDown(NewInputManager.Instance.PickUpLoot))
         {
             GUIManager.Instance.TogglePanel(lootboxContent);
             isDisplayed = !isDisplayed;
