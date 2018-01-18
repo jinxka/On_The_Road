@@ -111,6 +111,8 @@ public class keybindControls : MonoBehaviour {
                             actionBarKeybinds[id].setString(kcode.ToString());
                             actionBarKeybinds[id].setText(kcode.ToString());
                             PlayerPrefs.SetString("keybindAction" + id, kcode.ToString());
+                            if (NewHotBar.Instance != null)
+                                NewHotBar.Instance.UpdateTexts();
                             /*if (actionBar)
                                 actionBar.setKey(id, kcode.ToString());*/
                         }
