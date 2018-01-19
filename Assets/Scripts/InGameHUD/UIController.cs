@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     Text ammoIndicator;
     Tir_normal playerShooting;
+    private bool menuActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -34,8 +35,13 @@ public class UIController : MonoBehaviour {
 
     void ToggleMenu()
     {
+        if (menuActive)
+            Time.timeScale = 1;
+        else
+            Time.timeScale = 0;
         GUIManager.Instance.TogglePanel(menuPanel);
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = menuPanel.interactable;
+        menuActive = !menuActive;
     }
 }
 
