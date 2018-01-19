@@ -20,9 +20,8 @@ public class SaveLoadScript : MonoBehaviour {
 
 		SaveManager saver = new SaveManager ();
 		saver.nbrSave = nbrSave;
-		saver.scene = SceneManager.GetActiveScene ().name;
+		saver.scene = SceneManager.GetActiveScene().name;
 		saver.modified = DateTime.Now;
-//        saver.test = Test.Instance.gameObject;
         Debug.Log("modified = " + saver.modified);
         Debug.Log("Scene = " + saver.scene);
         binary.Serialize (fStream, saver);
@@ -39,29 +38,29 @@ public class SaveLoadScript : MonoBehaviour {
 			BinaryFormatter binary = new BinaryFormatter ();
 			FileStream fStream = File.Open (Application.persistentDataPath + FileName, FileMode.Open);
 			SaveManager saver = (SaveManager)binary.Deserialize (fStream);
-// GameObject test = Instantiate(saver.test) as GameObject;
             Debug.Log ("Scene = " + saver.scene);
 			Debug.Log ("nbrSave = " + saver.nbrSave);
 			fStream.Close ();
+            Time.timeScale = 1;
             SceneLoading.Instance.loadScene(saver.scene);
         }
 		Debug.Log("Load over");
 	}
 
-    void updateQuest()
-    {
-        for (int j = 0; j < questManager.ItemsInInventory.Count; j++)
-        {
-            if (questManager.ItemsInInventory[j].itemID == 1)
-            {
-                if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
-                    questManager.ItemsInInventory[j].itemValue += 1;
-                else
-                    questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
-            }
+    //void updateQuest()
+    //{
+    //    for (int j = 0; j < questManager.ItemsInInventory.Count; j++)
+    //    {
+    //        if (questManager.ItemsInInventory[j].itemID == 1)
+    //        {
+    //            if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
+    //                questManager.ItemsInInventory[j].itemValue += 1;
+    //            else
+    //                questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
+    //        }
 
-        }
-    }
+    //    }
+    //}
 		
 }
 

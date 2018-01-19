@@ -21,17 +21,21 @@ public class SaveLoadButtonScript : MonoBehaviour {
         foreach (int save in nbrSave)
         {
             FileName = baseName + save + ".otr";
+            Debug.Log("GROS BUG 1 ");
             if (File.Exists(Application.persistentDataPath + FileName))
             {
+                Debug.Log(Application.persistentDataPath);
                 BinaryFormatter binary = new BinaryFormatter();
                 FileStream fStream = File.Open(Application.persistentDataPath + FileName, FileMode.Open);
                 SaveManager saver = (SaveManager)binary.Deserialize(fStream);
                 Debug.Log("modified = " + saver.modified);
                 buttonText[save].text = saver.modified.ToString("dd/MM/yyyy\nHH:mm:ss");
                 fStream.Close();
+                Debug.Log("GROS BUG 3 ");
             }
             else
                 buttonText[save].text = "Empty";
+            Debug.Log("GROS BUG 4 ");
         }
     }
 }
