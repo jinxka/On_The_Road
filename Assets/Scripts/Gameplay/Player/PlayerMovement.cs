@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRigidBody;
     int floorMask;
     float camRayLength = 100f;
-    private float acutalSpeed;
+    public float actualSpeed;
     private float slowTime = 0;
     private float slowDuration = 0;
     private Vector3 direction;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
         anim = GetComponent<Animator>();
         playerRigidBody = GetComponent<Rigidbody>();
-        acutalSpeed = speed;
+        actualSpeed = speed;
     }
 
     void FixedUpdate()
@@ -36,14 +36,14 @@ public class PlayerMovement : MonoBehaviour
         FindVelocity();
         Animating(h, v);
 
-        if ((acutalSpeed < speed) && (Time.time - slowTime > slowDuration))
-            acutalSpeed = speed;
+        if ((actualSpeed < speed) && (Time.time - slowTime > slowDuration))
+            actualSpeed = speed;
     }
 
     void Move (float h, float v)
     {
         movement.Set(h, 0f, v);
-        movement = movement.normalized * acutalSpeed * Time.deltaTime;
+        movement = movement.normalized * actualSpeed * Time.deltaTime;
         playerRigidBody.MovePosition(transform.position +  movement);
     }
 
@@ -61,6 +61,16 @@ public class PlayerMovement : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
             playerRigidBody.MoveRotation(newRotation);
         }
+    }
+
+    public void setActualSpeed(float newSpeed)
+    {
+        actualSpeed = newSpeed;
+    }
+
+    public float getActualSpeed()
+    {
+        return actualSpeed;
     }
 
     private void FindVelocity()
@@ -82,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Slow(float slow, float slowduration)
     {
-        acutalSpeed = slow;
+        actualSpeed = slow;
         slowTime = Time.time;
         slowDuration = slowduration;
     }
