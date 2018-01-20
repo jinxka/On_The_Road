@@ -40,9 +40,9 @@ public class Sprint : MonoBehaviour {
 
     private IEnumerator triggerBuff()
     {
-        playerMovement.speed = playerMovement.speed + speedBonus;
+        playerMovement.setActualSpeed(playerMovement.getActualSpeed() + speedBonus);
         yield return new WaitForSeconds(Duration);
-        playerMovement.speed = oldSpeed;
+        playerMovement.setActualSpeed(oldSpeed);
     }
 
     public void UseSpell()

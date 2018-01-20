@@ -21,7 +21,6 @@ public class SaveLoadButtonScript : MonoBehaviour {
         foreach (int save in nbrSave)
         {
             FileName = baseName + save + ".otr";
-            Debug.Log("GROS BUG 1 ");
             if (File.Exists(Application.persistentDataPath + FileName))
             {
                 Debug.Log(Application.persistentDataPath);
@@ -31,11 +30,9 @@ public class SaveLoadButtonScript : MonoBehaviour {
                 Debug.Log("modified = " + saver.modified);
                 buttonText[save].text = saver.modified.ToString("dd/MM/yyyy\nHH:mm:ss");
                 fStream.Close();
-                Debug.Log("GROS BUG 3 ");
             }
             else
                 buttonText[save].text = "Empty";
-            Debug.Log("GROS BUG 4 ");
         }
     }
 }

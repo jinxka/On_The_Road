@@ -12,6 +12,7 @@ public class BuffDegats : MonoBehaviour {
     bool onCooldown = false;
 
     float currentTime;
+    private Tir_normal tirNormal;
 
     [SerializeField]
     Image cooldownImage;
@@ -47,14 +48,15 @@ public class BuffDegats : MonoBehaviour {
     private IEnumerator triggerBuff()
     {
         Aura.SetActive(true);
-        buffDegats = true;
+        tirNormal.setBulletDmg(tirNormal.BulletDmg * damageX);
         yield return new WaitForSeconds(Duration);
+        tirNormal.setBulletDmg(tirNormal.BulletDmg / damageX);
         Aura.SetActive(false);
-        buffDegats = false;
     }
 
     void Start()
     {
         Aura = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().aura;
+        tirNormal = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Tir_normal>();
     }
 }
