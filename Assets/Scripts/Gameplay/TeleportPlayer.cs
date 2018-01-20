@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TeleportPlayer : MonoBehaviour {
-
+    public float delay = 0;
     [SerializeField]
     Transform teleportLocation;
 
@@ -26,7 +26,7 @@ public class TeleportPlayer : MonoBehaviour {
         loadScreen.gameObject.SetActive(true);
         loadScreen.canvasRenderer.SetAlpha(0f);
         loadScreen.CrossFadeAlpha(0.99f, 1f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delay);
         playerLocation.position = new Vector3(teleportLocation.position.x, teleportLocation.position.y, teleportLocation.position.z);
         StartCoroutine(endTeleport());
     }
