@@ -32,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
 			return;
         if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && Aggro && (Vector3.Distance(this.transform.position, player.transform.position) >= nav.stoppingDistance))
         {
+            Turning();
             anim.SetBool(animRun, true);
             nav.updatePosition = true;
             nav.SetDestination(player.position);
@@ -42,6 +43,16 @@ public class EnemyMovement : MonoBehaviour
             nav.updatePosition = false;
         }
     }
+
+    void Turning()
+    {
+        Vector3 playerToMouse = player.transform.position - transform.position;
+        playerToMouse.y = 0f;
+
+        Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+        GetComponent<Rigidbody>().MoveRotation(newRotation);
+    }
+
 
     public void SetAggro(bool aggro)
     {
