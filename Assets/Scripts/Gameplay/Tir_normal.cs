@@ -14,9 +14,6 @@ public class Tir_normal : MonoBehaviour
     private float nextFire = 0.0F;
     private bool fullAuto = false;
 
-    [SerializeField]
-    BuffDegats damageBuff;
-
     public int BulletDmg;
 
     //Clip systeme
@@ -105,14 +102,12 @@ public class Tir_normal : MonoBehaviour
         Rigidbody bullet = Instantiate (bulletCasing, transform.position, transform.rotation);
 		bullet.velocity = transform.TransformDirection(Vector3.forward * ejectSpeed);
         bullet.transform.Rotate(Vector3.right * 90);
-        if ((damageBuff != null) && (damageBuff.buffDegats))
-        {
-            bullet.GetComponent<Script_balle>().setDmg(BulletDmg * damageBuff.damageX);
-        }
-        else
-        {
-            bullet.GetComponent<Script_balle>().setDmg(BulletDmg);
-        }
+        bullet.GetComponent<Script_balle>().setDmg(BulletDmg);
+    }
+
+    public void setBulletDmg(int dmg)
+    {
+        BulletDmg = dmg;
     }
 
 }
