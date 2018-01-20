@@ -7,11 +7,15 @@ public class TeleportPlayer : MonoBehaviour {
     public float delay = 0;
     [SerializeField]
     Transform teleportLocation;
+    
 
-    [SerializeField]
-    Image loadScreen;
+    private Transform playerLocation;
+    private Image blackScreen;
 
-    Transform playerLocation;
+    void Start()
+    {
+        blackScreen = SceneLoading.Instance.getBlackScreen();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,9 +27,9 @@ public class TeleportPlayer : MonoBehaviour {
 
     private IEnumerator startTeleport()
     {
-        loadScreen.gameObject.SetActive(true);
-        loadScreen.canvasRenderer.SetAlpha(0f);
-        loadScreen.CrossFadeAlpha(0.99f, 1f, false);
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.canvasRenderer.SetAlpha(0f);
+        blackScreen.CrossFadeAlpha(0.99f, 1f, false);
         yield return new WaitForSeconds(delay);
         playerLocation.position = new Vector3(teleportLocation.position.x, teleportLocation.position.y, teleportLocation.position.z);
         StartCoroutine(endTeleport());
@@ -34,13 +38,13 @@ public class TeleportPlayer : MonoBehaviour {
     private IEnumerator endTeleport()
     {
         yield return new WaitForSeconds(1f);
-        loadScreen.CrossFadeAlpha(0.01f, 1f, false);
+        blackScreen.CrossFadeAlpha(0.01f, 1f, false);
         StartCoroutine(disableLoadScreen());
     }
 
     private IEnumerator disableLoadScreen()
     { 
         yield return new WaitForSeconds(1f);
-        loadScreen.gameObject.SetActive(false);
+        blackScreen.gameObject.SetActive(false);
     }
 }
