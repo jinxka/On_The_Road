@@ -46,22 +46,6 @@ public class SaveLoadScript : MonoBehaviour {
         }
 		Debug.Log("Load over");
 	}
-
-    //void updateQuest()
-    //{
-    //    for (int j = 0; j < questManager.ItemsInInventory.Count; j++)
-    //    {
-    //        if (questManager.ItemsInInventory[j].itemID == 1)
-    //        {
-    //            if (questManager.ItemsInInventory[j].itemValue < questManager.ItemsInInventory[j].itemAttributes[0].attributeValue)
-    //                questManager.ItemsInInventory[j].itemValue += 1;
-    //            else
-    //                questManager.ItemsInInventory[j].itemIcon = Resources.Load("Sprites/HUD/Check-sprite-ltr-1.svg", typeof(Sprite)) as Sprite;
-    //        }
-
-    //    }
-    //}
-		
 }
 
 [Serializable]
