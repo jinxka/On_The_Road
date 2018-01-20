@@ -33,7 +33,15 @@ public class SceneLoading : MonoBehaviour {
     Text progressText;
 
     [SerializeField]
+    Image blackScreen;
+
+    [SerializeField]
     CanvasGroup progressGroup;
+
+    public Image getBlackScreen()
+    {
+        return blackScreen;
+    }
 
     public void loadScene(string sceneToLoad)
     {       
