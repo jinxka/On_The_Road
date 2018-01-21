@@ -42,6 +42,7 @@ public class NewItem : MonoBehaviour, IPointerDownHandler
     {
         if (data.button == PointerEventData.InputButton.Right)
         {
+            Debug.Log("Click");
             TriggerItem();
         }
     }

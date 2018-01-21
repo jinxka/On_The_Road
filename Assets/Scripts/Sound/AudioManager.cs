@@ -24,6 +24,16 @@ public class AudioManager : MonoBehaviour {
 			s.source.volume = s.volume;
 			s.source.pitch = s.pitch;
 			s.source.loop = s.loop;
+            if (s.name == "Theme")
+            {
+                AudioMixer mixer = Resources.Load("Music") as AudioMixer;
+                s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("Master")[0];
+            }
+            else
+            {
+                AudioMixer mixer = Resources.Load("Ambient") as AudioMixer;
+                s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("Master")[0];
+            }
 		}
 	
 	}
