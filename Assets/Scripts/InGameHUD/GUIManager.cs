@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.ImageEffects;
 
 public class GUIManager : MonoBehaviour {
 
@@ -31,6 +32,16 @@ public class GUIManager : MonoBehaviour {
 
     [HideInInspector]
     public bool allPanelsAreClosed = true;
+
+    Camera mainCamera;
+    BlurOptimized cameraBlur;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+        if (mainCamera.GetComponent<BlurOptimized>())
+            cameraBlur = mainCamera.GetComponent<BlurOptimized>();
+    }
 
     private void CheckIfPanelsAreClosed()
     {
@@ -73,5 +84,12 @@ public class GUIManager : MonoBehaviour {
     {
         foreach (CanvasGroup panel in GUIPanels)
             ClosePanel(panel);
+        CameraCheck();
+    }
+
+    public void CameraCheck()
+    {
+        if (cameraBlur)
+           cameraBlur.enabled = false;
     }
 }
