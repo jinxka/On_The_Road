@@ -25,7 +25,7 @@ public class SpellPanel : MonoBehaviour {
             damageBuff.UseSpell();
         if (Input.GetKeyDown(NewInputManager.Instance.Skill4))
            sprint.UseSpell();
-        if (Input.GetKeyDown(NewInputManager.Instance.Skill1) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetKeyDown(NewInputManager.Instance.Skill1) && !EventSystem.current.IsPointerOverGameObject() && GUIManager.Instance.allPanelsAreClosed)
             rCA.UseSpell();
     }
 }

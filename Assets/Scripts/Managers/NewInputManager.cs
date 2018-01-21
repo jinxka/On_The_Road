@@ -16,7 +16,6 @@ public class NewInputManager : MonoBehaviour {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
             return;
         }
         Destroy(gameObject);

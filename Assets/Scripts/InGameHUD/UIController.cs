@@ -24,8 +24,14 @@ public class UIController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(NewInputManager.Instance.Menu)) {
-            ToggleMenu();
-		}
+            if (GUIManager.Instance != null)
+            {
+                if (GUIManager.Instance.allPanelsAreClosed)
+                    ToggleMenu();
+                else
+                    GUIManager.Instance.CloseAllPanels();
+            }
+        }
 		else if (Input.GetKeyDown(NewInputManager.Instance.GlobalMap)) {
             GUIManager.Instance.TogglePanel(worldMapPanel);
 		}

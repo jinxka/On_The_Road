@@ -41,16 +41,21 @@ public class Tir_normal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		
-		if ( Input.GetButton ("Fire1") && (Time.time > nextFire)) {
-			if (clip >= 1) {
-				shoot ();
-				clip = clip - 1;
-			} else
-				AudioManager.instance.Play ("EmptyAk");
-		} 
-		else
-			DisableEffects ();
+        if ((!EventSystem.current.IsPointerOverGameObject()) && GUIManager.Instance.allPanelsAreClosed)
+        {
+            if (Input.GetButton("Fire1") && (Time.time > nextFire))
+            {
+                if (clip >= 1)
+                {
+                    shoot();
+                    clip = clip - 1;
+                }
+                else
+                    AudioManager.instance.Play("EmptyAk");
+            }
+            else
+                DisableEffects();
+        }
         if (Input.GetKeyDown(fireMode_Key))
         {
             fullAuto = !fullAuto;

@@ -12,7 +12,6 @@ public class menuScript : MonoBehaviour {
     {
         _image.enabled = true;
 		AudioManager.instance.Play("MenuNavigation");
-
     }
 
     public void onButtonOut(Image _image)
@@ -28,5 +27,14 @@ public class menuScript : MonoBehaviour {
     public void newGame(string sceneToLoad)
     {
         SceneLoading.Instance.loadScene(sceneToLoad);
+    }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Main_Menu")
+        {
+            if (GUIManager.Instance != null)
+                Destroy(GUIManager.Instance.gameObject);
+        }
     }
 }
