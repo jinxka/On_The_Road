@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerHealth.currentHealth <= 0)
-			StartCoroutine (TryAgain ());
+		//if (playerHealth.currentHealth <= 0)
+		//	StartCoroutine (TryAgain ());
 	}
 
 

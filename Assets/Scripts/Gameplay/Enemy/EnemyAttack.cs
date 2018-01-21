@@ -56,7 +56,7 @@ public class EnemyAttack : MonoBehaviour
 	    //AudioManager.instance.Play("ZombieAttack");
 	    IsAttacking = true;
 	    yield return new WaitForSeconds (timer);
-	    if (playerInRange)
+	    if (playerInRange && playerHealth.currentHealth > 0)
 		    playerHealth.TakeDamage (attackDamage);
 	    yield return new WaitForSeconds (1f);
 	    IsAttacking = false;

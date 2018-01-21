@@ -38,13 +38,22 @@ public class SceneLoading : MonoBehaviour {
     [SerializeField]
     CanvasGroup progressGroup;
 
+    [SerializeField]
+    GameObject LoadingScreenGroup;
+
     public Image getBlackScreen()
     {
         return blackScreen;
     }
 
+    public void loadingScreenGroup(bool active)
+    {
+        LoadingScreenGroup.SetActive(active);
+    }
+
     public void loadScene(string sceneToLoad)
-    {       
+    {
+        loadingScreenGroup(true);
         progressGroup.alpha = 1;
         StartCoroutine(waitForSceneToLoad(sceneToLoad));
     }
@@ -61,5 +70,7 @@ public class SceneLoading : MonoBehaviour {
             yield return null;
         }
         progressGroup.alpha = 0;
+        Time.timeScale = 1;
+        loadingScreenGroup(false);
     }
 }
