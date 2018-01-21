@@ -19,13 +19,16 @@ public class SpellPanel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(NewInputManager.Instance.Skill3))
-            heal.UseSpell();
-        if (Input.GetKeyDown(NewInputManager.Instance.Skill2))
-            damageBuff.UseSpell();
-        if (Input.GetKeyDown(NewInputManager.Instance.Skill4))
-           sprint.UseSpell();
-        if (Input.GetKeyDown(NewInputManager.Instance.Skill1) && !EventSystem.current.IsPointerOverGameObject() && GUIManager.Instance.allPanelsAreClosed)
-            rCA.UseSpell();
+        if (GUIManager.Instance.allPanelsAreClosed)
+        {
+            if (Input.GetKeyDown(NewInputManager.Instance.Skill3))
+                heal.UseSpell();
+            if (Input.GetKeyDown(NewInputManager.Instance.Skill2))
+                damageBuff.UseSpell();
+            if (Input.GetKeyDown(NewInputManager.Instance.Skill4))
+                sprint.UseSpell();
+            if (Input.GetKeyDown(NewInputManager.Instance.Skill1) && !EventSystem.current.IsPointerOverGameObject())
+                rCA.UseSpell();
+        }
     }
 }

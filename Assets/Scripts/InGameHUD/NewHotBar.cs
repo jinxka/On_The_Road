@@ -60,22 +60,29 @@ public class NewHotBar : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(NewInputManager.Instance.ActionBar1))
-            actionBarSlots[0].gameObject.GetComponent<NewItem>().TriggerItem();
-        if (Input.GetKeyDown(NewInputManager.Instance.ActionBar2))
-            actionBarSlots[1].gameObject.GetComponent<NewItem>().TriggerItem();
-        if (Input.GetKeyDown(NewInputManager.Instance.ActionBar3))
-            actionBarSlots[2].gameObject.GetComponent<NewItem>().TriggerItem();
-        if (Input.GetKeyDown(NewInputManager.Instance.ActionBar4))
-            actionBarSlots[3].gameObject.GetComponent<NewItem>().TriggerItem();
-        if (Input.GetKeyDown(NewInputManager.Instance.ActionBar5) && (artifactCanvas.alpha == 1) && (isTeleporting == false))
-        { }// StartCoroutine(StartTeleporting());
-        if (Input.anyKeyDown && isTeleporting)
+        if (GUIManager.Instance.allPanelsAreClosed)
         {
-            StopCoroutine(StartTeleporting());
-            isTeleporting = false;
-            progressBar.value = 0;
-            barCanvas.alpha = 0;
+            if (Input.GetKeyDown(NewInputManager.Instance.ActionBar1))
+                if (actionBarSlots[0].transform.childCount > 1)
+                    actionBarSlots[0].transform.GetChild(0).GetComponent<NewItem>().TriggerItem();
+            if (Input.GetKeyDown(NewInputManager.Instance.ActionBar2))
+                if (actionBarSlots[1].transform.childCount > 1)
+                    actionBarSlots[1].transform.GetChild(0).gameObject.GetComponent<NewItem>().TriggerItem();
+            if (Input.GetKeyDown(NewInputManager.Instance.ActionBar3))
+                if (actionBarSlots[2].transform.childCount > 1)
+                    actionBarSlots[2].transform.GetChild(0).gameObject.GetComponent<NewItem>().TriggerItem();
+            if (Input.GetKeyDown(NewInputManager.Instance.ActionBar4))
+                if (actionBarSlots[3].transform.childCount > 1)
+                    actionBarSlots[3].transform.GetChild(0).gameObject.GetComponent<NewItem>().TriggerItem();
+            if (Input.GetKeyDown(NewInputManager.Instance.ActionBar5) && (artifactCanvas.alpha == 1) && (isTeleporting == false))
+            { }// StartCoroutine(StartTeleporting());
+            if (Input.anyKeyDown && isTeleporting)
+            {
+                StopCoroutine(StartTeleporting());
+                isTeleporting = false;
+                progressBar.value = 0;
+                barCanvas.alpha = 0;
+            }
         }
     }
 
