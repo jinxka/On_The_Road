@@ -26,6 +26,7 @@ public class UIController : MonoBehaviour {
 		if (Input.GetKeyDown(NewInputManager.Instance.Menu)) {
             if (GUIManager.Instance != null)
             {
+                Time.timeScale = 1;
                 if (GUIManager.Instance.allPanelsAreClosed)
                     ToggleMenu();
                 else
@@ -41,13 +42,10 @@ public class UIController : MonoBehaviour {
 
     void ToggleMenu()
     {
-        if (menuActive)
-            Time.timeScale = 1;
-        else
-            Time.timeScale = 0;
+        Time.timeScale = 0;
+        menuActive = !menuActive;
         GUIManager.Instance.TogglePanel(menuPanel);
         (cam.GetComponent("BlurOptimized") as MonoBehaviour).enabled = menuPanel.interactable;
-        menuActive = !menuActive;
     }
 }
 
