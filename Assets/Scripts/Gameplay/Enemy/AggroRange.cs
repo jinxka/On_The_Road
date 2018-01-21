@@ -10,8 +10,6 @@ public class AggroRange : MonoBehaviour {
 
     public List<EnemyMovement> friends;
 
-	private bool activated = false;
-
 	private bool CallHelp = true; 
 
     // Use this for initialization
@@ -24,7 +22,7 @@ public class AggroRange : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !activated && !enemyMovement.GetAggro())
+        if (other.tag == "Player" && !enemyMovement.GetAggro())
         {
            enemyMovement.SetAggro(true);
            foreach (EnemyMovement friend in friends)
@@ -34,7 +32,6 @@ public class AggroRange : MonoBehaviour {
                 if (!friend.GetAggro())
                         friend.SetAggro(true);
            }
-                activated = true;
         }
     }
 }

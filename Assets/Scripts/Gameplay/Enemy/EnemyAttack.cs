@@ -58,7 +58,7 @@ public class EnemyAttack : MonoBehaviour
 	    yield return new WaitForSeconds (timer);
 	    if (playerInRange)
 		    playerHealth.TakeDamage (attackDamage);
-	    yield return new WaitForSeconds (4f);
+	    yield return new WaitForSeconds (1f);
 	    IsAttacking = false;
 	}
 }

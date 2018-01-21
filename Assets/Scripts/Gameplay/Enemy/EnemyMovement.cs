@@ -36,6 +36,8 @@ public class EnemyMovement : MonoBehaviour
             anim.SetBool(animRun, true);
             nav.updatePosition = true;
             nav.SetDestination(player.position);
+            if (Vector3.Distance(this.transform.position, player.position) >= 50)
+                Aggro = false;
         }
         else
         {
