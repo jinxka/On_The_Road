@@ -101,11 +101,11 @@ public class PlayerHealth : MonoBehaviour
         playerMovement.enabled = false;
     }
 
-    private IEnumerator RestartLevel ()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneLoading.Instance.loadScene(SceneManager.GetActiveScene().name);
-    }
+    //private IEnumerator RestartLevel ()
+    //{
+    //    yield return new WaitForSeconds(2f);
+    //    SceneLoading.Instance.loadScene(SceneManager.GetActiveScene().name);
+    //}
 
     public void SetHealthUI() //new
     {
