@@ -8,6 +8,9 @@ public class StartMessage : MonoBehaviour {
     [SerializeField]
     CanvasGroup progressGroup;
 
+    [SerializeField]
+    GameObject SMScreenGroup;
+
     private float time;
     private Text message;
     private bool update = false;
@@ -18,7 +21,7 @@ public class StartMessage : MonoBehaviour {
         message = GetComponentInChildren<Text>();
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         progressGroup.alpha = 1;
         if (Time.time - time > 1)
@@ -31,6 +34,7 @@ public class StartMessage : MonoBehaviour {
             if (Input.GetKeyDown("return"))
             {
                 progressGroup.alpha = 0;
+                SMScreenGroup.SetActive(false);
                 Destroy(this);
             }
         }

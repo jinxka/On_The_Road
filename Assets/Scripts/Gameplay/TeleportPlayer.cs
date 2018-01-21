@@ -27,7 +27,7 @@ public class TeleportPlayer : MonoBehaviour {
 
     private IEnumerator startTeleport()
     {
-        blackScreen.gameObject.SetActive(true);
+        SceneLoading.Instance.loadingScreenGroup(true);
         blackScreen.canvasRenderer.SetAlpha(0f);
         blackScreen.CrossFadeAlpha(0.99f, 1f, false);
         yield return new WaitForSeconds(delay);
@@ -45,6 +45,6 @@ public class TeleportPlayer : MonoBehaviour {
     private IEnumerator disableLoadScreen()
     { 
         yield return new WaitForSeconds(1f);
-        blackScreen.gameObject.SetActive(false);
+        SceneLoading.Instance.loadingScreenGroup(false);
     }
 }
