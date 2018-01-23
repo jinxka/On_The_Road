@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerStatsUI : MonoBehaviour {
 
-    public PlayerHealth playerHealth;
-    public Tir_normal playerShooting;
-    public PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
+    private Tir_normal playerShooting;
+    private PlayerMovement playerMovement;
+    private GameObject player;
 
     [SerializeField]
     Text characterDetails;
-	
+
+	void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
+        playerShooting = player.GetComponentInChildren<Tir_normal>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+    }
+
 	// Update is called once per frame
 	void Update () {
         characterDetails.text = "Character Stats \n" +
