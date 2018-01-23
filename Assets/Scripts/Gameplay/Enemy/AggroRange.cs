@@ -25,6 +25,8 @@ public class AggroRange : MonoBehaviour {
         if (other.tag == "Player" && !enemyMovement.GetAggro())
         {
            enemyMovement.SetAggro(true);
+			AudioManager.instance.Play ("ZombieAgro");
+
            foreach (EnemyMovement friend in friends)
            {
                 if (friend == null)
