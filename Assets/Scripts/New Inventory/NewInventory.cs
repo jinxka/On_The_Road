@@ -110,7 +110,10 @@ public class NewInventory : MonoBehaviour {
             switch (attribute.attributeName)
             {
                 case "Health":
-                    PlayerHealth.Instance.currentHealth += attribute.attributeValue;
+                    if ((PlayerHealth.Instance.currentHealth + attribute.attributeValue) <= PlayerHealth.Instance.maxHealth)
+                        PlayerHealth.Instance.currentHealth += attribute.attributeValue;
+                    else
+                        PlayerHealth.Instance.currentHealth = PlayerHealth.Instance.maxHealth;
                     break;
                 case "Movement Speed":
                     PlayerHealth.Instance.playerMovement.speed += attribute.attributeValue;
@@ -120,6 +123,7 @@ public class NewInventory : MonoBehaviour {
                     break;
             }
         }
+        PlayerHealth.Instance.SetHealthUI();
     }
 
     public void UpdatePlayerStats(NewItem item, bool add)

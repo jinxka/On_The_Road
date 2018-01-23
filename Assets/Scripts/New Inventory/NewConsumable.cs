@@ -5,13 +5,9 @@ using UnityEngine;
 public class NewConsumable : MonoBehaviour {
     public void Consume(NewItem item)
     {
-        switch (item.gameObject.name)
-        {
-            case "Mine":
-                break;
-            default:
-                NewInventory.Instance.AddToPlayerStats(item);
-                break;
-        }
+        if (item.gameObject.name == "Mine")
+        { }
+        else
+            NewInventory.Instance.AddToPlayerStats(item);
     }
 }
