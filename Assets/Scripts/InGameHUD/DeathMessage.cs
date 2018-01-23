@@ -15,14 +15,10 @@ public class DeathMessage : MonoBehaviour {
     private bool updateTimer = true;
     private Text message;
     private float timer;
-
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
     // Use this for initialization
     public void FixedUpdate()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<PlayerHealth>().currentHealth <= 0)
         {
             SMScreenGroup.SetActive(true);
@@ -38,7 +34,7 @@ public class DeathMessage : MonoBehaviour {
               if (!update)
               {
                 update = true;
-                message.text = message.text + "\n\n\n\n\n <b><i>Press ENTER to continue</i></b>";
+                message.text = message.text + "\n\n\n\n\n <i>Press ENTER to continue</i>";
               }
               if (Input.GetKeyDown("return"))
               {

@@ -29,7 +29,7 @@ public class StartMessage : MonoBehaviour {
             if (!update)
             {
                 update = true;
-                message.text = message.text + "\n\n\n <b><i>PRESS ENTER TO CONTINUE</i></b>";
+                message.text = message.text + "\n\n\n <i>PRESS ENTER TO CONTINUE</i>";
             }
             if (Input.GetKeyDown("return"))
             {
