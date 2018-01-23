@@ -30,7 +30,7 @@ public class GUIManager : MonoBehaviour {
     [SerializeField]
     CanvasGroup[] GUIPanels;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool allPanelsAreClosed = true;
 
     Camera mainCamera;
