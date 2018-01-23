@@ -4,7 +4,28 @@ using UnityEngine.EventSystems;
 
 public class Tir_normal : MonoBehaviour
 {
-	public Rigidbody bulletCasing = null;
+    #region UnityCompliant Singleton
+    public static Tir_normal Instance
+    {
+        get;
+        private set;
+    }
+
+    public virtual void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            gunParticles = GetComponent<ParticleSystem>();
+            gunAudio = GetComponent<AudioSource>();
+            gunLight = GetComponent<Light>();
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+    #endregion
+    public Rigidbody bulletCasing = null;
     public int ejectSpeed = 100;
     public float fireRate = 0.5F;
     public float quickFireRate = 0.0F;
@@ -25,13 +46,6 @@ public class Tir_normal : MonoBehaviour
     ParticleSystem gunParticles;
     AudioSource gunAudio;
     Light gunLight;
-
-    void Awake()
-    {
-        gunParticles = GetComponent<ParticleSystem>();
-        gunAudio = GetComponent<AudioSource>();
-        gunLight = GetComponent<Light>();
-    }
 
     void Start ()
     {
