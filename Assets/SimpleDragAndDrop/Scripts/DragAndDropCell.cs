@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
@@ -249,6 +249,8 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
         {
             DragAndDropItem firstItem = firstCell.GetItem();                // Get item from first cell
             DragAndDropItem secondItem = secondCell.GetItem();              // Get item from second cell
+            NewInventorySlot firstSlot = firstCell.gameObject.GetComponent<NewInventorySlot>();
+            NewInventorySlot secondSlot = secondCell.gameObject.GetComponent<NewInventorySlot>();
             if (firstItem != null)
             {
                 // Place first item into second cell
@@ -256,10 +258,10 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 firstItem.transform.localPosition = Vector3.zero;
                 firstItem.transform.SetAsFirstSibling();
                 secondCell.SetBackgroundState(true);
-                secondCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = false;
-            }
+                secondSlot.isAvailable = false;
+                }
             else
-                secondCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = true;
+                secondSlot.isAvailable = true;
             if (secondItem != null)
             {
                 // Place second item into first cell
@@ -267,10 +269,14 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
                 secondItem.transform.localPosition = Vector3.zero;
                 secondItem.transform.SetAsFirstSibling();
                 firstCell.SetBackgroundState(true);
-                firstCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = false;
+                firstSlot.isAvailable = false;
             }
             else
-                firstCell.gameObject.GetComponent<NewInventorySlot>().isAvailable = true;
+                firstSlot.isAvailable = true;
+            if (secondSlot.isEquippedItemSlot && secondSlot.transform.childCount > 0)
+                NewInventory.Instance.UpdatePlayerStats(secondSlot.transform.GetChild(0).GetComponent<NewItem>(), true);
+            if (firstSlot.isEquippedItemSlot && secondSlot.transform.childCount > 0)
+                NewInventory.Instance.UpdatePlayerStats(secondSlot.transform.GetChild(0).GetComponent<NewItem>(), false);
         }
     }
 

@@ -122,7 +122,7 @@ public class NewInventory : MonoBehaviour {
         }
     }
 
-    void UpdatePlayerStats(NewItem item, bool add)
+    public void UpdatePlayerStats(NewItem item, bool add)
     {
         int multiplier = (add == true) ? 1 : -1; 
         foreach (NewItemAttribute attribute in item.itemAttributes)

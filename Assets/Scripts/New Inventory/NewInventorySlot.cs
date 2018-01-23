@@ -10,4 +10,5 @@ public class NewInventorySlot : MonoBehaviour {
 
     public bool isAvailable = true;
 
+    public bool isEquippedItemSlot = false;
 }
