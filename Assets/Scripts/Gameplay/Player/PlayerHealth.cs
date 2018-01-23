@@ -65,12 +65,10 @@ public class PlayerHealth : MonoBehaviour
         SetHealthUI();      //new
     }
 
-
     void FixedUpdate ()
     {
         damaged = false;
     }
-
 
     public void TakeDamage (int amount)
     {
@@ -88,7 +86,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
     void Death ()
     {
         isDead = true;
@@ -100,12 +97,6 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
     }
-
-    //private IEnumerator RestartLevel ()
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    SceneLoading.Instance.loadScene(SceneManager.GetActiveScene().name);
-    //}
 
     public void SetHealthUI() //new
     {
