@@ -15,11 +15,13 @@ public class RightClickAttack : MonoBehaviour
 
     public void UseSpell()
     {
-        if (!onCooldown)
-        {
-            StartCoroutine(triggerCooldown());
-            Shoot_Grenade();
-        }
+        if (onCooldown)
+            return;
+        currentTime = cooldown;
+        cooldownImage.enabled = true;
+        cooldownImage.fillAmount = 1f;
+        StartCoroutine(triggerCooldown());
+        Shoot_Grenade();
     }
 
     private IEnumerator triggerCooldown()
