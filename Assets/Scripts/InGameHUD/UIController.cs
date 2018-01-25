@@ -27,10 +27,14 @@ public class UIController : MonoBehaviour {
             if (GUIManager.Instance != null)
             {
                 Time.timeScale = 1;
-                if (GUIManager.Instance.allPanelsAreClosed)
-                    ToggleMenu();
-                else
-                    GUIManager.Instance.CloseAllPanels();
+				if (GUIManager.Instance.allPanelsAreClosed) {
+					ToggleMenu ();
+					AudioManager.instance.Play ("MenuNavigation");
+				} else {
+					GUIManager.Instance.CloseAllPanels ();
+					AudioManager.instance.Play ("MenuNavigation");
+
+				}
             }
         }
 		else if (Input.GetKeyDown(NewInputManager.Instance.GlobalMap)) {
