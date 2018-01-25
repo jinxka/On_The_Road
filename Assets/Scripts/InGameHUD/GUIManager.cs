@@ -47,7 +47,7 @@ public class GUIManager : MonoBehaviour {
     {
         foreach (CanvasGroup panel in GUIPanels)
         {
-            if (panel.alpha == 1)
+            if (panel != null && panel.alpha == 1)
             {
                 allPanelsAreClosed = false;
                 return;
@@ -58,7 +58,7 @@ public class GUIManager : MonoBehaviour {
 
     public void TogglePanel(CanvasGroup panel)
     {
-        if (panel.alpha == 1)
+        if (panel != null && panel.alpha == 1)
             ClosePanel(panel);
         else
             OpenPanel(panel);
@@ -66,10 +66,13 @@ public class GUIManager : MonoBehaviour {
 
     public void ClosePanel(CanvasGroup panel)
     {
-        panel.alpha = 0;
-        panel.blocksRaycasts = false;
-        panel.interactable = false;
-        CheckIfPanelsAreClosed();
+        if (panel != null)
+        {
+            panel.alpha = 0;
+            panel.blocksRaycasts = false;
+            panel.interactable = false;
+            CheckIfPanelsAreClosed();
+        }
     }
 
     public void OpenPanel(CanvasGroup panel)
