@@ -19,7 +19,7 @@ public class StartMessage : MonoBehaviour {
     {
         time = Time.time;
         message = GetComponentInChildren<Text>();
-        message.text = message.text + "\n\n\n <i>PRESS ENTER TO CONTINUE</i>";
+        message.text = message.text + "\n\n\n <i><size=20>PRESS ENTER TO CONTINUE</size></i>";
         progressGroup.alpha = 1;
     }
 

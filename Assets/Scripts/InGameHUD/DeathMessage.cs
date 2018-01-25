@@ -16,33 +16,29 @@ public class DeathMessage : MonoBehaviour {
     private Text message;
     private float timer;
     // Use this for initialization
-    public void FixedUpdate()
+
+    public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        SMScreenGroup.SetActive(true);
+        message = GetComponentInChildren<Text>();
+        message.text = message.text + "\n\n\n\n\n <i><size=20>Press ENTER to continue</size></i>";
+        SMScreenGroup.SetActive(false);
+    }
+    public void Update()
+    {
         if (player.GetComponent<PlayerHealth>().currentHealth <= 0)
         {
             SMScreenGroup.SetActive(true);
+            Time.timeScale = 0;
             progressGroup.alpha = 1;
-            if (updateTimer)
+            if (Input.GetKeyDown("return"))
             {
-                message = GetComponentInChildren<Text>();
-                timer = Time.time;
-                updateTimer = false;
-            }
-            if (Time.time - timer > 1)
-            {
-              if (!update)
-              {
-                update = true;
-                message.text = message.text + "\n\n\n\n\n <i>Press ENTER to continue</i>";
-              }
-              if (Input.GetKeyDown("return"))
-              {
                 progressGroup.alpha = 0;
+                Time.timeScale = 1;
                 SMScreenGroup.SetActive(false);
                 SceneLoading.Instance.loadScene(SceneManager.GetActiveScene().name);
                 Destroy(this);
-             }
             }
         }
     }

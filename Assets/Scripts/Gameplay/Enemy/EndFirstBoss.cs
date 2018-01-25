@@ -18,34 +18,26 @@ public class EndFirstBoss : MonoBehaviour {
     private float timer;
     // Use this for initialization
     void Start () {
-        message.text = textMsg;
         enemyHealth = GetComponent<EnemyHealth>();
+        SMScreenGroup.SetActive(true);
+        message.text = textMsg;
+        message.text = message.text + "\n\n\n\n\n <i><size=20>Press ENTER to continue</size></i>";
+        SMScreenGroup.SetActive(false);
     }
 
-    void FixedUpdate () {
+    void Update () {
         if (enemyHealth.currentHealth <= 0)
         {
+            Time.timeScale = 0;
             SMScreenGroup.SetActive(true);
             progressGroup.alpha = 1;
-            if (updateTimer)
+            if (Input.GetKeyDown("return"))
             {
-                timer = Time.time;
-                updateTimer = false;
-            }
-            if (Time.time - timer > 1)
-            {
-                if (!update)
-                {
-                    update = true;
-                    message.text = message.text + "\n\n\n\n\n <i>Press ENTER to continue</i>";
-                }
-                if (Input.GetKeyDown("return"))
-                {
-                    progressGroup.alpha = 0;
-                    SMScreenGroup.SetActive(false);
-                    SceneLoading.Instance.loadScene("Zone_Colonie_Safe");
-                    Destroy(this);
-                }
+                Time.timeScale = 1;
+                progressGroup.alpha = 0;
+                SMScreenGroup.SetActive(false);
+                SceneLoading.Instance.loadScene("Zone_Colonie_Safe");
+                Destroy(this);
             }
         }
     }
