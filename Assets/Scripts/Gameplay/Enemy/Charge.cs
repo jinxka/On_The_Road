@@ -62,11 +62,11 @@ public class Charge : MonoBehaviour {
             waitTimer = Time.time;
         else
             chargeTimer = Time.time;
+		AudioManager.instance.Play("CreatureCharge");
         anim.SetBool(animRun, true);
         transform.position += transform.forward * Time.deltaTime * movementSpeed;
         isCharging = true;
         isReady = false;
-		AudioManager.instance.Play("CreatureCharge");
     }
 
     void OnCollisionEnter(Collision collision)
