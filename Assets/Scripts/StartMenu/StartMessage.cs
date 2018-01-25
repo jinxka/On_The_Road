@@ -19,24 +19,19 @@ public class StartMessage : MonoBehaviour {
     {
         time = Time.time;
         message = GetComponentInChildren<Text>();
+        message.text = message.text + "\n\n\n <i>PRESS ENTER TO CONTINUE</i>";
+        progressGroup.alpha = 1;
     }
 
     public void Update()
     {
-        progressGroup.alpha = 1;
-        if (Time.time - time > 1)
+        Time.timeScale = 0;
+        if (Input.GetKeyDown("return"))
         {
-            if (!update)
-            {
-                update = true;
-                message.text = message.text + "\n\n\n <i>PRESS ENTER TO CONTINUE</i>";
-            }
-            if (Input.GetKeyDown("return"))
-            {
-                progressGroup.alpha = 0;
-                SMScreenGroup.SetActive(false);
-                Destroy(this);
-            }
+            progressGroup.alpha = 0;
+            SMScreenGroup.SetActive(false);
+            Time.timeScale = 1;
+            Destroy(this);
         }
     }
 }
