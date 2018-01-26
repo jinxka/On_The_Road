@@ -70,10 +70,6 @@ public class Tir_normal : MonoBehaviour
             else
                 DisableEffects();
         }
-        if (Input.GetKeyDown(fireMode_Key))
-        {
-            fullAuto = !fullAuto;
-        }
         if (Input.GetKeyDown(reload_Key) && (clip < clipSize))
         {
             reload();
