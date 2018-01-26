@@ -24,6 +24,8 @@ public class BuffDegats : MonoBehaviour {
 		AudioManager.instance.Play("DamageBuff");
         if (Aura == null)
             Aura = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().aura;
+        if (tirNormal == null)
+            tirNormal = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Tir_normal>();
         float startTime = Time.time;
         cooldownImage.enabled = true;
         currentTime = cooldown;

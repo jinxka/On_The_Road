@@ -22,7 +22,6 @@ public class Heal : MonoBehaviour {
 
     public void UseSpell()
     {
-		
         if (onCooldown)
             return;
 		AudioManager.instance.Play ("HealBuff");
