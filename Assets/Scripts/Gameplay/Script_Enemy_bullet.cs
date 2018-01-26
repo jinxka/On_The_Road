@@ -21,7 +21,6 @@ public class Script_Enemy_bullet : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            print("Player");
             PlayerHealth playerHealth = col.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
@@ -31,7 +30,6 @@ public class Script_Enemy_bullet : MonoBehaviour {
         }
         else if (col.gameObject.tag != "Enemies" && col.gameObject.tag == "Wall")
         {
-            print("OTHER");
             Destroy(gameObject);
         }
     }
