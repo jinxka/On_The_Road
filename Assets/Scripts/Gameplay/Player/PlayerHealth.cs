@@ -34,11 +34,11 @@ public class PlayerHealth : MonoBehaviour
     public float armor;
     
     public Slider healthSlider;
-    public Image FillImage;                           
+    public Image FillImage;
+    public Image damageImage;
     public Color FullHealthColor = Color.green;      
     public Color ZeroHealthColor = Color.red;       
 
-    public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
@@ -67,6 +67,8 @@ public class PlayerHealth : MonoBehaviour
 
     void FixedUpdate ()
     {
+        if (healthSlider == null)
+            GetGUI();
         damaged = false;
     }
 
@@ -84,6 +86,14 @@ public class PlayerHealth : MonoBehaviour
         {
             Death ();
         }
+    }
+
+    void GetGUI()
+    {
+        healthSlider = GameObject.FindGameObjectWithTag("HealthSlider").GetComponent<Slider>();
+        FillImage = GameObject.FindGameObjectWithTag("Fill").GetComponent<Image>();
+        //damageImage = GameObject.FindGameObjectWithTag("DamageImage").GetComponent<Image>();
+        SetHealthUI();
     }
 
     void Death ()
